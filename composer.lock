@@ -1,0 +1,639 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "85b713d4f1fdfd19a6cb62bef077ce3a",
+    "packages": [
+        {
+            "name": "baagee/nknkn",
+            "version": "v0.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/nknkn.git",
+                "reference": "8643c35e034c81d5431aa4555b79bb7e75574cb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/8643c35e034c81d5431aa4555b79bb7e75574cb6",
+                "reference": "8643c35e034c81d5431aa4555b79bb7e75574cb6",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "baagee/php-config": "0.0.*",
+                "baagee/php-cookie": "0.0.*",
+                "baagee/php-curl-request": "0.0.*",
+                "baagee/php-event": "0.0.*",
+                "baagee/php-log": "0.0.*",
+                "baagee/php-mysql": "0.*.*",
+                "baagee/php-onion": "0.0.*",
+                "baagee/php-params-validator": "0.0.*",
+                "baagee/php-router": "0.1.*",
+                "baagee/php-session": "0.0.*",
+                "baagee/php-template": "0.0.*",
+                "baagee/wtf-error": "0.0.*",
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\NkNkn\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP NkNkn framework",
+            "keywords": [
+                "NkNkn",
+                "framework",
+                "php"
+            ],
+            "time": "2019-10-29T09:21:57+00:00"
+        },
+        {
+            "name": "baagee/php-config",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-config.git",
+                "reference": "95391a64e953e463ddae2b27526529ab95e2efc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-config/zipball/95391a64e953e463ddae2b27526529ab95e2efc9",
+                "reference": "95391a64e953e463ddae2b27526529ab95e2efc9",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "suggest": {
+                "ext-json": "ext-json",
+                "ext-simplexml": "ext-simplexml",
+                "ext-yaml": "ext-yaml"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\Config\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP Config library",
+            "keywords": [
+                "config",
+                "php"
+            ],
+            "time": "2019-10-24T09:31:54+00:00"
+        },
+        {
+            "name": "baagee/php-cookie",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-cookie.git",
+                "reference": "d9cc49ed3d401328b2510644568e7d91b234ffcb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-cookie/zipball/d9cc49ed3d401328b2510644568e7d91b234ffcb",
+                "reference": "d9cc49ed3d401328b2510644568e7d91b234ffcb",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\Cookie\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP Cookie library",
+            "keywords": [
+                "cookie",
+                "php"
+            ],
+            "time": "2019-04-15T02:26:27+00:00"
+        },
+        {
+            "name": "baagee/php-curl-request",
+            "version": "v0.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-curl-request.git",
+                "reference": "2ddce354e630a71fcea277697104160bb012d926"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-curl-request/zipball/2ddce354e630a71fcea277697104160bb012d926",
+                "reference": "2ddce354e630a71fcea277697104160bb012d926",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\CurlRequest\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP Curl Request library",
+            "keywords": [
+                "curl request",
+                "php"
+            ],
+            "time": "2019-10-29T09:12:49+00:00"
+        },
+        {
+            "name": "baagee/php-event",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-event.git",
+                "reference": "e708f9faa58012c43a43ac2cbf749798b3481852"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-event/zipball/e708f9faa58012c43a43ac2cbf749798b3481852",
+                "reference": "e708f9faa58012c43a43ac2cbf749798b3481852",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\Event\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP event library",
+            "keywords": [
+                "event",
+                "php"
+            ],
+            "time": "2019-03-25T07:14:34+00:00"
+        },
+        {
+            "name": "baagee/php-log",
+            "version": "v0.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-log.git",
+                "reference": "681aae06d8ae1747352fa7c368bd9270dfa2f4cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-log/zipball/681aae06d8ae1747352fa7c368bd9270dfa2f4cf",
+                "reference": "681aae06d8ae1747352fa7c368bd9270dfa2f4cf",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\Log\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP Log library",
+            "keywords": [
+                "log",
+                "php"
+            ],
+            "time": "2019-10-25T07:40:50+00:00"
+        },
+        {
+            "name": "baagee/php-mysql",
+            "version": "v0.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-mysql.git",
+                "reference": "821a37cf1460d4c64ecd1d749376c69189a7628c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-mysql/zipball/821a37cf1460d4c64ecd1d749376c69189a7628c",
+                "reference": "821a37cf1460d4c64ecd1d749376c69189a7628c",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\MySQL\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP mysql library",
+            "keywords": [
+                "mysql",
+                "php"
+            ],
+            "time": "2019-10-27T11:04:18+00:00"
+        },
+        {
+            "name": "baagee/php-onion",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-onion.git",
+                "reference": "b29293082670ec36cab34c423affbf0f60746a17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-onion/zipball/b29293082670ec36cab34c423affbf0f60746a17",
+                "reference": "b29293082670ec36cab34c423affbf0f60746a17",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\Onion\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP onion layer",
+            "keywords": [
+                "onion",
+                "php"
+            ],
+            "time": "2019-09-05T03:40:55+00:00"
+        },
+        {
+            "name": "baagee/php-params-validator",
+            "version": "v0.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-params-validator.git",
+                "reference": "2f81ed5a8297fa1f06d2dce277323119e8376a49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-params-validator/zipball/2f81ed5a8297fa1f06d2dce277323119e8376a49",
+                "reference": "2f81ed5a8297fa1f06d2dce277323119e8376a49",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\ParamsValidator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP Params Validator Library",
+            "keywords": [
+                "params",
+                "php",
+                "validate",
+                "validator"
+            ],
+            "time": "2019-10-22T13:56:06+00:00"
+        },
+        {
+            "name": "baagee/php-router",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-router.git",
+                "reference": "cd4869b6173b8b77e413755ddb442b86b6bb86b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-router/zipball/cd4869b6173b8b77e413755ddb442b86b6bb86b6",
+                "reference": "cd4869b6173b8b77e413755ddb442b86b6bb86b6",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\Router\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP Router library",
+            "keywords": [
+                "php",
+                "router"
+            ],
+            "time": "2019-10-06T04:54:49+00:00"
+        },
+        {
+            "name": "baagee/php-session",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-session.git",
+                "reference": "d8999609a858bc6e08afdec498d328fc64ee8f77"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-session/zipball/d8999609a858bc6e08afdec498d328fc64ee8f77",
+                "reference": "d8999609a858bc6e08afdec498d328fc64ee8f77",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\Session\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP Session library",
+            "keywords": [
+                "php",
+                "session"
+            ],
+            "time": "2019-04-14T08:28:46+00:00"
+        },
+        {
+            "name": "baagee/php-template",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-template.git",
+                "reference": "ce1b8d1914dfde441447c482f40f67d0de13c39f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-template/zipball/ce1b8d1914dfde441447c482f40f67d0de13c39f",
+                "reference": "ce1b8d1914dfde441447c482f40f67d0de13c39f",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\Template\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP Template library",
+            "keywords": [
+                "php",
+                "template",
+                "view"
+            ],
+            "time": "2019-10-28T09:04:29+00:00"
+        },
+        {
+            "name": "baagee/wtf-error",
+            "version": "v0.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/wtf-error.git",
+                "reference": "b89fa49153fa938c2eadd6b575392743ffb621d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/wtf-error/zipball/b89fa49153fa938c2eadd6b575392743ffb621d1",
+                "reference": "b89fa49153fa938c2eadd6b575392743ffb621d1",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\Wtf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "What the fuck! PHP error handler",
+            "keywords": [
+                "error",
+                "php"
+            ],
+            "time": "2019-08-29T05:36:57+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=7.1"
+    },
+    "platform-dev": []
+}

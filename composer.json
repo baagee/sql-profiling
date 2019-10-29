@@ -1,0 +1,24 @@
+{
+  "name": "mysql profiling",
+  "description": "mysql sql语句性能分析平台",
+  "authors": [
+    {
+      "name": "BaAGee"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "baagee/nknkn": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://mirrors.aliyun.com/composer/"
+    }
+  }
+}
