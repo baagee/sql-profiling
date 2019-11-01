@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "baagee/nknkn",
-            "version": "v0.1.8",
+            "version": "v0.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "8643c35e034c81d5431aa4555b79bb7e75574cb6"
+                "reference": "fa44cc5c319484ef5b3a971740fe05c4e3aa99aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/8643c35e034c81d5431aa4555b79bb7e75574cb6",
-                "reference": "8643c35e034c81d5431aa4555b79bb7e75574cb6",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/fa44cc5c319484ef5b3a971740fe05c4e3aa99aa",
+                "reference": "fa44cc5c319484ef5b3a971740fe05c4e3aa99aa",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -63,7 +63,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2019-10-29T09:21:57+00:00"
+            "time": "2019-10-31T08:54:47+00:00"
         },
         {
             "name": "baagee/php-config",
@@ -164,16 +164,16 @@
         },
         {
             "name": "baagee/php-curl-request",
-            "version": "v0.0.4",
+            "version": "v0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-curl-request.git",
-                "reference": "2ddce354e630a71fcea277697104160bb012d926"
+                "reference": "9640146fdf3886a58a5c6c030c7e67bfa4769deb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-curl-request/zipball/2ddce354e630a71fcea277697104160bb012d926",
-                "reference": "2ddce354e630a71fcea277697104160bb012d926",
+                "url": "https://api.github.com/repos/baagee/php-curl-request/zipball/9640146fdf3886a58a5c6c030c7e67bfa4769deb",
+                "reference": "9640146fdf3886a58a5c6c030c7e67bfa4769deb",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -207,7 +207,7 @@
                 "curl request",
                 "php"
             ],
-            "time": "2019-10-29T09:12:49+00:00"
+            "time": "2019-10-31T07:46:35+00:00"
         },
         {
             "name": "baagee/php-event",
