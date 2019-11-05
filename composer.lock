@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "baagee/nknkn",
-            "version": "v0.1.9",
+            "version": "v0.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "fa44cc5c319484ef5b3a971740fe05c4e3aa99aa"
+                "reference": "d9466ea4c8bfb19c9a3ee3b6ce5831c1fa440d4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/fa44cc5c319484ef5b3a971740fe05c4e3aa99aa",
-                "reference": "fa44cc5c319484ef5b3a971740fe05c4e3aa99aa",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/d9466ea4c8bfb19c9a3ee3b6ce5831c1fa440d4e",
+                "reference": "d9466ea4c8bfb19c9a3ee3b6ce5831c1fa440d4e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -63,20 +63,20 @@
                 "framework",
                 "php"
             ],
-            "time": "2019-10-31T08:54:47+00:00"
+            "time": "2019-11-05T13:53:07+00:00"
         },
         {
             "name": "baagee/php-config",
-            "version": "v0.0.2",
+            "version": "v0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-config.git",
-                "reference": "95391a64e953e463ddae2b27526529ab95e2efc9"
+                "reference": "121724b8d70316851ae17179a8bb8264321c5166"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-config/zipball/95391a64e953e463ddae2b27526529ab95e2efc9",
-                "reference": "95391a64e953e463ddae2b27526529ab95e2efc9",
+                "url": "https://api.github.com/repos/baagee/php-config/zipball/121724b8d70316851ae17179a8bb8264321c5166",
+                "reference": "121724b8d70316851ae17179a8bb8264321c5166",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -114,7 +114,7 @@
                 "config",
                 "php"
             ],
-            "time": "2019-10-24T09:31:54+00:00"
+            "time": "2019-11-01T05:41:09+00:00"
         },
         {
             "name": "baagee/php-cookie",
