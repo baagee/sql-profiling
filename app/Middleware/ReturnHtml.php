@@ -13,7 +13,7 @@ use BaAGee\Log\Log;
 use BaAGee\Template\View;
 use BaAGee\NkNkn\AppEnv;
 use BaAGee\NkNkn\Base\MiddlewareAbstract;
-use BaAGee\NkNkn\CoreNoticeCode;
+use BaAGee\NkNkn\Constant\CoreNoticeCode;
 use BaAGee\NkNkn\UserNotice;
 
 class ReturnHtml extends MiddlewareAbstract

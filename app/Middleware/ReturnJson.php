@@ -10,7 +10,7 @@ namespace App\Middleware;
 
 use BaAGee\Log\Log;
 use BaAGee\NkNkn\Base\MiddlewareAbstract;
-use BaAGee\NkNkn\CoreNoticeCode;
+use BaAGee\NkNkn\Constant\CoreNoticeCode;
 use BaAGee\NkNkn\UserNotice;
 
 class ReturnJson extends MiddlewareAbstract
