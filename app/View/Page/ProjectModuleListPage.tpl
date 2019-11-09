@@ -7,7 +7,11 @@
         {{loop $itemLine $project}}
             <div class="layui-col-md6">
                 <div class="layui-card">
-                    <div class="layui-card-header"><h1>{{$project['project']}}</h1></div>
+                    <div class="layui-card-header">
+                        <h1 style="display: inline-block">{{$project['project']}}</h1>
+                        <i class="layui-icon" style="float: right;
+    margin-top: 6px;cursor: pointer;color: red" onclick="deleteThis('{{$project['project']}}')">&#xe640;</i>
+                    </div>
                     <div class="layui-card-body">
 
                         {{loop $project['modules'] $modules}}
@@ -32,3 +36,28 @@
 {{/loop}}
 
 {{end container}}
+
+{{fill tail}}
+<script src="/static/jquery.min.js"></script>
+<script>
+    layui.use('layer', function () {
+        var layer = layui.layer;
+    });
+
+    function deleteThis(project) {
+        layer.confirm('确定要删除吗?', {icon: 3, title: '提示'}, function (index) {
+            $.post("/api/project/delete", {
+                project: project
+            }, function (res) {
+                if (res.code !== 0) {
+                    layer.msg(res.message, {icon: 5});
+                } else {
+                    layer.msg('删除完毕');
+                    location.href = '/';
+                }
+            });
+            layer.close(index);
+        });
+    }
+</script>
+{{end tail}}

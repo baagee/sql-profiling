@@ -42,7 +42,7 @@ class ProjectModuleModel extends ModelAbstract
     public function getByXId($xId)
     {
         $res = $this->tableObj->where([
-            'x_id' => ['=',$xId],
+            'x_id' => ['=', $xId],
         ])->limit(1)->select();
         return $res[0] ?? [];
     }
@@ -50,5 +50,19 @@ class ProjectModuleModel extends ModelAbstract
     public function list()
     {
         return $this->tableObj->select();
+    }
+
+    public function deleteByXId($xId)
+    {
+        return $this->tableObj->where([
+            'x_id' => ['=', $xId]
+        ])->delete();
+    }
+
+    public function getByProject($project)
+    {
+        return $this->tableObj->where([
+            'project' => ['=', $project]
+        ])->select();
     }
 }

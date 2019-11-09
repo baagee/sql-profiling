@@ -171,12 +171,37 @@ class DataService
             $item['timeline_data'] = json_encode($timeLine);
             $item['legend']        = json_encode(array_column($pieData, 'name'));
         }
-        // var_dump($sqlDetailList);
-        // die;
 
         return [
             'request_detail'  => $requestDetail,
             'sql_detail_list' => $sqlDetailList
         ];
+    }
+
+    /**
+     * 删除这个项目所有的相关请求和sql
+     * @param $project
+     * @return bool
+     * @throws \Exception
+     */
+    public function deleteProject($project)
+    {
+        $projectModuleModel = new ProjectModuleModel();
+        $pms                = $projectModuleModel->getByProject($project);
+        $connection         = DB::getInstance();
+        $connection->beginTransaction();
+        try {
+            foreach ($pms as $pm) {
+                $projectModuleModel->deleteByXId($pm['x_id']);
+                if ($this->clearModuleRequest($pm['x_id']) == false) {
+                    throw new \Exception("清空失败");
+                }
+            }
+            $connection->commit();
+            return true;
+        } catch (\Exception $e) {
+            $connection->rollback();
+            return false;
+        }
     }
 }
