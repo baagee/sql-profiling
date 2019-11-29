@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "baagee/nknkn",
-            "version": "v0.1.14",
+            "version": "v0.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "59a22ebe9de07abf21cf4f06c5a1ca51b0cbb7c6"
+                "reference": "64f510985e2d4f104ec29626b99280996e12cece"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/59a22ebe9de07abf21cf4f06c5a1ca51b0cbb7c6",
-                "reference": "59a22ebe9de07abf21cf4f06c5a1ca51b0cbb7c6",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/64f510985e2d4f104ec29626b99280996e12cece",
+                "reference": "64f510985e2d4f104ec29626b99280996e12cece",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -63,7 +63,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2019-11-21T11:55:42+00:00"
+            "time": "2019-11-28T03:16:33+00:00"
         },
         {
             "name": "baagee/php-config",
