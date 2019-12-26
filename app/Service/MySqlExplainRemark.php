@@ -10,7 +10,24 @@ namespace App\Service;
 
 class MySqlExplainRemark
 {
-    protected const REMARK_MAP = [
+    protected const SQL_SCORE_MAP = [
+        //    null > system > const > eq_ref > ref > fulltext > ref_or_null > index_merge > unique_subquery > index_subquery > range > index > ALL
+        // 基础分 根据建议数计算
+        'all'             => 6,
+        'index'           => 7,
+        'range'           => 7.5,
+        'index_subquery'  => 7.5,
+        'unique_subquery' => 8,
+        'index_merge'     => 8.0,
+        'ref_or_null'     => 8.0,
+        'fulltext'        => 8.5,
+        'ref'             => 9.0,
+        'eq_ref'          => 9.0,
+        'const'           => 9.5,
+        'system'          => 9.5,
+        'null'            => 10,
+    ];
+    protected const REMARK_MAP    = [
         'select_type'   => [
             'INSERT'               => '插入数据语句',
             'REPLACE'              => '插入的数据的唯一索引或者主键索引与之前的数据有重复的情况，将会删除原先的数据，然后再进行添加',
@@ -115,5 +132,32 @@ class MySqlExplainRemark
         }
         $explication['Extra'] = array_values($explication['Extra'] ?? []);
         return $explication;
+    }
+
+    /**
+     * 获取sql分数
+     * @param $countSugs
+     * @param $explainList
+     * @return string
+     */
+    public static function getScore($countSugs, $explainList)
+    {
+        $types = array_unique(array_filter(array_column($explainList, 'type')));
+        $score = 0;
+        $i     = 0;
+        if (empty($types)) {
+            return 0;
+        }
+        foreach ($types as $type) {
+            if (isset(self::SQL_SCORE_MAP[strtolower($type)])) {
+                $i++;
+                $score += self::SQL_SCORE_MAP[strtolower($type)];
+            }
+        }
+        $score = number_format(($score / $i) - 0.5 * $countSugs, 1);
+        if ($score < 0) {
+            $score = 0;
+        }
+        return $score;
     }
 }

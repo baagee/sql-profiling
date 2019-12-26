@@ -71,7 +71,7 @@
 
                     <div class="layui-col-md12">
                         <div class="layui-card">
-                            <div class="layui-card-header">SQL语句</div>
+                            <div class="layui-card-header">SQL语句 &nbsp; <div id="test_{{$i}}" style="margin-top: -5px;"></div></div>
                             <div class="layui-card-body" style="word-break: break-all;">
                                 <pre><code class="sql">{{$sqlDetail['sql']}}</code></pre>
                             </div>
@@ -235,7 +235,22 @@
 <script src="/static//echarts.min.js"></script>
 
 <script type="text/javascript">
-    {{loop $analyze['sql_detail_list'] $sqlDetail}}
+    {{loop $analyze['sql_detail_list'] $i $sqlDetail}}
+
+    layui.use(['rate'], function () {
+        var rate = layui.rate;
+        rate.render({
+            elem: '#test_{{$i}}'
+            ,length: 10
+            ,value: {{$sqlDetail['score']}} //初始值
+            ,readonly: true
+            ,half: true
+            ,text: true
+            ,setText: function(value){
+                this.span.text(value+"分");
+            }
+        });
+    });
     // 基于准备好的dom，初始化echarts实例
     var myChart_{{$sqlDetail['query_id']}} = echarts.init(document.getElementById('main_{{$sqlDetail['query_id']}}'));
 

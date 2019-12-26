@@ -182,6 +182,7 @@ class DataService
             $item['timeline_data'] = json_encode($timeLine);
             $item['legend']        = json_encode(array_column($pieData, 'name'));
             $item['suggestions']   = $optimize->getSuggestions($item['sql'], $item['explain'], $item['detail'], $item['cost']);
+            $item['score']         = MySqlExplainRemark::getScore(count($item['suggestions']), $item['explain']);
         }
         unset($item);
 
