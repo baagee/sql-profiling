@@ -48,6 +48,7 @@
             <tr>
                 <th>参数</th>
                 <th>说明</th>
+                <th>类型</th>
                 <th>是否必须</th>
             </tr>
             </thead>
@@ -56,6 +57,7 @@
                 <tr>
                     <td>{{$param['field']}}</td>
                     <td>{{$param['doc']}}</td>
+                    <td>{{$param['type']}}</td>
                     <td>{{php echo $param['required']?"是":"否"}}</td>
                 </tr>
             {{/loop}}
@@ -67,7 +69,7 @@
             <legend>示例参数</legend>
         </fieldset>
 
-        <pre class="layui-code">{{$params['example']}}</pre>
+        <pre class="layui-code"  lay-title="json">{{$params['example']}}</pre>
 
     </div>
 </div>
@@ -76,5 +78,9 @@
 {{end container}}
 
 {{fill tail}}
-
+<script>
+    layui.use('code', function () {
+        layui.code();
+    });
+</script>
 {{end tail}}
