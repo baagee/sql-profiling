@@ -16,46 +16,47 @@
 
 {{fill container}}
 
-<table class="layui-table" style="word-break: break-word">
-    <colgroup>
-        <col width="150">
-        <col width="150">
-        <col width="200">
-        <col/>
-        <col width="140">
-        <col width="140">
-        <col width="100">
-    </colgroup>
-    <thead>
-    <tr>
-        <th>项目</th>
-        <th>模块</th>
-        <th>trace_id</th>
-        <th>url</th>
-        <th>请求时间</th>
-        <th>sql总耗时(ms)</th>
-        <th>sql数量</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>
-            <a style="color: #1E9FFF!important;"
-               href="/request/{{$analyze['request_detail']['x_id']}}">{{$analyze['request_detail']['project']}}</a>
-        </td>
-        <td>
-            <a style="color: #1E9FFF!important;"
-               href="/request/{{$analyze['request_detail']['x_id']}}">{{$analyze['request_detail']['module']}}</a>
-        </td>
-        <td>{{$analyze['request_detail']['trace_id']}}</td>
-        <td>{{$analyze['request_detail']['url']}}</td>
-        <td>{{$analyze['request_detail']['request_time']}}</td>
-        <td>{{$analyze['request_detail']['all_cost_time']}}</td>
-        <td>{{$analyze['request_detail']['sql_count']}}</td>
-    </tr>
-    </tbody>
-</table>
-
+<div style="overflow-x: auto">
+    <table class="layui-table">
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col/>
+            <col width="180">
+            <col width="180">
+            <col width="100">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>项目</th>
+            <th>模块</th>
+            <th>trace_id</th>
+            <th>url</th>
+            <th>请求时间</th>
+            <th>sql总耗时(ms)</th>
+            <th>sql数量</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <a style="color: #1E9FFF!important;"
+                   href="/request/{{$analyze['request_detail']['x_id']}}">{{$analyze['request_detail']['project']}}</a>
+            </td>
+            <td>
+                <a style="color: #1E9FFF!important;"
+                   href="/request/{{$analyze['request_detail']['x_id']}}">{{$analyze['request_detail']['module']}}</a>
+            </td>
+            <td>{{$analyze['request_detail']['trace_id']}}</td>
+            <td>{{$analyze['request_detail']['url']}}</td>
+            <td>{{$analyze['request_detail']['request_time']}}</td>
+            <td>{{$analyze['request_detail']['all_cost_time']}}</td>
+            <td>{{$analyze['request_detail']['sql_count']}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 <div class="layui-collapse">
     {{loop $analyze['sql_detail_list'] $i $sqlDetail}}
         <div class="layui-colla-item">
@@ -71,7 +72,9 @@
 
                     <div class="layui-col-md12">
                         <div class="layui-card">
-                            <div class="layui-card-header">SQL语句 &nbsp; <div id="test_{{$i}}" style="margin-top: -5px;"></div></div>
+                            <div class="layui-card-header">SQL语句 &nbsp;
+                                <div id="test_{{$i}}" style="margin-top: -5px;"></div>
+                            </div>
                             <div class="layui-card-body" style="word-break: break-all;">
                                 <pre><code class="sql">{{$sqlDetail['sql']}}</code></pre>
                             </div>
@@ -114,9 +117,9 @@
                             <div class="layui-collapse">
                                 <div class="layui-colla-item">
                                     <h2 class="layui-colla-title noselect" style="background-color: white;">执行时间轴</h2>
-                                    <div class="layui-colla-content">
+                                    <div class="layui-colla-content" style="padding-bottom: 0;">
                                         <div class="layui-card-body" id="container_{{$sqlDetail['query_id']}}"
-                                             style="width: 700px;height:200px;"></div>
+                                             style="width: 700px;height:200px;padding-bottom: 0;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -241,13 +244,13 @@
         var rate = layui.rate;
         rate.render({
             elem: '#test_{{$i}}'
-            ,length: 10
-            ,value: {{$sqlDetail['score']}} //初始值
-            ,readonly: true
-            ,half: true
-            ,text: true
-            ,setText: function(value){
-                this.span.text(value+"分");
+            , length: 10
+            , value: {{$sqlDetail['score']}} //初始值
+            , readonly: true
+            , half: true
+            , text: true
+            , setText: function (value) {
+                this.span.text(value + "分");
             }
         });
     });
