@@ -35,9 +35,31 @@ class MySqlProfiling
                     // 在请求结束时将这次请求产生的sql提交
                     register_shutdown_function(function () {
                         try {
+                            // 获取profiling
                             $profiles = self::$connection->query('show profiles');
                             foreach ($profiles as &$profile) {
-                                $profileDetail     = self::$connection->query('show profile for query ' . $profile['Query_ID']);
+                                $profile['Query']   = trim($profile['Query']);
+                                $profile['explain'] = [];
+                                if (
+                                    stripos($profile['Query'], 'REPLACE') === 0 ||
+                                    stripos($profile['Query'], 'INSERT') === 0 ||
+                                    stripos($profile['Query'], 'DELETE') === 0 ||
+                                    stripos($profile['Query'], 'UPDATE') === 0 ||
+                                    stripos($profile['Query'], 'SELECT') === 0
+                                ) {
+                                    try {
+                                        // 获取explain信息
+                                        $explain            = self::$connection->query("EXPLAIN " . $profile['Query'])->fetchAll(\PDO::FETCH_ASSOC);
+                                        $profile['explain'] = $explain;
+                                    } catch (\Throwable $e) {
+
+                                    }
+                                }
+                                // 获取profiling 详情
+                                $profileDetail = self::$connection->query('show profile for query ' . $profile['Query_ID']);
+                                if ($profile['Duration'] <= 0) {
+                                    $profile['Duration'] = array_sum(array_column($profileDetail, 'Duration'));
+                                }
                                 $profile['detail'] = $profileDetail;
                             }
                             if (!empty($profiles) && is_array($profiles)) {

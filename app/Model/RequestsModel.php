@@ -8,7 +8,7 @@
 
 namespace App\Model;
 
-use BaAGee\MySQL\Expression;
+use BaAGee\MySQL\DB;
 use BaAGee\NkNkn\Base\ModelAbstract;
 
 /**
@@ -60,28 +60,38 @@ class RequestsModel extends ModelAbstract
      */
     public function search($xId, $page, $limit, $url = '', $traceId = '', $startTime = '', $endTime = '')
     {
-        $co = [
+        $pdata = [
+            ":xId" => $xId
+        ];
+        $where = "`x_id`=:xId";
+        $co    = [
             'x_id' => ['=', $xId]
         ];
         if (!empty($url)) {
-            $co['url'] = ['like', '%' . $url . '%'];
+            $co['url']     = ['like', '%' . $url . '%'];
+            $where         .= " AND `url` like :url";
+            $pdata[":url"] = '%' . $url . '%';
         }
         if (!empty($traceId)) {
-            $co['trace_id'] = ['=', $traceId];
+            $co['trace_id']    = ['=', $traceId];
+            $where             .= " AND `trace_id` = :traceId";
+            $pdata[':traceId'] = $traceId;
         }
         if (!empty($startTime = trim($startTime)) && !empty($endTime = trim($endTime))) {
-            // $expression = new Expression(
-            //     sprintf('unix_timestamp(`request_time`) > %s and unix_timestamp(`request_time`) <= %s', strtotime($startTime), strtotime($endTime))
-            // );
-            // $co[] = $expression;
-
             $co['request_time'] = ['between', [$startTime, $endTime]];
+            $where              .= " AND `request_time` BETWEEN :st AND :et";
+            $pdata[":st"]       = $startTime;
+            $pdata[":et"]       = $endTime;
         }
 
-        $list  = $this->tableObj->fields([
-            'l_id', 'trace_id', 'url', 'request_time', 'all_cost_time', 'sql_count', 'create_time'
-        ])->where($co)->limit(($page - 1) * $limit, $limit)
-            ->orderBy(['create_time' => 'desc'])->select();
+        $offset = ($page - 1) * $limit;
+        $sql    = <<<SQL
+SELECT `l_id`, `trace_id`, `url`, `request_time`, `all_cost_time`, `sql_count`, `create_time` FROM `requests` r inner join (
+select `id` from `requests` WHERE $where ORDER BY `create_time` DESC limit $offset,$limit) b on r.id=b.id
+SQL;
+
+        $db    = DB::getInstance();
+        $list  = $db->query($sql, $pdata);
         $count = $this->tableObj->fields(['count(*) as c'])->where($co)->select()[0]['c'] ?? 0;
         return compact('list', 'count');
     }

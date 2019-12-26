@@ -12,16 +12,13 @@ class ReadmePage extends PageHeaderBase
 {
     protected function execute(array $params = [])
     {
-        $example = '{
-    "project": "MdEditor",
-    "module": "admin",
-    "trace_id": "157216631577625584",
-    "url": "http:\/\/10.188.60.200:8550\/ppppp?rrrr=9090",
-    "request_time": 1572166315,
-    "sql_profiling": "[{\"Query_ID\":\"1\",\"Duration\":\"0.00116050\",\"Query\":\"show variables where Variable_name=\\\"profiling\\\"\",\"detail\":[{\"Status\":\"starting\",\"Duration\":\"0.000028\"},{\"Status\":\"checking permissions\",\"Duration\":\"0.000008\"},{\"Status\":\"Opening tables\",\"Duration\":\"0.000007\"},{\"Status\":\"init\",\"Duration\":\"0.000022\"},{\"Status\":\"System lock\",\"Duration\":\"0.000006\"},{\"Status\":\"optimizing\",\"Duration\":\"0.000004\"},{\"Status\":\"optimizing\",\"Duration\":\"0.000003\"},{\"Status\":\"statistics\",\"Duration\":\"0.000007\"},{\"Status\":\"preparing\",\"Duration\":\"0.000008\"},{\"Status\":\"statistics\",\"Duration\":\"0.000010\"},{\"Status\":\"preparing\",\"Duration\":\"0.000006\"},{\"Status\":\"executing\",\"Duration\":\"0.000006\"},{\"Status\":\"Sending data\",\"Duration\":\"0.000005\"},{\"Status\":\"executing\",\"Duration\":\"0.000003\"},{\"Status\":\"Sending data\",\"Duration\":\"0.000959\"},{\"Status\":\"end\",\"Duration\":\"0.000008\"},{\"Status\":\"query end\",\"Duration\":\"0.000005\"},{\"Status\":\"closing tables\",\"Duration\":\"0.000004\"},{\"Status\":\"removing tmp table\",\"Duration\":\"0.000026\"},{\"Status\":\"closing tables\",\"Duration\":\"0.000005\"},{\"Status\":\"freeing items\",\"Duration\":\"0.000023\"},{\"Status\":\"cleaning up\",\"Duration\":\"0.000009\"}]}]"
-}';
+        $example = <<<EXP
+{"project":"project","module":"manage","trace_id":"548159684457749458","url":"http:\/\/xxx.com:8959\/api\/manage\/area\/arealist?area_name=&note_code=&cur_page=1&per_page=20&is_dynamic=0","request_time":"1577338028","sql_profiling":"[{\"Query_ID\":\"1\",\"Duration\":\"0.00098300\",\"Query\":\"SELECT * FROM area WHERE is_dynamic = 0 ORDER BY create_time desc LIMIT 0, 20\",\"detail\":[{\"Status\":\"starting\",\"Duration\":\"0.000051\"},{\"Status\":\"checking permissions\",\"Duration\":\"0.000017\"},{\"Status\":\"Opening tables\",\"Duration\":\"0.000216\"},{\"Status\":\"init\",\"Duration\":\"0.000035\"},{\"Status\":\"System lock\",\"Duration\":\"0.000016\"},{\"Status\":\"optimizing\",\"Duration\":\"0.000021\"},{\"Status\":\"statistics\",\"Duration\":\"0.000025\"},{\"Status\":\"preparing\",\"Duration\":\"0.000018\"},{\"Status\":\"Sorting result\",\"Duration\":\"0.000013\"},{\"Status\":\"executing\",\"Duration\":\"0.000012\"},{\"Status\":\"Sending data\",\"Duration\":\"0.000021\"},{\"Status\":\"Creating sort index\",\"Duration\":\"0.000429\"},{\"Status\":\"end\",\"Duration\":\"0.000013\"},{\"Status\":\"query end\",\"Duration\":\"0.000013\"},{\"Status\":\"closing tables\",\"Duration\":\"0.000017\"},{\"Status\":\"freeing items\",\"Duration\":\"0.000048\"},{\"Status\":\"cleaning up\",\"Duration\":\"0.000018\"}],\"explain\":[{\"id\":\"1\",\"select_type\":\"SIMPLE\",\"table\":\"area\",\"partitions\":null,\"type\":\"ALL\",\"possible_keys\":null,\"key\":null,\"key_len\":null,\"ref\":null,\"rows\":\"117\",\"filtered\":\"10.00\",\"Extra\":\"Using where; Using filesort\"}]},{\"Query_ID\":\"2\",\"Duration\":\"0.00031475\",\"Query\":\"SELECT COUNT(*) FROM area WHERE is_dynamic = 0\",\"detail\":[{\"Status\":\"starting\",\"Duration\":\"0.000034\"},{\"Status\":\"checking permissions\",\"Duration\":\"0.000014\"},{\"Status\":\"Opening tables\",\"Duration\":\"0.000016\"},{\"Status\":\"init\",\"Duration\":\"0.000019\"},{\"Status\":\"System lock\",\"Duration\":\"0.000014\"},{\"Status\":\"optimizing\",\"Duration\":\"0.000016\"},{\"Status\":\"statistics\",\"Duration\":\"0.000017\"},{\"Status\":\"preparing\",\"Duration\":\"0.000017\"},{\"Status\":\"executing\",\"Duration\":\"0.000012\"},{\"Status\":\"Sending data\",\"Duration\":\"0.000067\"},{\"Status\":\"end\",\"Duration\":\"0.000013\"},{\"Status\":\"query end\",\"Duration\":\"0.000014\"},{\"Status\":\"closing tables\",\"Duration\":\"0.000014\"},{\"Status\":\"freeing items\",\"Duration\":\"0.000035\"},{\"Status\":\"cleaning up\",\"Duration\":\"0.000017\"}],\"explain\":[{\"id\":\"1\",\"select_type\":\"SIMPLE\",\"table\":\"area\",\"partitions\":null,\"type\":\"ALL\",\"possible_keys\":null,\"key\":null,\"key_len\":null,\"ref\":null,\"rows\":\"117\",\"filtered\":\"10.00\",\"Extra\":\"Using where\"}]}]"}
+EXP;
+        $example = json_encode(json_decode($example), JSON_PRETTY_PRINT);;
         return [
             'title'          => '使用文档',
+            'main'           => '利用mysql的profiling工具可以分析得到每条sql语句的执行详情，对每条sql进行explain分析，将执行过程和explain数据发送到此平台来进行可视化展示与分析',
             'project_module' => $this->getHeaderMenu(),
             'api'            => 'http://' . $_SERVER['HTTP_HOST'] . '/api/receiver',
             'method'         => 'post',
@@ -32,28 +29,34 @@ class ReadmePage extends PageHeaderBase
                 'example' => $example,
                 'detail'  => [
                     [
-                        'field' => 'project',
-                        'doc'   => '项目名字 必填',
+                        'field'    => 'project',
+                        'doc'      => '项目名字',
+                        'required' => true,
                     ],
                     [
-                        'field' => 'module',
-                        'doc'   => '模块名字 必填',
+                        'field'    => 'module',
+                        'doc'      => '模块名字',
+                        'required' => true,
                     ],
                     [
-                        'field' => 'trace_id',
-                        'doc'   => '请求id 必填',
+                        'field'    => 'trace_id',
+                        'doc'      => '请求id',
+                        'required' => true,
                     ],
                     [
-                        'field' => 'url',
-                        'doc'   => '请求地址 必填',
+                        'field'    => 'url',
+                        'doc'      => '请求地址',
+                        'required' => true,
                     ],
                     [
-                        'field' => 'request_time',
-                        'doc'   => '请求时间戳 精确到秒 必填',
+                        'field'    => 'request_time',
+                        'doc'      => '请求时间戳 精确到秒',
+                        'required' => true,
                     ],
                     [
-                        'field' => 'sql_profiling',
-                        'doc'   => 'sql执行详情 json字符串 必填',
+                        'field'    => 'sql_profiling',
+                        'doc'      => 'sql执行详情, 包括sql语句和执行时间, profiling信息, explain信息。 json字符串',
+                        'required' => true,
                     ],
                 ]
             ]

@@ -77,7 +77,8 @@
             , url: '/api/request/list',
             where: {
                 x_id:{{$x_id}}
-            }
+            },
+            limit:30
             // , cellMinWidth: 50
             , cols: [[
                 // {field: 'record_id', title: 'ID', sort: true}
@@ -117,7 +118,8 @@
                 table.reload('request_list', {
                     page: {
                         curr: 1 //重新从第 1 页开始
-                    }
+                    },
+                    limit:30
                     , where: {
                         trace_id: traceId.val(),
                         url: url.val(),

@@ -5,11 +5,12 @@ CREATE TABLE `sql_detail` (
   `query_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '本次请求ID',
   `cost` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '总耗时',
   `sql` longtext COLLATE utf8mb4_unicode_ci COMMENT 'sql',
-  `detail` text COLLATE utf8mb4_unicode_ci,
+  `detail` text COLLATE utf8mb4_unicode_ci COMMENT 'sql profiling 详情',
+  `explain` text COLLATE utf8mb4_unicode_ci COMMENT 'sql执行计划',
   PRIMARY KEY (`id`),
   UNIQUE KEY `sql_detail_s_id_uindex` (`s_id`),
   KEY `sql_detail_l_id_index` (`l_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=668 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='sql运行详情表';
+) ENGINE=InnoDB AUTO_INCREMENT=136268 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='sql运行详情表';
 
 CREATE TABLE `requests` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,

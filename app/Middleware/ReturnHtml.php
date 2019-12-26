@@ -22,7 +22,9 @@ class ReturnHtml extends MiddlewareAbstract
     {
         View::init([
             'sourceViewPath'  => AppEnv::get('APP_PATH') . DIRECTORY_SEPARATOR . 'View',
-            'compileViewPath' => AppEnv::get('RUNTIME_PATH') . DIRECTORY_SEPARATOR . 'view_compile',
+            'compileViewPath' => implode(DIRECTORY_SEPARATOR, [
+                AppEnv::get('RUNTIME_PATH'), 'cache', 'view_compile'
+            ]),
             'isDebug'         => Config::get('app/is_debug'),
         ]);
         try {

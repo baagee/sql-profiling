@@ -9,4 +9,5 @@ return [
     'is_debug'             => false,
     'product_error_hidden' => [E_WARNING, E_NOTICE, E_STRICT, E_DEPRECATED],# 非调试模式下隐藏哪种PHP错误类型
     'debug_error_hidden'   => [E_WARNING, E_NOTICE, E_STRICT, E_DEPRECATED],# 调试开发模式下隐藏哪种PHP错误类型
+    'page_cache_time'      => 3600 * 3,//页面缓存时间 秒
 ];

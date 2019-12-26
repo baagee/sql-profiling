@@ -69,14 +69,15 @@
         ">
                 <div class="layui-row layui-col-space15">
 
-                    <div class="layui-col-md4">
+                    <div class="layui-col-md12">
                         <div class="layui-card">
                             <div class="layui-card-header">SQL语句</div>
                             <div class="layui-card-body" style="word-break: break-all;">
                                 <pre><code class="sql">{{$sqlDetail['sql']}}</code></pre>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="layui-col-md4">
                         <div class="layui-card">
                             <div class="layui-card-header">执行过程和耗时</div>
                             <div class="layui-card-body">
@@ -110,11 +111,115 @@
                         </div>
 
                         <div class="layui-card">
-                            <div class="layui-card-header">执行时间轴</div>
-                            <div class="layui-card-body" id="container_{{$sqlDetail['query_id']}}"
-                                 style="width: 700px;height:200px;"></div>
+                            <div class="layui-collapse">
+                                <div class="layui-colla-item">
+                                    <h2 class="layui-colla-title noselect" style="background-color: white;">执行时间轴</h2>
+                                    <div class="layui-colla-content">
+                                        <div class="layui-card-body" id="container_{{$sqlDetail['query_id']}}"
+                                             style="width: 700px;height:200px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+                    {{if !empty($sqlDetail['explain'])}}
+                        <div class="layui-col-md12">
+                            <div class="layui-card">
+                                <div class="layui-card-header">Explain信息</div>
+                                <div class="layui-card-body" id="main_{{$sqlDetail['query_id']}}">
+                                    <div style="overflow-x: auto;">
+                                        <table class="layui-table" lay-size="md">
+                                            <thead>
+                                            <tr>
+                                                <th>id</th>
+                                                <th>select_type</th>
+                                                <th>table</th>
+                                                <th>partitions</th>
+                                                <th>type</th>
+                                                <th>possible_keys</th>
+                                                <th>key</th>
+                                                <th>key_len</th>
+                                                <th>ref</th>
+                                                <th>rows</th>
+                                                <th>filtered</th>
+                                                <th>Extra</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {{loop $sqlDetail['explain'] $itemExp}}
+                                                <tr>
+                                                    <td>{{$itemExp['id']}}</td>
+                                                    <td>{{$itemExp['select_type']}}</td>
+                                                    <td>{{$itemExp['table']}}</td>
+                                                    <td>{{$itemExp['partitions']}}</td>
+                                                    <td>{{$itemExp['type']}}</td>
+                                                    <td>{{$itemExp['possible_keys']}}</td>
+                                                    <td>{{$itemExp['key']}}</td>
+                                                    <td>{{$itemExp['key_len']}}</td>
+                                                    <td>{{$itemExp['ref']}}</td>
+                                                    <td>{{$itemExp['rows']}}</td>
+                                                    <td>{{$itemExp['filtered']}}</td>
+                                                    <td>{{$itemExp['Extra']}}</td>
+                                                </tr>
+                                            {{/loop}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="layui-card">
+                                        <div class="layui-collapse">
+                                            <div class="layui-colla-item">
+                                                <h2 class="layui-colla-title noselect">explain信息解读</h2>
+                                                <div class="layui-colla-content">
+                                                    <div class="layui-card-body" style="max-height: 400px;
+    overflow-y: auto;">
+                                                        {{loop $sqlDetail['explication'] $key $val}}
+                                                        {{if !empty($val)}}
+                                                            <fieldset class="layui-elem-field">
+                                                                <legend style="font-size: 16px;font-weight: 400;">{{$key}}</legend>
+                                                                <div class="layui-field-box">
+                                                                    {{if is_string($val)}}
+                                                                        {{$val}}
+                                                                    {{else}}
+                                                                        {{loop $val $v}}
+                                                                        {{$v}}
+                                                                            <br>
+                                                                        {{/loop}}
+                                                                    {{/if}}
+                                                                </div>
+                                                            </fieldset>
+                                                        {{/if}}
+                                                        {{/loop}}
+                                                        <p>
+                                                            更详细解读信息请前往 <a
+                                                                    href="https://dev.mysql.com/doc/refman/5.7/en/explain-output.html"
+                                                                    target="_blank">https://dev.mysql.com/doc/refman/5.7/en/explain-output.html</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+                    {{if !empty($sqlDetail['suggestions'])}}
+                        <div class="layui-col-md12">
+                            <div class="layui-card">
+                                <div class="layui-card-header">本SQL优化建议</div>
+                                <div class="layui-card-body" id="main_{{$sqlDetail['query_id']}}">
+                                    <ul>
+                                        {{loop $sqlDetail['suggestions'] $sugg}}
+                                            <li><span class="layui-badge-dot"></span> &nbsp;{{$sugg}}</li>
+                                        {{/loop}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+
                 </div>
             </div>
         </div>

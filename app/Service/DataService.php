@@ -121,6 +121,12 @@ class DataService
         return $requestModel->search($xId, $page, $size, $url, $traceId, $startTime, $endTime);
     }
 
+    /**
+     * 获取分析的数据
+     * @param $lId
+     * @return array
+     * @throws \Exception
+     */
     public function analyze($lId)
     {
         $requestModel       = new RequestsModel();
@@ -138,7 +144,7 @@ class DataService
             }
             return $c;
         };
-
+        $optimize       = new OptimizeSql();
         foreach ($sqlDetailList as &$item) {
             $detail      = json_decode($item['detail'], true);
             $pieData     = $timeLine = [];
@@ -157,20 +163,27 @@ class DataService
                 $timeLine[]  = [
                     'name'      => $dd['Status'],
                     'itemStyle' => ['normal' => ['color' => '#' . $randColor()]],
-                    'value'     => [
-                        $index,
-                        $beforeTotal,
-                        $afterTotal,
-                        $us
-                    ]
+                    'value'     => [$index, $beforeTotal, $afterTotal, $us]
                 ];
                 $beforeTotal = $afterTotal;
             }
-            $item['detail']        = $detail;
+            $item['detail'] = $detail;
+
+            $explain = json_decode($item['explain'], true) ?? [];
+            if (count($explain) > 0 && count($explain) === count($explain, COUNT_RECURSIVE)) {
+                // 一维数组转化为2纬
+                unset($item['explain']);
+                $item['explain'][] = $explain;
+            } else {
+                $item['explain'] = $explain;
+            }
+            $item['explication']   = MySqlExplainRemark::getExplication($item['explain']);
             $item['pie_data']      = json_encode($pieData);
             $item['timeline_data'] = json_encode($timeLine);
             $item['legend']        = json_encode(array_column($pieData, 'name'));
+            $item['suggestions']   = $optimize->getSuggestions($item['sql'], $item['explain'], $item['detail'], $item['cost']);
         }
+        unset($item);
 
         return [
             'request_detail'  => $requestDetail,

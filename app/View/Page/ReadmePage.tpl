@@ -11,28 +11,44 @@
     </div>
     <div class="layui-card-body">
         <p>
-            利用mysql的profiling工具可以分析得到每条sql语句的执行详情，将执行过程数据发送到此平台来进行可视化展示与分析
+            {{$main}}
         </p>
         <br>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>接口地址</legend>
+        </fieldset>
         <p>
-            接口地址：{{$api}}
+            {{$api}}
         </p>
+        <br>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>请求方法</legend>
+        </fieldset>
         <p>
-            请求方法：{{$method}}
+            {{$method}}
         </p>
+
+        <br>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>请求头</legend>
+        </fieldset>
         <p>
-            请求头：<br>
             {{loop $headers $header}}
             {{$header}}
                 <br>
             {{/loop}}
         </p>
+
         <br>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>请求参数</legend>
+        </fieldset>
         <table class="layui-table" style="word-break: break-word">
             <thead>
             <tr>
                 <th>参数</th>
                 <th>说明</th>
+                <th>是否必须</th>
             </tr>
             </thead>
             <tbody>
@@ -40,15 +56,18 @@
                 <tr>
                     <td>{{$param['field']}}</td>
                     <td>{{$param['doc']}}</td>
+                    <td>{{php echo $param['required']?"是":"否"}}</td>
                 </tr>
             {{/loop}}
             </tbody>
         </table>
 
-        <p>示例参数</p>
+        <br>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>示例参数</legend>
+        </fieldset>
 
         <pre class="layui-code">{{$params['example']}}</pre>
-
 
     </div>
 </div>

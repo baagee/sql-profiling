@@ -16,6 +16,7 @@ use App\Action\Page\RequestListPage;
 use App\Action\Api\RequestListApi;
 use App\Middleware\ReturnHtml;
 use \App\Middleware\ReturnJson;
+use \App\Middleware\PageCache;
 
 return [
     '/'                   => [
@@ -41,7 +42,7 @@ return [
     '/analyze/{l_id}'     => [
         'method'     => 'get',
         'callback'   => AnalyzePage::class,
-        'middleware' => [ReturnHtml::class]
+        'middleware' => [PageCache::class, ReturnHtml::class]
     ],
 
     '/api/receiver' => [
@@ -53,7 +54,7 @@ return [
     '/readme'            => [
         'method'     => 'get',
         'callback'   => ReadmePage::class,
-        'middleware' => [ReturnHtml::class]
+        'middleware' => [PageCache::class, ReturnHtml::class]
     ],
     '/api/request/clear' => [
         'method'     => 'post',
