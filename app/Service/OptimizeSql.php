@@ -51,6 +51,9 @@ class OptimizeSql
                     } elseif (strtolower($explain['type']) == 'index') {
                         $suggestions[] = "由于explain中的type=index，和ALL一样，仅次于ALL，不同就是mysql只需扫描索引树，这通常比ALL快一些，但是数据量大时，开销依然比较大";
                     }
+                    if (stripos($explain['Extra'], 'Using filesort') !== false) {
+                        $suggestions[] = "由于存在【Using filesort】需要额外进行外部的排序，导致该问题的原因一般和order by有者直接关系, 建议对order by后的字段加上合适的索引";
+                    }
                 }
             }
         }
