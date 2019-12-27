@@ -13,6 +13,6 @@
                 </dl>
             </li>
         {{/loop}}
-        <li class="layui-nav-item"><a href="/readme">使用文档</a></li>
+        <li class="layui-nav-item" style="float: right;"><a href="/readme">使用文档</a></li>
     </ul>
 </div>

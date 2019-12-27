@@ -7,7 +7,7 @@
 
 <div class="layui-card">
     <div class="layui-card-header">
-        <h1>使用文档</h1>
+        <h2>使用文档</h2>
     </div>
     <div class="layui-card-body">
         <p>
@@ -69,7 +69,7 @@
             <legend>示例参数</legend>
         </fieldset>
 
-        <pre class="layui-code"  lay-title="json">{{$params['example']}}</pre>
+        <pre class="layui-code" lay-title="json">{{$params['example']}}</pre>
 
     </div>
 </div>
