@@ -83,7 +83,8 @@
                     <div class="layui-col-md4">
                         <div class="layui-card">
                             <div class="layui-card-header">执行过程和耗时</div>
-                            <div class="layui-card-body">
+                            <div class="layui-card-body" style="height: 400px;
+    overflow-y: auto;">
                                 <ul class="layui-timeline">
                                     {{loop $sqlDetail['detail'] $item}}
                                         <li class="layui-timeline-item" style="padding-bottom:0">
@@ -112,18 +113,12 @@
                             <div class="layui-card-body" id="main_{{$sqlDetail['query_id']}}"
                                  style="width: 700px;height:400px;"></div>
                         </div>
-
+                    </div>
+                    <div class="layui-col-md12">
                         <div class="layui-card">
-                            <div class="layui-collapse">
-                                <div class="layui-colla-item">
-                                    <h2 class="layui-colla-title noselect" style="background-color: white;">执行时间轴</h2>
-                                    <div class="layui-colla-content" style="padding-bottom: 0;">
-                                        <div class="layui-card-body" id="container_{{$sqlDetail['query_id']}}"
-                                             style="width: 700px;height:200px;padding-bottom: 0;"></div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <div class="layui-card-header">执行时间轴</div>
+                            <div class="layui-card-body" id="container_{{$sqlDetail['query_id']}}"
+                                 style="width:1083px;height:180px;margin-top: -45px;padding:0"></div>
                         </div>
                     </div>
                     {{if !empty($sqlDetail['explain'])}}
@@ -258,10 +253,6 @@
     var myChart_{{$sqlDetail['query_id']}} = echarts.init(document.getElementById('main_{{$sqlDetail['query_id']}}'));
 
     option = {
-        title: {
-            text: 'MySQL语句执行各个阶段耗时',
-            x: 'right'
-        },
         tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -331,15 +322,11 @@
                 return params.marker + params.name + ': ' + params.value[3] + ' us';
             }
         },
-        title: {
-            text: 'MySQL语句执行各个阶段时间轴',
-            left: 'right',
-        },
         dataZoom: [{
             type: 'slider',
             filterMode: 'weakFilter',
             showDataShadow: false,
-            top: 160,
+            top: 145,
             height: 10,
             borderColor: 'transparent',
             backgroundColor: '#e2e2e2',
@@ -357,14 +344,14 @@
             filterMode: 'weakFilter'
         }],
         grid: {
-            height: 60
+            height: 50
         },
         xAxis: {
             min: startTime,
             scale: true,
             axisLabel: {
                 formatter: function (val) {
-                    console.log(val)
+                    // console.log(val)
                     return Math.max(0, val - startTime) + ' us';
                 }
             }

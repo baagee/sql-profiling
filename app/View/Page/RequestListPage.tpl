@@ -24,10 +24,10 @@
 
 <div class="layui-row layui-col-space15" style="margin: 0!important;">
     <div class="searchTable">
-        <div class="layui-inline">
+        <div class="layui-inline" style="width: 190px">
             <input class="layui-input" name="trace_id" id="trace_id" autocomplete="off" placeholder="trace_id">
         </div>
-        <div class="layui-inline">
+        <div class="layui-inline" style="width: 300px">
             <input class="layui-input" name="url" id="url" autocomplete="off" placeholder="url">
         </div>
         <div class="layui-inline" style="width: 300px">
@@ -78,7 +78,7 @@
             where: {
                 x_id:{{$x_id}}
             },
-            limit:30
+            limit: 30
             // , cellMinWidth: 50
             , cols: [[
                 // {field: 'record_id', title: 'ID', sort: true}
@@ -119,7 +119,7 @@
                     page: {
                         curr: 1 //重新从第 1 页开始
                     },
-                    limit:30
+                    limit: 30
                     , where: {
                         trace_id: traceId.val(),
                         url: url.val(),

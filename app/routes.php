@@ -15,8 +15,8 @@ use App\Action\Api\ReceiverApi;
 use App\Action\Page\RequestListPage;
 use App\Action\Api\RequestListApi;
 use App\Middleware\ReturnHtml;
-use \App\Middleware\ReturnJson;
-use \App\Middleware\PageCache;
+use App\Middleware\ReturnJson;
+use App\Middleware\PageCache;
 
 return [
     '/'                   => [
