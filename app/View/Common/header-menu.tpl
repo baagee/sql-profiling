@@ -2,7 +2,8 @@
     top: 0;
     width: 100%;">
     <ul class="layui-nav layui-bg-green">
-        <li class="layui-nav-item"><a href="/">SQL性能可视化分析工具</a></li>
+        <li class="layui-nav-item"><a href="/"
+                                      style="font-size: 18px;font-weight: 400;    padding-right: 0;">SQL性能分析工具</a></li>
         {{loop $project_module['header_menu'] $project $modules}}
             <li class="layui-nav-item">
                 <a href="javascript:;">{{$project}}</a>
