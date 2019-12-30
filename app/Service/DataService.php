@@ -11,6 +11,7 @@ namespace App\Service;
 use App\Model\ProjectModuleModel;
 use App\Model\RequestsModel;
 use App\Model\SqlDetailModel;
+use BaAGee\Log\Log;
 use BaAGee\MySQL\DB;
 
 /**
@@ -53,6 +54,7 @@ class DataService
             return true;
         } catch (\Exception $e) {
             $connection->rollback();
+            Log::warning("save profiling failed: " . $e->getMessage());
             return false;
         }
     }
@@ -167,6 +169,7 @@ class DataService
                 ];
                 $beforeTotal = $afterTotal;
             }
+            unset($dd);
             $item['detail'] = $detail;
 
             $explain = json_decode($item['explain'], true) ?? [];
