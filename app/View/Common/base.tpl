@@ -18,19 +18,12 @@
     {{hole container}}
 </div>
 
-<script src="/static//layui/layui.js" charset="utf-8"></script>
+<script src="/static/layui/layui.js" charset="utf-8"></script>
 <script>
     layui.use('element', function () {
-        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-
-        //监听导航点击
-        element.on('nav(demo)', function (elem) {
-            //console.log(elem)
-            layer.msg(elem.text());
-        });
     });
     // 回到顶部
-    layui.use('util', function(){
+    layui.use('util', function () {
         var util = layui.util;
         util.fixbar();
     });

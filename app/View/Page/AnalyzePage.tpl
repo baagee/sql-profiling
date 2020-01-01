@@ -42,11 +42,11 @@
         <tr>
             <td>
                 <a style="color: #1E9FFF!important;"
-                   href="/request/{{$analyze['request_detail']['x_id']}}">{{$analyze['request_detail']['project']}}</a>
+                   href="/request/{{$analyze['request_detail']['x_id']}}.html">{{$analyze['request_detail']['project']}}</a>
             </td>
             <td>
                 <a style="color: #1E9FFF!important;"
-                   href="/request/{{$analyze['request_detail']['x_id']}}">{{$analyze['request_detail']['module']}}</a>
+                   href="/request/{{$analyze['request_detail']['x_id']}}.html">{{$analyze['request_detail']['module']}}</a>
             </td>
             <td>{{$analyze['request_detail']['trace_id']}}</td>
             <td>{{$analyze['request_detail']['url']}}</td>

@@ -13,7 +13,7 @@
                     {{if $module['x_id']==$x_id}}
                     layui-btn-disabled
                     {{/if}}
-                    " href="/request/{{$module['x_id']}}">{{$module['module']}}</a>
+                    " href="/request/{{$module['x_id']}}.html">{{$module['module']}}</a>
                     </div>
                 </div>
             {{/loop}}
@@ -78,7 +78,7 @@
             where: {
                 x_id:{{$x_id}}
             },
-            limit: 30
+            limit: 20
             // , cellMinWidth: 50
             , cols: [[
                 // {field: 'record_id', title: 'ID', sort: true}
@@ -104,7 +104,7 @@
         table.on('tool(request_list)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
-                location.href = '/analyze/' + data.l_id
+                location.href = '/analyze/' + data.l_id + '.html'
             }
         });
 
@@ -119,7 +119,7 @@
                     page: {
                         curr: 1 //重新从第 1 页开始
                     },
-                    limit: 30
+                    limit: 20
                     , where: {
                         trace_id: traceId.val(),
                         url: url.val(),

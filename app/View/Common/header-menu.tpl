@@ -9,11 +9,11 @@
                 <a href="javascript:;">{{$project}}</a>
                 <dl class="layui-nav-child">
                     {{loop $modules $module}}
-                        <dd><a href="/request/{{$module['x_id']}}">{{$module['module']}}</a></dd>
+                        <dd><a href="/request/{{$module['x_id']}}.html">{{$module['module']}}</a></dd>
                     {{/loop}}
                 </dl>
             </li>
         {{/loop}}
-        <li class="layui-nav-item" style="float: right;"><a href="/readme">使用文档</a></li>
+        <li class="layui-nav-item" style="float: right;"><a href="/readme.html">使用文档</a></li>
     </ul>
 </div>

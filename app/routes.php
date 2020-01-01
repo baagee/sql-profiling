@@ -19,27 +19,27 @@ use App\Middleware\ReturnJson;
 use App\Middleware\PageCache;
 
 return [
-    '/'                   => [
+    '/'                    => [
         'method'     => 'get',
         'callback'   => ProjectModuleListPage::class,
         'middleware' => [ReturnHtml::class]
     ],
-    '/api/project/delete' => [
+    '/api/project/delete'  => [
         'method'     => 'post',
         'callback'   => ProjectDelete::class,
         'middleware' => [ReturnJson::class]
     ],
-    '/request/{x_id}'     => [
+    '/request/{x_id}.html' => [
         'method'     => 'get',
         'callback'   => RequestListPage::class,
         'middleware' => [ReturnHtml::class]
     ],
-    '/api/request/list'   => [
+    '/api/request/list'    => [
         'method'     => 'get',
         'callback'   => RequestListApi::class,
         'middleware' => [ReturnJson::class]
     ],
-    '/analyze/{l_id}'     => [
+    '/analyze/{l_id}.html' => [
         'method'     => 'get',
         'callback'   => AnalyzePage::class,
         'middleware' => [PageCache::class, ReturnHtml::class]
@@ -51,7 +51,7 @@ return [
         'middleware' => [ReturnJson::class]
     ],
 
-    '/readme'            => [
+    '/readme.html'       => [
         'method'     => 'get',
         'callback'   => ReadmePage::class,
         'middleware' => [PageCache::class, ReturnHtml::class]
