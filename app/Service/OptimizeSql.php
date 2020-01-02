@@ -7,6 +7,10 @@
  */
 
 namespace App\Service;
+/**
+ * Class OptimizeSql
+ * @package App\Service
+ */
 class OptimizeSql
 {
     /**
@@ -73,6 +77,10 @@ class OptimizeSql
         return count($match) > 0;
     }
 
+    /**
+     * @param $sql
+     * @return bool
+     */
     protected function isSelectSql($sql)
     {
         $regexp = "/^SELECT/i";
@@ -80,6 +88,10 @@ class OptimizeSql
         return count($match) > 0;
     }
 
+    /**
+     * @param $sql
+     * @return bool
+     */
     protected function isUseLimit($sql)
     {
         $regexp = "/limit\s*\d+/i";

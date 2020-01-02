@@ -10,12 +10,24 @@ namespace App\Action\Page;
 
 use App\Service\DataService;
 
+/**
+ * Class AnalyzePage
+ * @package App\Action\Page
+ */
 class AnalyzePage extends PageHeaderBase
 {
+    /**
+     * @var array
+     */
     protected $paramRules = [
         'l_id' => ['integer|required', '请求ID不合法']
     ];
 
+    /**
+     * @param array $params
+     * @return array|mixed
+     * @throws \Exception
+     */
     protected function execute(array $params = [])
     {
         $service = new DataService();

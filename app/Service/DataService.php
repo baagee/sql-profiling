@@ -59,6 +59,11 @@ class DataService
         }
     }
 
+    /**
+     * @param $xId
+     * @return bool
+     * @throws \Exception
+     */
     public function clearModuleRequest($xId)
     {
         $requestModel = new RequestsModel();

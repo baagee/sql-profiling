@@ -11,8 +11,15 @@ namespace App\Action\Api;
 use App\Service\DataService;
 use BaAGee\NkNkn\Base\ActionAbstract;
 
+/**
+ * Class ReceiverApi
+ * @package App\Action\Api
+ */
 class ReceiverApi extends ActionAbstract
 {
+    /**
+     * @var array
+     */
     protected $paramRules = [
         'project'       => ['string|required|min[2]', '项目名称不合法'],
         'module'        => ['string|required|min[2]', '模块名称不合法'],
@@ -22,6 +29,11 @@ class ReceiverApi extends ActionAbstract
         'sql_profiling' => ['json|decode', 'sql信息不合法'],
     ];
 
+    /**
+     * @param array $params
+     * @return bool|mixed
+     * @throws \Exception
+     */
     protected function execute(array $params = [])
     {
         if (empty($params['sql_profiling']) || !is_array($params['sql_profiling'])) {

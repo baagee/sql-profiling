@@ -8,12 +8,26 @@
 
 namespace App\Model;
 
+use App\Library\IdGenerator;
 use BaAGee\NkNkn\Base\ModelAbstract;
 
+/**
+ * Class ProjectModuleModel
+ * @package App\Model
+ */
 class ProjectModuleModel extends ModelAbstract
 {
+    /**
+     * @var string
+     */
     public static $tableName = 'project_module';
 
+    /**
+     * @param $project
+     * @param $module
+     * @return array|mixed
+     * @throws \Exception
+     */
     public function findByProjectModule($project, $module)
     {
         $where = [
@@ -28,9 +42,15 @@ class ProjectModuleModel extends ModelAbstract
         }
     }
 
+    /**
+     * @param $project
+     * @param $module
+     * @return int
+     * @throws \Exception
+     */
     public function save($project, $module)
     {
-        $xId = intval(microtime(true) * 1000) + mt_rand(10000, 99999);
+        $xId = IdGenerator::getId();
         $this->tableObj->insert([
             'x_id'    => $xId,
             'project' => $project,
@@ -39,6 +59,11 @@ class ProjectModuleModel extends ModelAbstract
         return $xId;
     }
 
+    /**
+     * @param $xId
+     * @return array|mixed
+     * @throws \Exception
+     */
     public function getByXId($xId)
     {
         $res = $this->tableObj->where([
@@ -47,11 +72,20 @@ class ProjectModuleModel extends ModelAbstract
         return $res[0] ?? [];
     }
 
+    /**
+     * @return array|\Generator
+     * @throws \Exception
+     */
     public function list()
     {
         return $this->tableObj->select();
     }
 
+    /**
+     * @param $xId
+     * @return int
+     * @throws \Exception
+     */
     public function deleteByXId($xId)
     {
         return $this->tableObj->where([
@@ -59,6 +93,11 @@ class ProjectModuleModel extends ModelAbstract
         ])->delete();
     }
 
+    /**
+     * @param $project
+     * @return array|\Generator
+     * @throws \Exception
+     */
     public function getByProject($project)
     {
         return $this->tableObj->where([

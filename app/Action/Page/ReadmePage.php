@@ -8,8 +8,17 @@
 
 namespace App\Action\Page;
 
+/**
+ * Class ReadmePage
+ * @package App\Action\Page
+ */
 class ReadmePage extends PageHeaderBase
 {
+    /**
+     * @param array $params
+     * @return array|mixed
+     * @throws \Exception
+     */
     protected function execute(array $params = [])
     {
         $example = <<<EXP

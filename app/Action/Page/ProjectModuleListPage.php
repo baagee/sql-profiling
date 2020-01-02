@@ -8,8 +8,17 @@
 
 namespace App\Action\Page;
 
+/**
+ * Class ProjectModuleListPage
+ * @package App\Action\Page
+ */
 class ProjectModuleListPage extends PageHeaderBase
 {
+    /**
+     * @param array $params
+     * @return array|mixed
+     * @throws \Exception
+     */
     protected function execute(array $params = [])
     {
         $list = $this->getHeaderMenu();

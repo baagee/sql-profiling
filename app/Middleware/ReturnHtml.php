@@ -16,8 +16,18 @@ use BaAGee\NkNkn\Base\MiddlewareAbstract;
 use BaAGee\NkNkn\Constant\CoreNoticeCode;
 use BaAGee\NkNkn\UserNotice;
 
+/**
+ * Class ReturnHtml
+ * @package App\Middleware
+ */
 class ReturnHtml extends MiddlewareAbstract
 {
+    /**
+     * @param \Closure $next
+     * @param          $data
+     * @return mixed|string
+     * @throws \Exception
+     */
     protected function handler(\Closure $next, $data)
     {
         View::init([
@@ -27,20 +37,21 @@ class ReturnHtml extends MiddlewareAbstract
             ]),
             'isDebug'         => Config::get('app/is_debug'),
         ]);
+        $return=[];
         try {
             $return = $next($data);
         } catch (UserNotice $e) {
             $errCode   = $e->getCode();
             $errMsg    = $e->getMessage();
-            $errorData = $e->getErrorData();
+            // $errorData = $e->getErrorData();
             Log::warning(sprintf('逻辑异常：[%d] %s', $errCode, $errMsg));
         } catch (\Exception $e) {
             if (Config::get('app/is_debug')) {
                 //开发模式抛出系统异常
                 throw $e;
             } else {
-                $errCode = CoreNoticeCode::DEFAULT_ERROR_CODE;
-                $errMsg  = '系统异常~';
+                // $errCode = CoreNoticeCode::DEFAULT_ERROR_CODE;
+                // $errMsg  = '系统异常~';
                 Log::warning(sprintf('系统异常：[%d] %s', $e->getCode(), $e->getMessage()));
             }
         }

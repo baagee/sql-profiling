@@ -8,16 +8,23 @@
 
 namespace App\Service;
 
+/**
+ * Class MySqlExplainRemark
+ * @package App\Service
+ */
 class MySqlExplainRemark
 {
+    /**
+     *
+     */
     protected const SQL_SCORE_MAP = [
         //    null > system > const > eq_ref > ref > fulltext > ref_or_null > index_merge > unique_subquery > index_subquery > range > index > ALL
         // 基础分 根据建议数计算
-        'all'             => 6,
-        'index'           => 7,
+        'all'             => 6.0,
+        'index'           => 7.0,
         'range'           => 7.5,
         'index_subquery'  => 7.5,
-        'unique_subquery' => 8,
+        'unique_subquery' => 8.0,
         'index_merge'     => 8.0,
         'ref_or_null'     => 8.0,
         'fulltext'        => 8.5,
@@ -25,9 +32,12 @@ class MySqlExplainRemark
         'eq_ref'          => 9.0,
         'const'           => 9.5,
         'system'          => 9.5,
-        'null'            => 10,
+        'null'            => 10.0,
     ];
-    protected const REMARK_MAP    = [
+    /**
+     *
+     */
+    protected const REMARK_MAP = [
         'select_type'   => [
             'INSERT'               => '插入数据语句',
             'REPLACE'              => '插入的数据的唯一索引或者主键索引与之前的数据有重复的情况，将会删除原先的数据，然后再进行添加',

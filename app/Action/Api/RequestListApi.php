@@ -11,8 +11,15 @@ namespace App\Action\Api;
 use App\Service\DataService;
 use BaAGee\NkNkn\Base\ActionAbstract;
 
+/**
+ * Class RequestListApi
+ * @package App\Action\Api
+ */
 class RequestListApi extends ActionAbstract
 {
+    /**
+     * @var array
+     */
     protected $paramRules = [
         'x_id'         => ['integer|required', 'url不合法'],
         'page'         => ['integer|optional|default[1]', '页码不合法'],
@@ -22,6 +29,11 @@ class RequestListApi extends ActionAbstract
         'request_time' => ['string|optional|default[]', '时间范围不合法'],
     ];
 
+    /**
+     * @param array $params
+     * @return array|mixed
+     * @throws \Exception
+     */
     protected function execute(array $params = [])
     {
         $dataService = new DataService();

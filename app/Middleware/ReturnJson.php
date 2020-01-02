@@ -13,8 +13,17 @@ use BaAGee\NkNkn\Base\MiddlewareAbstract;
 use BaAGee\NkNkn\Constant\CoreNoticeCode;
 use BaAGee\NkNkn\UserNotice;
 
+/**
+ * Class ReturnJson
+ * @package App\Middleware
+ */
 class ReturnJson extends MiddlewareAbstract
 {
+    /**
+     * @param \Closure $next
+     * @param          $data
+     * @return false|mixed|string
+     */
     protected function handler(\Closure $next, $data)
     {
         try {

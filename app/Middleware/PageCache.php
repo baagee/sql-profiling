@@ -11,8 +11,17 @@ namespace App\Middleware;
 use BaAGee\Config\Config;
 use BaAGee\NkNkn\Base\MiddlewareAbstract;
 
+/**
+ * Class PageCache
+ * @package App\Middleware
+ */
 class PageCache extends MiddlewareAbstract
 {
+    /**
+     * @param \Closure $next
+     * @param          $data
+     * @return mixed|void
+     */
     protected function handler(\Closure $next, $data)
     {
         if (Config::get('app/is_debug')) {

@@ -8,6 +8,7 @@
 
 namespace App\Model;
 
+use App\Library\IdGenerator;
 use BaAGee\MySQL\DB;
 use BaAGee\NkNkn\Base\ModelAbstract;
 
@@ -34,7 +35,7 @@ class RequestsModel extends ModelAbstract
      */
     public function save($xId, $traceId, $url, int $requestTime, $allCostTime, $sqlCount)
     {
-        $lId = intval(microtime(true) * 1000) + mt_rand(10000, 99999);
+        $lId = IdGenerator::getId();
         $this->tableObj->insert([
             'x_id'          => $xId,
             'l_id'          => $lId,
@@ -96,6 +97,11 @@ SQL;
         return compact('list', 'count');
     }
 
+    /**
+     * @param $lId
+     * @return array|mixed
+     * @throws \Exception
+     */
     public function getByLId($lId)
     {
         $res = $this->tableObj->where([
@@ -104,6 +110,11 @@ SQL;
         return $res[0] ?? [];
     }
 
+    /**
+     * @param array $xIds
+     * @return array
+     * @throws \Exception
+     */
     public function getLIdByXIds(array $xIds)
     {
         $list = $this->tableObj->where([
@@ -115,6 +126,11 @@ SQL;
         return [];
     }
 
+    /**
+     * @param $xId
+     * @return int
+     * @throws \Exception
+     */
     public function deleteByXId($xId)
     {
         return $this->tableObj->where([

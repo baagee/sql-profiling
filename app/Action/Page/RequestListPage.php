@@ -8,12 +8,24 @@
 
 namespace App\Action\Page;
 
+/**
+ * Class RequestListPage
+ * @package App\Action\Page
+ */
 class RequestListPage extends PageHeaderBase
 {
+    /**
+     * @var array
+     */
     protected $paramRules = [
         'x_id' => ['integer|required', 'url不合法']
     ];
 
+    /**
+     * @param array $params
+     * @return array|mixed
+     * @throws \Exception
+     */
     protected function execute(array $params = [])
     {
         $list = $this->getHeaderMenu();

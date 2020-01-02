@@ -8,18 +8,32 @@
 
 namespace App\Model;
 
+use App\Library\IdGenerator;
 use BaAGee\NkNkn\Base\ModelAbstract;
 
+/**
+ * Class SqlDetailModel
+ * @package App\Model
+ */
 class SqlDetailModel extends ModelAbstract
 {
+    /**
+     * @var string
+     */
     public static $tableName = 'sql_detail';
 
+    /**
+     * @param       $lId
+     * @param array $profiling
+     * @return bool
+     * @throws \Exception
+     */
     public function batchSave($lId, array $profiling)
     {
         $rows = [];
         foreach ($profiling as $item) {
             $rows[] = [
-                's_id'     => intval(microtime(true) * 1000) + mt_rand(10000, 99999),
+                's_id'     => IdGenerator::getId(),
                 'l_id'     => $lId,
                 'query_id' => $item['Query_ID'],
                 'cost'     => $item['Duration'] * 1000,
@@ -32,6 +46,11 @@ class SqlDetailModel extends ModelAbstract
         return true;
     }
 
+    /**
+     * @param $lId
+     * @return array|\Generator
+     * @throws \Exception
+     */
     public function getByLId($lId)
     {
         return $this->tableObj->where([
@@ -39,6 +58,11 @@ class SqlDetailModel extends ModelAbstract
         ])->select();
     }
 
+    /**
+     * @param array $lIds
+     * @return int
+     * @throws \Exception
+     */
     public function deleteByLIds(array $lIds)
     {
         return $this->tableObj->where([
