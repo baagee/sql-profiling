@@ -69,4 +69,16 @@ class SqlDetailModel extends ModelAbstract
             'l_id' => ['in', $lIds]
         ])->delete();
     }
+
+    /**
+     * @param $sId
+     * @return array|\Generator
+     * @throws \Exception
+     */
+    public function getBySId($sId)
+    {
+        return $this->tableObj->where([
+            's_id' => ['=', $sId]
+        ])->limit(1)->select();
+    }
 }

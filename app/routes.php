@@ -60,5 +60,10 @@ return [
         'method'     => 'post',
         'callback'   => ClearModuleRequestApi::class,
         'middleware' => [ReturnJson::class]
+    ],
+    '/sql/{s_id}.html'   => [
+        'method'     => 'get',
+        'callback'   => \App\Action\Page\SqlPage::class,
+        'middleware' => [PageCache::class, ReturnHtml::class]
     ]
 ];

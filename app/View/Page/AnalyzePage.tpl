@@ -75,7 +75,7 @@
                             <div class="layui-card-header">SQL语句 &nbsp;
                                 <div id="test_{{$i}}" style="margin-top: -5px;"></div>
                             </div>
-                            <div class="layui-card-body" style="word-break: break-all;">
+                            <div class="layui-card-body" style="word-break: break-all;max-height: 100px;overflow-y: auto">
                                 <pre><code class="sql">{{$sqlDetail['sql']}}</code></pre>
                             </div>
                         </div>

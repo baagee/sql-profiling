@@ -18,6 +18,6 @@ class IdGenerator
      */
     public static function getId()
     {
-        return intval(microtime(true) * 10000) + mt_rand(10000, 99999);
+        return intval(microtime(true) * 1000000) + mt_rand(1000000, 9999999);
     }
 }

@@ -191,6 +191,9 @@ class DataService
             $item['legend']        = json_encode(array_column($pieData, 'name'));
             $item['suggestions']   = $optimize->getSuggestions($item['sql'], $item['explain'], $item['detail'], $item['cost']);
             $item['score']         = MySqlExplainRemark::getScore(count($item['suggestions']), $item['explain']);
+            if (strlen($item['sql']) > 8192) {
+                $item['sql'] = substr($item['sql'], 0, 8192) . '<a href="/sql/' . $item['s_id'] . '.html" target="_blank" title="点击查看完整sql">...</a>';
+            }
         }
         unset($item);
 
@@ -225,5 +228,17 @@ class DataService
             $connection->rollback();
             return false;
         }
+    }
+
+    /**
+     * 获取完整sql信息
+     * @param $sId
+     * @return mixed|string
+     * @throws \Exception
+     */
+    public function getSql($sId)
+    {
+        $sqlDetailModel = new SqlDetailModel();
+        return $sqlDetailModel->getBySId($sId)[0]['sql'] ?? '';
     }
 }
