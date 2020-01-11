@@ -33,30 +33,34 @@ class DataService
      */
     public function saveReceive($project, $module, $url, $traceId, $requestTime, $sqlProfiling)
     {
-        /*首先查找project-module是否存在*/
         $projectModuleModel = new ProjectModuleModel();
-        $projectModule      = $projectModuleModel->findByProjectModule($project, $module);
-        $sqlCount           = count($sqlProfiling);
-        $allCostTime        = array_sum(array_column($sqlProfiling, 'Duration')) * 1000;
-        $connection         = DB::getInstance();
-        $requestsModel      = new RequestsModel();
-        $sqlDetailModel     = new SqlDetailModel();
-        $connection->beginTransaction();
-        try {
-            if (!empty($projectModule)) {
-                $xid = $projectModule['x_id'];
-            } else {
-                $xid = $projectModuleModel->save($project, $module);
+        for ($i = 0; $i <= 5; $i++) {
+            /*首先查找project-module是否存在*/
+            $projectModule  = $projectModuleModel->findByProjectModule($project, $module);
+            $sqlCount       = count($sqlProfiling);
+            $allCostTime    = array_sum(array_column($sqlProfiling, 'Duration')) * 1000;
+            $connection     = DB::getInstance();
+            $requestsModel  = new RequestsModel();
+            $sqlDetailModel = new SqlDetailModel();
+            $connection->beginTransaction();
+            try {
+                if (!empty($projectModule)) {
+                    $xid = $projectModule['x_id'];
+                } else {
+                    $xid = $projectModuleModel->save($project, $module);
+                }
+                $lId = $requestsModel->save($xid, $traceId, $url, $requestTime, $allCostTime, $sqlCount);
+                $sqlDetailModel->batchSave($lId, $sqlProfiling);
+                $connection->commit();
+                return true;
+            } catch (\Exception $e) {
+                $connection->rollback();
+                Log::warning("retry:" . $i . " save profiling failed: " . $e->getMessage());
+                $i++;
             }
-            $lId = $requestsModel->save($xid, $traceId, $url, $requestTime, $allCostTime, $sqlCount);
-            $sqlDetailModel->batchSave($lId, $sqlProfiling);
-            $connection->commit();
-            return true;
-        } catch (\Exception $e) {
-            $connection->rollback();
-            Log::warning("save profiling failed: " . $e->getMessage());
-            return false;
+            usleep(3000);
         }
+        return false;
     }
 
     /**

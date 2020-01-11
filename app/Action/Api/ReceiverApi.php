@@ -40,7 +40,6 @@ class ReceiverApi extends ActionAbstract
             return false;
         }
         $dataService = new DataService();
-        $dataService->saveReceive($params['project'], $params['module'], $params['url'], $params['trace_id'], $params['request_time'], $params['sql_profiling']);
-        return true;
+        return $dataService->saveReceive($params['project'], $params['module'], $params['url'], $params['trace_id'], $params['request_time'], $params['sql_profiling']);
     }
 }
