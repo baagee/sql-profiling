@@ -27,6 +27,7 @@ class RequestListApi extends ActionAbstract
         'trace_id'     => ['string|optional|default[]', 'traceId不合法'],
         'url'          => ['string|optional|default[]', 'url不合法'],
         'request_time' => ['string|optional|default[]', '时间范围不合法'],
+        'show_host'    => ['integer|optional|default[0]', '是否隐藏host不合法'],
     ];
 
     /**
@@ -37,14 +38,12 @@ class RequestListApi extends ActionAbstract
     protected function execute(array $params = [])
     {
         $dataService = new DataService();
-
         $startTime   = $endTime = [];
         if (!empty($params['request_time'])) {
             list($startTime, $endTime) = explode('~', $params['request_time']);
         }
 
-        $requestList = $dataService->searchRequest($params['x_id'], $params['page'],
-            $params['limit'], $params['url'], $params['trace_id'], $startTime, $endTime);
-        return $requestList;
+        return $dataService->searchRequest($params['x_id'], $params['page'],
+            $params['limit'], $params['url'], $params['trace_id'], $params['show_host'], $startTime, $endTime);
     }
 }

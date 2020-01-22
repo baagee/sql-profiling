@@ -121,15 +121,40 @@ class DataService
      * @param        $size
      * @param string $url
      * @param string $traceId
+     * @param int    $showHost
      * @param string $startTime
      * @param string $endTime
      * @return array
      * @throws \Exception
      */
-    public function searchRequest($xId, $page, $size, $url = '', $traceId = '', $startTime = '', $endTime = '')
+    public function searchRequest($xId, $page, $size, $url = '', $traceId = '', $showHost = 0, $startTime = '', $endTime = '')
     {
         $requestModel = new RequestsModel();
-        return $requestModel->search($xId, $page, $size, $url, $traceId, $startTime, $endTime);
+        $ret          = $requestModel->search($xId, $page, $size, $url, $traceId, $startTime, $endTime);
+        if ($showHost == 0) {
+            $this->removeUrlHost($ret['list']);
+        }
+        return $ret;
+    }
+
+    /**
+     * @param $list
+     */
+    protected function removeUrlHost(&$list)
+    {
+        array_walk($list, function (&$v) {
+            $parseUrl = parse_url($v['url']);
+            if (is_array($parseUrl)) {
+                if (isset($parseUrl['path'])) {
+                    $v['url'] = $parseUrl['path'];
+                } else {
+                    $v['url'] = '/';
+                }
+                if (isset($parseUrl['query']) && !empty($parseUrl['query'])) {
+                    $v['url'] .= '?' . $parseUrl['query'];
+                }
+            }
+        });
     }
 
     /**

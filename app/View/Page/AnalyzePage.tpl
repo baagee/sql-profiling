@@ -16,13 +16,18 @@
 
 {{fill container}}
 
-<div style="overflow-x: auto">
+<div>
+    <div style="margin-bottom: 25px;">
+        <h2 style="color: #666;
+    font-weight: 500;    word-break: break-all;">
+            {{$analyze['request_detail']['url']}}
+        </h2>
+    </div>
     <table class="layui-table">
         <colgroup>
             <col width="150">
             <col width="150">
             <col width="200">
-            <col/>
             <col width="180">
             <col width="180">
             <col width="100">
@@ -32,7 +37,6 @@
             <th>项目</th>
             <th>模块</th>
             <th>trace_id</th>
-            <th>url</th>
             <th>请求时间</th>
             <th>sql总耗时(ms)</th>
             <th>sql数量</th>
@@ -49,7 +53,6 @@
                    href="/request/{{$analyze['request_detail']['x_id']}}.html">{{$analyze['request_detail']['module']}}</a>
             </td>
             <td>{{$analyze['request_detail']['trace_id']}}</td>
-            <td>{{$analyze['request_detail']['url']}}</td>
             <td>{{$analyze['request_detail']['request_time']}}</td>
             <td>{{$analyze['request_detail']['all_cost_time']}}</td>
             <td>{{$analyze['request_detail']['sql_count']}}</td>

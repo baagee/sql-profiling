@@ -1,7 +1,10 @@
 {{layout 'Common/base.tpl'}}
 {{fill header}}
+<?php $l=strlen($sql);?>
+{{if $l<=20000}}
 <link rel="stylesheet" href="/static/highlight/styles/vs.css">
-<script src="/static/highlight/highlight.pack.js"></script>
+    <script src="/static/highlight/highlight.pack.js"></script>
+{{/if}}
 {{end header}}
 
 {{fill container}}
@@ -11,7 +14,9 @@
 {{end container}}
 
 {{fill tail}}
-<script type="text/javascript">
-    hljs.initHighlighting();
-</script>
+{{if $l<=20000}}
+    <script type="text/javascript">
+        hljs.initHighlighting();
+    </script>
+{{/if}}
 {{end tail}}

@@ -34,6 +34,12 @@
             <input class="layui-input" type="text" name="request_time" id="request_time" placeholder="请求时间范围" readonly>
             <input type="hidden" name="request_time_input" id="request_time_input" value="">
         </div>
+        <div class="layui-inline" style="width: 100px">
+            <form class="layui-form" style="margin-bottom: 6px;">
+                <input type="checkbox"  name="open" id="showHost" lay-skin="switch"
+                       lay-text="显示host|隐藏host">
+            </form>
+        </div>
 
         <button class="layui-btn" data-type="reload">搜索</button>
         <a style="float: right;
@@ -52,6 +58,8 @@
 </script>
 <script src="/static/jquery.min.js"></script>
 <script>
+    layui.use(['form'], function () {
+    });
     layui.use('laydate', function () {
         var laydate = layui.laydate;
         //日期时间范围y
@@ -113,6 +121,7 @@
                 var traceId = $('#trace_id');
                 var url = $('#url');
                 var requestTime = $('#request_time_input');
+                var showHost = $('#showHost').is(':checked');
 
                 //执行重载
                 table.reload('request_list', {
@@ -124,6 +133,7 @@
                         trace_id: traceId.val(),
                         url: url.val(),
                         request_time: requestTime.val(),
+                        show_host: showHost ? 1 : 0
                     }
                 }, 'data');
             }
