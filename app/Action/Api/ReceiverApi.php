@@ -23,8 +23,8 @@ class ReceiverApi extends ActionAbstract
     protected $paramRules = [
         'project'       => ['string|required|min[2]', '项目名称不合法'],
         'module'        => ['string|required|min[2]', '模块名称不合法'],
-        'url'           => ['string|optional|min[2]', 'url不合法'],
-        'trace_id'      => ['string|optional|min[2]', '请求ID不合法'],
+        'url'           => ['string|required|min[2]', 'url不合法'],
+        'trace_id'      => ['string|required|min[2]', '请求ID不合法'],
         'request_time'  => ['integer|required', '请求时间不合法'],
         'sql_profiling' => ['json|decode', 'sql信息不合法'],
     ];

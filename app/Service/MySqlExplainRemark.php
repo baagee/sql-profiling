@@ -113,23 +113,25 @@ class MySqlExplainRemark
         $Extras       = array_unique(array_filter(array_column($explainList, 'Extra')));
         // var_dump($select_types, $types, $Extras);
 
-        $explication = [
-            'possible_keys' => $remark['possible_keys'],
-            'key'           => $remark['key'],
-            'key_len'       => $remark['key_len'],
-            'ref'           => $remark['ref'],
-            'rows'          => $remark['rows'],
-        ];
-        if (isset($explainList[0]['filtered'])) {
-            $explication['filtered'] = $remark['filtered'];
-        }
+        $explication                = [];
         $explication['select_type'] = [];
         foreach ($select_types as $select_type) {
             $explication['select_type'][] = $select_type . ': ' . $remark['select_type'][strtoupper($select_type)];
         }
+
         $explication['type'] = [];
         foreach ($types as $type) {
             $explication['type'][] = $type . ': ' . $remark['type'][strtolower($type)];
+        }
+
+        $explication['possible_keys'] = $remark['possible_keys'];
+        $explication['key']           = $remark['key'];
+        $explication['key_len']       = $remark['key_len'];
+        $explication['ref']           = $remark['ref'];
+        $explication['rows']          = $remark['rows'];
+
+        if (isset($explainList[0]['filtered'])) {
+            $explication['filtered'] = $remark['filtered'];
         }
         foreach ($Extras as $Extra) {
             //Using where; Using index
