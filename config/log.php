@@ -10,6 +10,7 @@ use BaAGee\Config\Config;
 use BaAGee\Log\Handler\FileLog;
 use BaAGee\NkNkn\AppEnv;
 use BaAGee\NkNkn\LogFormatter;
+use BaAGee\Log\LogLevel;
 
 return [
     'handler'               => FileLog::class,
@@ -23,6 +24,6 @@ return [
     'cache_limit_percent'   => 5,
     'formatter'             => LogFormatter::class,
     'product_hidden_levels' => [
-        'debug', 'info'
+        LogLevel::DEBUG, LogLevel::INFO
     ],
 ];

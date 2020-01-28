@@ -1,7 +1,7 @@
 <?php
 /**
  * Desc:
- * User: 01372412
+ * User: baagee
  * Date: 2019/11/9
  * Time: 下午9:38
  */
@@ -15,7 +15,7 @@ use BaAGee\NkNkn\Base\ActionAbstract;
  * Class ProjectDelete
  * @package App\Action\Api
  */
-class ProjectDelete extends ActionAbstract
+class ProjectDeleteApi extends ActionAbstract
 {
     /**
      * @var array

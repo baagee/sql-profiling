@@ -7,7 +7,7 @@
  */
 
 use App\Action\Page\AnalyzePage;
-use App\Action\Api\ProjectDelete;
+use App\Action\Api\ProjectDeleteApi;
 use App\Action\Api\ClearModuleRequestApi;
 use App\Action\Page\ProjectModuleListPage;
 use App\Action\Page\ReadmePage;
@@ -26,7 +26,7 @@ return [
     ],
     '/api/project/delete'  => [
         'method'     => 'post',
-        'callback'   => ProjectDelete::class,
+        'callback'   => ProjectDeleteApi::class,
         'middleware' => [ReturnJson::class]
     ],
     '/request/{x_id}.html' => [

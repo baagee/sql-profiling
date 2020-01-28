@@ -27,6 +27,7 @@ class ClearModuleRequestApi extends ActionAbstract
     /**
      * @param array $params
      * @return bool|mixed
+     * @throws \Exception
      */
     protected function execute(array $params = [])
     {
