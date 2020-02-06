@@ -1,4 +1,16 @@
 {{layout "Common/base.tpl"}}
+{{fill header}}
+<style>
+    .module_name {
+        width: 98% !important;
+        margin-top: 4px;
+        height: 60px;
+        line-height: 60px;
+        overflow: hidden;
+        font-size: larger;
+    }
+</style>
+{{end header}}
 {{fill container}}
 
 {{if !empty($project_module['list'])}}
@@ -7,7 +19,7 @@
 
             {{loop $itemLine $project}}
                 <div class="layui-col-md6">
-                    <div class="layui-card">
+                    <div class="layui-card layui-anim layui-anim-scale">
                         <div class="layui-card-header">
                             <h1 style="display: inline-block">{{$project['project']}}</h1>
                             <i class="layui-icon" style="float: right;
@@ -20,8 +32,9 @@
                                     {{loop $modules $module}}
                                         <div class="layui-col-xs3">
                                             <div class="grid-demo grid-demo-bg1">
-                                                <a class="layui-btn layui-btn-normal"
-                                                   href="/request/{{$module['x_id']}}.html">{{$module['module']}}</a>
+                                                <a class="layui-btn layui-btn-normal module_name"
+                                                   href="/request/{{$module['x_id']}}.html"
+                                                   style="background-color: {{$module['color']}}">{{$module['module']}}</a>
                                             </div>
                                         </div>
                                     {{/loop}}

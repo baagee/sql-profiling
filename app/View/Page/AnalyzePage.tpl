@@ -20,7 +20,7 @@
     <div style="margin-bottom: 25px;">
         <h2 style="color: #666;
     font-weight: 500;    word-break: break-all;">
-            {{$analyze['request_detail']['url']}}
+            <a href="{{$analyze['request_detail']['url']}}" target="_blank">{{$analyze['request_detail']['url']}}</a>
         </h2>
     </div>
     <table class="layui-table">

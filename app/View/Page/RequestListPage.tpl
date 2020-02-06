@@ -1,4 +1,22 @@
 {{layout 'Common/base.tpl'}}
+{{fill header}}
+<style>
+    .module_name {
+        width: 98% !important;
+        margin-top: 4px;
+        font-size: larger;
+        overflow: hidden;
+    }
+
+    .layui-btn-disabled {
+        color: #d2d2d2;
+        font-size: x-large;
+        height: 48px;
+        line-height: 43px;
+        background-color: #009688 !important;
+    }
+</style>
+{{end header}}
 {{fill container}}
 
 <div class="layui-card">
@@ -9,11 +27,13 @@
             {{loop $cur_modules $module}}
                 <div class="layui-col-xs2">
                     <div class="grid-demo grid-demo-bg1">
-                        <a class="layui-btn layui-btn-normal
+                        <a class="layui-btn layui-btn-normal module_name
                     {{if $module['x_id']==$x_id}}
                     layui-btn-disabled
                     {{/if}}
-                    " href="/request/{{$module['x_id']}}.html">{{$module['module']}}</a>
+                    " href="/request/{{$module['x_id']}}.html"
+                           style="background-color: {{$module['color']}}"
+                        >{{$module['module']}}</a>
                     </div>
                 </div>
             {{/loop}}
@@ -36,7 +56,7 @@
         </div>
         <div class="layui-inline" style="width: 100px">
             <form class="layui-form" style="margin-bottom: 6px;">
-                <input type="checkbox"  name="open" id="showHost" lay-skin="switch"
+                <input type="checkbox" name="open" id="showHost" lay-skin="switch"
                        lay-text="显示host|隐藏host">
             </form>
         </div>

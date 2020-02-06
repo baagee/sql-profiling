@@ -95,13 +95,24 @@ class DataService
      */
     public function projectModelList()
     {
+        $colors        = [
+            "#9933CC", "#66CCCC", "#99CC33", "#FF9966", "#CC3399", "#00CC00", "#FF6666",
+            '#FF9900', '#FF99CC', '#99CC99'
+        ];
         $list          = (new ProjectModuleModel())->list();
         $projectModule = [];
+        $i             = 0;
+        $max           = count($colors);
         foreach ($list as $item) {
+            if ($i == $max) {
+                $i = 0;
+            }
             $projectModule[$item['project']][] = [
                 'module' => $item['module'],
-                'x_id'   => $item['x_id']
+                'x_id'   => $item['x_id'],
+                'color'  => $colors[$i]
             ];
+            $i++;
         }
         $newList = [];
         foreach ($projectModule as $project => $modules) {
