@@ -9,11 +9,11 @@
     }
 
     .layui-btn-disabled {
-        color: #d2d2d2;
+        color: white;
         font-size: x-large;
         height: 48px;
         line-height: 43px;
-        background-color: #009688 !important;
+        background-color: #5FB878 !important;
     }
 </style>
 {{end header}}

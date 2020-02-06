@@ -1,7 +1,7 @@
 <div class="layui-header header" style="position: fixed;
     top: 0;
     width: 100%;">
-    <ul class="layui-nav layui-bg-green">
+    <ul class="layui-nav layui-bg-blue">
         <li class="layui-nav-item"><a href="/"
                                       style="font-size: 18px;font-weight: 400;    padding-right: 0;">SQL性能分析工具</a></li>
         {{loop $project_module['header_menu'] $project $modules}}
