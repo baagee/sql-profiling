@@ -196,6 +196,7 @@ class DataService
             $detail      = json_decode($item['detail'], true);
             $pieData     = $timeLine = [];
             $beforeTotal = 0;
+            $colors      = [];
             foreach ($detail as $index => &$dd) {
                 $dd['Duration'] = number_format($dd['Duration'] * 1000, 6, '.', '');
                 $pieData[]      = [
@@ -207,15 +208,21 @@ class DataService
                 $us          = $dd['Duration'] * 1000;
                 $afterTotal  += $us;
                 $afterTotal  = number_format($afterTotal, 2, '.', '');
+                $color       = '#' . $randColor();
                 $timeLine[]  = [
                     'name'      => $dd['Status'],
-                    'itemStyle' => ['normal' => ['color' => '#' . $randColor()]],
+                    'itemStyle' => ['normal' => ['color' => $color]],
                     'value'     => [$index, $beforeTotal, $afterTotal, $us]
                 ];
+                //当前所有颜色
+                $colors[]    = $color;
+                // 当前的颜色
+                $dd['color']    = $color;
                 $beforeTotal = $afterTotal;
             }
             unset($dd);
             $item['detail'] = $detail;
+            $item['colors'] = json_encode($colors);
 
             $explain = json_decode($item['explain'], true) ?? [];
             if (count($explain) > 0 && count($explain) === count($explain, COUNT_RECURSIVE)) {
@@ -236,7 +243,6 @@ class DataService
             }
         }
         unset($item);
-
         return [
             'request_detail'  => $requestDetail,
             'sql_detail_list' => $sqlDetailList

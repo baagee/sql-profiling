@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
     {{hole header}}
 </head>
-<body>
+<body style="    background-image: url(/static/bg.png);
+    background-repeat: repeat-x;
+    background-attachment: fixed;">
 
 {{include 'Common/header-menu.tpl'}}
 

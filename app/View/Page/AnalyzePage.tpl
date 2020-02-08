@@ -11,8 +11,9 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
         user-select: none; /* Non-prefixed version, currentlynot supported by any browser */
     }
-    .sql{
-        padding: 0!important;
+
+    .sql {
+        padding: 0 !important;
     }
 </style>
 {{end header}}
@@ -84,7 +85,8 @@
                             <div class="layui-card-header">SQL语句 &nbsp;
                                 <div id="test_{{$i}}" style="margin-top: -5px;line-height: normal;"></div>
                             </div>
-                            <div class="layui-card-body" style="word-break: break-all;max-height: 100px;overflow-y: auto">
+                            <div class="layui-card-body"
+                                 style="word-break: break-all;max-height: 100px;overflow-y: auto">
                                 <pre><code class="sql">{{$sqlDetail['sql']}}</code></pre>
                             </div>
                         </div>
@@ -96,8 +98,9 @@
     overflow-y: auto;">
                                 <ul class="layui-timeline">
                                     {{loop $sqlDetail['detail'] $item}}
-                                        <li class="layui-timeline-item" style="padding-bottom:0">
-                                            <i class="layui-icon layui-timeline-axis layui-icon-down"></i>
+                                        <li class="layui-timeline-item" style="padding-bottom:0;">
+                                            <i class="layui-icon layui-timeline-axis layui-icon-down"
+                                               style="color: {{$item['color']}}"></i>
                                             <div class="layui-timeline-content layui-text">
                                                 <div class="layui-timeline-title">{{$item['Status']}}
                                                     : {{$item['Duration']}}ms
@@ -271,6 +274,7 @@
             left: 'left',
             data:  {{$sqlDetail['legend']}}
         },
+        color: {{$sqlDetail['colors']}},
         series: [
             {
                 name: '执行阶段',
