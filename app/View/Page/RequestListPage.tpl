@@ -29,7 +29,7 @@
                     <div class="grid-demo grid-demo-bg1">
                         <a class="layui-btn layui-btn-normal module_name
                     {{if $module['x_id']==$x_id}}
-                    layui-btn-disabled
+                    layui-btn-disabled layui-anim layui-anim-scale
                     {{/if}}
                     " href="/request/{{$module['x_id']}}.html"
                            style="background-color: {{$module['color']}}"

@@ -11,6 +11,9 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
         user-select: none; /* Non-prefixed version, currentlynot supported by any browser */
     }
+    .sql{
+        padding: 0!important;
+    }
 </style>
 {{end header}}
 
@@ -62,8 +65,11 @@
 </div>
 <div class="layui-collapse">
     {{loop $analyze['sql_detail_list'] $i $sqlDetail}}
-        <div class="layui-colla-item">
-            <h2 class="layui-colla-title noselect" style="background-color: white">
+        <div class="layui-colla-item" style="margin-bottom: 5px;">
+            <h2 class="layui-colla-title noselect" style="background-color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;">
                 {{$sqlDetail['sql']}}
             </h2>
             <div class="layui-colla-content
@@ -76,7 +82,7 @@
                     <div class="layui-col-md12">
                         <div class="layui-card">
                             <div class="layui-card-header">SQL语句 &nbsp;
-                                <div id="test_{{$i}}" style="margin-top: -5px;"></div>
+                                <div id="test_{{$i}}" style="margin-top: -5px;line-height: normal;"></div>
                             </div>
                             <div class="layui-card-body" style="word-break: break-all;max-height: 100px;overflow-y: auto">
                                 <pre><code class="sql">{{$sqlDetail['sql']}}</code></pre>
@@ -129,7 +135,7 @@
                             <div class="layui-card">
                                 <div class="layui-card-header">Explain信息</div>
                                 <div class="layui-card-body" id="main_{{$sqlDetail['query_id']}}">
-                                    <div style="overflow-x: auto;">
+                                    <div style="overflow-x: auto; white-space: nowrap;">
                                         <table class="layui-table" lay-size="md">
                                             <thead>
                                             <tr>
