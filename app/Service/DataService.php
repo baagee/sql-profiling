@@ -96,8 +96,8 @@ class DataService
     public function projectModelList()
     {
         $colors        = [
-            "#9933CC", "#66CCCC", "#99CC33", "#FF9966", "#CC3399", "#00CC00", "#FF6666",
-            '#FF9900', '#FF99CC', '#99CC99'
+            "#9933CC", "#66CCCC", "#99CC33", "#FF9966", "#CC3399", "#00CC00", "#FF6666", '#FF9900', '#FF99CC', '#99CC99',
+            '#3399CC', '#FF9999', '#FFCC33', '#993366', '#99CCFF', '#003399', '#FF33CC', '#99CCCC', '#FF6600', '#FF0033'
         ];
         $list          = (new ProjectModuleModel())->list();
         $projectModule = [];
@@ -189,7 +189,7 @@ class DataService
             while (strlen($c) < 6) {
                 $c .= sprintf("%02X", mt_rand(0, 255));
             }
-            return $c;
+            return '#' . $c;
         };
         $optimize       = new OptimizeSql();
         foreach ($sqlDetailList as &$item) {
@@ -197,27 +197,42 @@ class DataService
             $pieData     = $timeLine = [];
             $beforeTotal = 0;
             $colors      = [];
+            $dup         = [];
             foreach ($detail as $index => &$dd) {
                 $dd['Duration'] = number_format($dd['Duration'] * 1000, 6, '.', '');
-                $pieData[]      = [
+                if (isset($dup[$dd['Status']])) {
+                    $v            = $dup[$dd['Status']] + 1;
+                    $dd['Status'] = $dd['Status'] . '-' . $v;
+                } else {
+                    $v = 0;
+                }
+                $dup[$dd['Status']] = $v;
+                $pieData[]          = [
                     'name'  => $dd['Status'],
                     'value' => $dd['Duration'],
                 ];
 
-                $afterTotal  = $beforeTotal;
-                $us          = $dd['Duration'] * 1000;
-                $afterTotal  += $us;
-                $afterTotal  = number_format($afterTotal, 2, '.', '');
-                $color       = '#' . $randColor();
+                $afterTotal = $beforeTotal;
+                $us         = $dd['Duration'] * 1000;
+                $afterTotal += $us;
+                $afterTotal = number_format($afterTotal, 2, '.', '');
+
+                $color = '';
+                while (true) {
+                    $color = $randColor();
+                    if (!in_array($color, $colors)) {
+                        break;
+                    }
+                }
+                //当前所有颜色
+                $colors[] = $color;
+                // 当前的颜色
+                $dd['color'] = $color;
                 $timeLine[]  = [
                     'name'      => $dd['Status'],
                     'itemStyle' => ['normal' => ['color' => $color]],
                     'value'     => [$index, $beforeTotal, $afterTotal, $us]
                 ];
-                //当前所有颜色
-                $colors[]    = $color;
-                // 当前的颜色
-                $dd['color']    = $color;
                 $beforeTotal = $afterTotal;
             }
             unset($dd);
