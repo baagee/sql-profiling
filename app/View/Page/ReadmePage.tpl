@@ -82,7 +82,6 @@
         <fieldset class="layui-elem-field layui-field-title">
             <legend>示例代码</legend>
         </fieldset>
-        <p>在请求开始时执行：SqlExplainProfiling::register()</p>
 
         <pre class="layui-code" lay-title="php">{{$example_code}}</pre>
 

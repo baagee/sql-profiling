@@ -135,3 +135,7 @@ class MySqlExplainProfiling extends SqlExplainProfilingAbstract
         ];
     }
 }
+
+/*
+ * 在请求开始时执行：MySqlExplainProfiling::register()
+ * */
