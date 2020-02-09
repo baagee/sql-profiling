@@ -83,7 +83,9 @@
                     <div class="layui-col-md12">
                         <div class="layui-card">
                             <div class="layui-card-header">SQL语句 &nbsp;
-                                <div id="test_{{$i}}" style="margin-top: -5px;line-height: normal;"></div>
+                                {{if !empty($sqlDetail['explain'])}}
+                                    <div id="rate_{{$i}}" style="margin-top: -5px;line-height: normal;"></div>
+                                {{/if}}
                             </div>
                             <div class="layui-card-body"
                                  style="word-break: break-all;max-height: 100px;overflow-y: auto">
@@ -250,7 +252,7 @@
     layui.use(['rate'], function () {
         var rate = layui.rate;
         rate.render({
-            elem: '#test_{{$i}}'
+            elem: '#rate_{{$i}}'
             , length: 10
             , value: {{$sqlDetail['score']}} //初始值
             , readonly: true
