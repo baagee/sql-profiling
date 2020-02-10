@@ -193,12 +193,12 @@ class DataService
         };
         $optimize       = new OptimizeSql();
         foreach ($sqlDetailList as &$item) {
-            $detail      = json_decode($item['detail'], true);
+            $profile      = json_decode($item['profile'], true);
             $pieData     = $timeLine = [];
             $beforeTotal = 0;
             $colors      = [];
             $dup         = [];
-            foreach ($detail as $index => &$dd) {
+            foreach ($profile as $index => &$dd) {
                 $dd['Duration'] = number_format($dd['Duration'] * 1000, 6, '.', '');
                 if (isset($dup[$dd['Status']])) {
                     $v            = $dup[$dd['Status']] + 1;
@@ -236,7 +236,7 @@ class DataService
                 $beforeTotal = $afterTotal;
             }
             unset($dd);
-            $item['detail'] = $detail;
+            $item['profile'] = $profile;
             $item['colors'] = json_encode($colors);
 
             $explain = json_decode($item['explain'], true) ?? [];
@@ -251,7 +251,7 @@ class DataService
             $item['pie_data']      = json_encode($pieData);
             $item['timeline_data'] = json_encode($timeLine);
             $item['legend']        = json_encode(array_column($pieData, 'name'));
-            $item['suggestions']   = $optimize->getSuggestions($item['sql'], $item['explain'], $item['detail'], $item['cost']);
+            $item['suggestions']   = $optimize->getSuggestions($item['sql'], $item['explain'], $item['profile'], $item['cost']);
             $item['score']         = MySqlExplainRemark::getScore(count($item['suggestions']), $item['explain']);
             if (strlen($item['sql']) > 8192) {
                 $item['sql'] = substr($item['sql'], 0, 8192) . '<a href="/sql/' . $item['s_id'] . '.html" target="_blank" title="点击查看完整sql">...</a>';

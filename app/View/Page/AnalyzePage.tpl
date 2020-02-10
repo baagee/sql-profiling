@@ -99,7 +99,7 @@
                             <div class="layui-card-body" style="height: 400px;
     overflow-y: auto;">
                                 <ul class="layui-timeline">
-                                    {{loop $sqlDetail['detail'] $item}}
+                                    {{loop $sqlDetail['profile'] $item}}
                                         <li class="layui-timeline-item" style="padding-bottom:0;">
                                             <i class="layui-icon layui-timeline-axis layui-icon-down"
                                                style="color: {{$item['color']}}"></i>

@@ -38,7 +38,7 @@ class SqlDetailModel extends ModelAbstract
                 'query_id' => $item['Query_ID'],
                 'cost'     => $item['Duration'] * 1000,
                 'sql'      => $item['Query'],
-                'detail'   => json_encode($item['detail']),
+                'profile'   => json_encode($item['detail']),
                 'explain'  => json_encode($item['explain'])
             ];
         }
