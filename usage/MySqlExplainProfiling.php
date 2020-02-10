@@ -57,6 +57,14 @@ class MySqlExplainProfiling extends SqlExplainProfilingAbstract
     }
 
     /**
+     * @return mixed|void
+     */
+    protected function setProfilingSize()
+    {
+        self::$connection->query(self::SET_PROFILING_SIZE_SQL);
+    }
+
+    /**
      * @return array
      */
     protected function getProfiles(): array

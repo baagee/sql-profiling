@@ -16,6 +16,7 @@ abstract class SqlExplainProfilingAbstract
 {
     protected const SELECT_PROFILING_SQL   = 'SELECT @@profiling as p_v';
     protected const OPEN_PROFILING_SQL     = 'SET profiling=1';
+    protected const SET_PROFILING_SIZE_SQL = 'set profiling_history_size=100';
     protected const CLOSE_PROFILING_SQL    = 'SET profiling=0';
     protected const SHOW_PROFILES_SQL      = 'SHOW PROFILES';
     protected const SHOW_PROFILE_QUERY_SQL = 'SHOW PROFILE for query ';
@@ -58,12 +59,11 @@ abstract class SqlExplainProfilingAbstract
             $self               = new static();
             static::$args       = $args;
             static::$connection = $self->getMySqlConnection();
-            if ($self->isOpenProfiling()) {
-                //先关闭
-                $self->closeProfiling();
+            if (!$self->isOpenProfiling()) {
+                $self->openProfiling();
             }
-            $self->openProfiling();
             if ($self->isOpenProfiling()) {
+                $self->setProfilingSize();
                 register_shutdown_function(function () use ($self) {
                     if (function_exists('fastcgi_finish_request')) {
                         fastcgi_finish_request();
@@ -93,6 +93,11 @@ abstract class SqlExplainProfilingAbstract
                 unset($profiles[$i]);
                 continue;
             }
+            if (strpos(strtolower($profile['Query']), 'profiling_history_size') !== false) {
+                unset($profiles[$i]);
+                continue;
+            }
+
             $profileDetail      = $this->getProfileDetail($profile['Query_ID']);
             $profile['detail']  = $profileDetail;
             $profile['explain'] = [];
@@ -281,4 +286,10 @@ abstract class SqlExplainProfilingAbstract
      *               ]
      */
     abstract protected function beforeRequest($requestData): array;
+
+    /**
+     * 设置profiling保存记录数
+     * @return mixed
+     */
+    abstract protected function setProfilingSize();
 }
