@@ -14,13 +14,13 @@ namespace Sf;
  */
 abstract class SqlExplainProfilingAbstract
 {
-    protected const SELECT_PROFILING_SQL   = 'SELECT @@profiling as p_v';
+    protected const SELECT_PROFILING_SQL   = 'SELECT @@profiling AS p_v';
     protected const OPEN_PROFILING_SQL     = 'SET profiling=1';
-    protected const SET_PROFILING_SIZE_SQL = 'set profiling_history_size=100';
+    protected const SET_PROFILING_SIZE_SQL = 'SET profiling_history_size=100';
     protected const CLOSE_PROFILING_SQL    = 'SET profiling=0';
     protected const SHOW_PROFILES_SQL      = 'SHOW PROFILES';
-    protected const SHOW_PROFILE_QUERY_SQL = 'SHOW PROFILE for query ';
-    protected const EXPLAIN_SQL            = "EXPLAIN ";
+    protected const SHOW_PROFILE_QUERY_SQL = 'SHOW PROFILE FOR QUERY ';
+    protected const EXPLAIN_SQL            = 'EXPLAIN ';
 
     /**
      * @var null 保存mysql连接
