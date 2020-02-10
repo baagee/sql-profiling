@@ -135,18 +135,23 @@
 
         <br>
         <fieldset class="layui-elem-field layui-field-title">
-            <legend>信息搜集抽象代码</legend>
+            <legend>数据收集示例代码</legend>
         </fieldset>
 
-        <pre><code class="php">{{$abstract_code}}</code></pre>
-
-        <br>
-        <fieldset class="layui-elem-field layui-field-title">
-            <legend>继承示例代码</legend>
-        </fieldset>
-
-        <pre><code class="php">{{$example_code}}</code></pre>
-
+        <div class="layui-collapse">
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">SqlExplainProfilingAbstract.php</h2>
+                <div class="layui-colla-content" style="padding: 0;">
+                    <pre><code class="php">{{$abstract_code}}</code></pre>
+                </div>
+            </div>
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">MySqlExplainProfiling.php</h2>
+                <div class="layui-colla-content" style="padding: 0">
+                    <pre><code class="php">{{$example_code}}</code></pre>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
