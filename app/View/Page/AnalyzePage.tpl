@@ -71,6 +71,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;">
+                <?php
+                    $cost=number_format($sqlDetail['cost'],2);
+                    if($cost>3 && $cost<10){
+                        $level='layui-bg-orange';
+                    }elseif($cost<=3){
+                        $level='layui-bg-blue';
+                    }else{
+                        $level='';
+                    }
+                ;?>
+                <span class="layui-badge {{$level}}">{{$cost}}ms</span>
                 {{$sqlDetail['sql']}}
             </h2>
             <div class="layui-colla-content
