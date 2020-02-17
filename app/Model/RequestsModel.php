@@ -61,38 +61,26 @@ class RequestsModel extends ModelAbstract
      */
     public function search($xId, $page, $limit, $url = '', $traceId = '', $startTime = '', $endTime = '')
     {
-        $pdata = [
-            ":xId" => $xId
-        ];
-        $where = "`x_id`=:xId";
-        $co    = [
-            'x_id' => ['=', $xId]
-        ];
+        $co = ['x_id' => ['=', $xId]];
         if (!empty($url)) {
-            $co['url']     = ['like', '%' . $url . '%'];
-            $where         .= " AND `url` like :url";
-            $pdata[":url"] = '%' . $url . '%';
+            $co['url'] = ['like', '%' . $url . '%'];
         }
         if (!empty($traceId)) {
-            $co['trace_id']    = ['=', $traceId];
-            $where             .= " AND `trace_id` = :traceId";
-            $pdata[':traceId'] = $traceId;
+            $co['trace_id'] = ['=', $traceId];
         }
         if (!empty($startTime = trim($startTime)) && !empty($endTime = trim($endTime))) {
             $co['request_time'] = ['between', [$startTime, $endTime]];
-            $where              .= " AND `request_time` BETWEEN :st AND :et";
-            $pdata[":st"]       = $startTime;
-            $pdata[":et"]       = $endTime;
         }
+        $minId = $this->tableObj->fields(['id'])->where($co)->limit(($page - 1) * $limit, 1)
+            ->orderBy(['id' => 'desc'])->select();
+        $minId = $minId[0]['id'] ?? 0;
 
-        $offset = ($page - 1) * $limit;
-        $sql    = <<<SQL
-SELECT `l_id`, `trace_id`, `url`, `request_time`, `all_cost_time`, `sql_count`, `create_time` FROM `requests` r inner join (
-select `id` from `requests` WHERE $where ORDER BY `create_time` DESC limit $offset,$limit) b on r.id=b.id
-SQL;
+        $co['id'] = ['<=', $minId];
+        $list     = $this->tableObj->fields([
+            'l_id', 'trace_id', 'url', 'request_time', 'all_cost_time', 'sql_count', 'create_time'
+        ])->where($co)->orderBy(['create_time' => 'desc'])->limit($limit)->select();
+        unset($co['id']);
 
-        $db    = DB::getInstance();
-        $list  = $db->query($sql, $pdata);
         $count = $this->tableObj->fields(['count(*) as c'])->where($co)->select()[0]['c'] ?? 0;
         return compact('list', 'count');
     }
