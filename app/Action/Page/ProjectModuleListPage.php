@@ -27,7 +27,13 @@ class ProjectModuleListPage extends ActionAbstract
         $list = (new DataService())->projectModelList();
         return [
             'title'          => '项目-模块列表',
-            'project_module' => $list
+            'project_module' => $list,
+            'breadcrumb'     => [
+                [
+                    'name' => '项目列表',
+                    'end'  => true,
+                ]
+            ]
         ];
     }
 }

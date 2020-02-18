@@ -21,7 +21,7 @@
 {{fill container}}
 
 <div>
-    <div style="margin-bottom: 25px;">
+    <div style="padding: 5px 15px;background-color: white;">
         <h2 style="color: #666;
     font-weight: 500;    word-break: break-all;">
             <a href="{{$analyze['request_detail']['url']}}" target="_blank">{{$analyze['request_detail']['url']}}</a>
@@ -72,16 +72,9 @@
     text-overflow: ellipsis;
     white-space: nowrap;">
                 <?php
-                    $cost=number_format($sqlDetail['cost'],2);
-                    if($cost>3 && $cost<10){
-                        $level='layui-bg-orange';
-                    }elseif($cost<=3){
-                        $level='layui-bg-blue';
-                    }else{
-                        $level='';
-                    }
+                    $cost=number_format($sqlDetail['cost'],2,'.','');
                 ;?>
-                <span class="layui-badge {{$level}}">{{$cost}}ms</span>
+                <span class="layui-badge" style="background-color: {{$sqlDetail['time_color']}}!important;">{{$cost}}ms</span>
                 {{$sqlDetail['sql']}}
             </h2>
             <div class="layui-colla-content

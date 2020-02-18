@@ -50,7 +50,18 @@ class RequestListPage extends ActionAbstract
             'x_id'           => $params['x_id'],
             'project_module' => $list,
             'cur_modules'    => $detail,
-            'cur_project'    => $project
+            'cur_project'    => $project,
+            'breadcrumb'     => [
+                [
+                    'href' => '/projects.html',
+                    'name' => '项目列表',
+                    'end'  => false,
+                ],
+                [
+                    'name' => $project . '-' . $module['module'],
+                    'end'  => true,
+                ],
+            ]
         ];
     }
 }

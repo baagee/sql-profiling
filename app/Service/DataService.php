@@ -169,6 +169,34 @@ class DataService
     }
 
     /**
+     * 根据时间获取颜色
+     * @param $time
+     * @return string
+     */
+    protected function getTimeColor($time)
+    {
+        switch ($time) {
+            case $time < 1:
+                return '#00DD00';
+            case $time >= 1 && $time < 3:
+                return '#66DD00';
+            case $time >= 3 && $time < 6:
+                return '#99DD00';
+            case $time >= 6 && $time < 12:
+                return '#EEEE00';
+            case $time >= 12 && $time < 24:
+                return '#DDAA00';
+            case $time >= 24 && $time < 48:
+                return '#EE7700';
+            case $time >= 48 && $time < 96:
+                return '#E63F00';
+            case $time >= 96:
+            default:
+                return '#CC0000';
+        }
+    }
+
+    /**
      * 获取分析的数据
      * @param $lId
      * @return array
@@ -236,8 +264,9 @@ class DataService
                 $beforeTotal = $afterTotal;
             }
             unset($dd);
-            $item['profile'] = $profile;
-            $item['colors']  = json_encode($colors);
+            $item['profile']    = $profile;
+            $item['colors']     = json_encode($colors);
+            $item['time_color'] = $this->getTimeColor($item['cost']);
 
             $explain = json_decode($item['explain'], true) ?? [];
             if (count($explain) > 0 && count($explain) === count($explain, COUNT_RECURSIVE)) {

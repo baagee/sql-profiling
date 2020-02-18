@@ -34,8 +34,9 @@ class SqlPage extends ActionAbstract
         $service = new DataService();
         $sql     = $service->getSql($params['s_id']);
         return [
-            'title'          => '完整sql',
-            'sql'            => $sql
+            'title'      => '完整sql',
+            'sql'        => $sql,
+            'breadcrumb' => [],
         ];
     }
 }

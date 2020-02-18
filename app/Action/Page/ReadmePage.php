@@ -32,14 +32,15 @@ EXP;
         $example_code  = $this->getExampleCode();
         $example       = json_encode(json_decode($example), JSON_PRETTY_PRINT);;
         return [
-            'title'          => '使用文档',
-            'main'           => '利用mysql的profiling工具可以分析得到每条sql语句的执行详情，对每条sql进行explain分析，将执行过程和explain数据发送到此平台来进行可视化展示与分析。在请求开始时开启profiling，请求结束时获取profiling信息，得到每条sql，对每个sql进行explain分析，组织数据发送到此平台，关闭profiling。',
-            'api'            => 'http://' . $_SERVER['HTTP_HOST'] . '/api/receiver',
-            'method'         => 'post',
-            'headers'        => [
+            'title'         => '使用文档',
+            'breadcrumb'    => [],
+            'main'          => '利用mysql的profiling工具可以分析得到每条sql语句的执行详情，对每条sql进行explain分析，将执行过程和explain数据发送到此平台来进行可视化展示与分析。在请求开始时开启profiling，请求结束时获取profiling信息，得到每条sql，对每个sql进行explain分析，组织数据发送到此平台，关闭profiling。',
+            'api'           => 'http://' . $_SERVER['HTTP_HOST'] . '/api/receiver',
+            'method'        => 'post',
+            'headers'       => [
                 "Content-Type: application/json"
             ],
-            'params'         => [
+            'params'        => [
                 'example' => $example,
                 'detail'  => [
                     [
@@ -80,8 +81,8 @@ EXP;
                     ],
                 ]
             ],
-            'abstract_code'  => $abstract_code,
-            'example_code'   => $example_code,
+            'abstract_code' => $abstract_code,
+            'example_code'  => $example_code,
         ];
     }
 

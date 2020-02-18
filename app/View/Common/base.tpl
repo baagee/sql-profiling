@@ -46,6 +46,17 @@
 <body>
 
 <div class="layui-container" style="padding: 20px; background-color: #F2F2F2;margin-bottom: 20px;margin-top: 15px;">
+    <div style="padding-bottom: 15px" id="small-menu">
+        <span class="layui-breadcrumb">
+            {{loop $breadcrumb $itemBc}}
+            {{if $itemBc['end']}}
+                <a><cite>{{$itemBc['name']}}</cite></a>
+            {{else}}
+                <a href="{{$itemBc['href']}}">{{$itemBc['name']}}</a>
+            {{/if}}
+            {{/loop}}
+        </span>
+    </div>
     {{hole container}}
 </div>
 

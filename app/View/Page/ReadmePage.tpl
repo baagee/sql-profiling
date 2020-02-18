@@ -66,7 +66,10 @@
 {{end header}}
 
 {{fill container}}
-
+<script>
+    var box = document.getElementById("small-menu");
+    box.remove();
+</script>
 <div class="layui-card">
     <div class="layui-card-header">
         <h2>使用文档</h2>
