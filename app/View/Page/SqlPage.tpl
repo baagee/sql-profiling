@@ -1,10 +1,7 @@
 {{layout 'Common/base.tpl'}}
 {{fill header}}
-<?php $l=strlen($sql);?>
-{{if $l<=150000}}
 <link rel="stylesheet" href="/static/highlight/styles/vs.css">
-    <script src="/static/highlight/highlight.pack.js"></script>
-{{/if}}
+<script src="/static/highlight/highlight.pack.js"></script>
 {{end header}}
 
 {{fill container}}
@@ -13,9 +10,7 @@
     box.remove();
 </script>
 <pre><code class="sql" style="padding: 0!important;background-color: #f2f2f2!important;">{{$sql}}</code></pre>
-{{if $l<=150000}}
-    <script type="text/javascript">
-        hljs.initHighlighting();
-    </script>
-{{/if}}
+<script type="text/javascript">
+    hljs.initHighlighting();
+</script>
 {{end container}}
