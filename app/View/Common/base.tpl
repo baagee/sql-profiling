@@ -8,24 +8,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+    <style>
+        body {
+            opacity: 0;
+            animation: page-fade-in 1.2s forwards;
+            /*animation: page-scale-up 1s forwards;*/
+            background-image: url(/static/bg.png);
+            background-repeat: repeat-x;
+            background-attachment: fixed;
+        }
+
+        @keyframes page-fade-in {
+            0% {
+                opacity: 0
+            }
+
+            100% {
+                opacity: 1
+            }
+        }
+
+
+        @keyframes page-scale-up {
+            0% {
+                opacity: 0;
+                transform: scale(.9)
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1)
+            }
+        }
+    </style>
     {{hole header}}
 </head>
-<body style="    background-image: url(/static/bg.png);
-    background-repeat: repeat-x;
-    background-attachment: fixed;">
+<body>
 
-{{include 'Common/header-menu.tpl'}}
-
-<div class="layui-container" style="padding: 20px; background-color: #F2F2F2;margin-top: 75px;margin-bottom: 20px">
+<div class="layui-container" style="padding: 20px; background-color: #F2F2F2;margin-bottom: 20px;margin-top: 15px;">
     {{hole container}}
 </div>
 
 <script src="/static/layui/layui.js" charset="utf-8"></script>
 <script>
-    layui.use('element', function () {
-    });
     // 回到顶部
-    layui.use('util', function () {
+    layui.use(['element', 'util'], function () {
         var util = layui.util;
         util.fixbar();
     });

@@ -9,12 +9,13 @@
 namespace App\Action\Page;
 
 use App\Service\DataService;
+use BaAGee\NkNkn\Base\ActionAbstract;
 
 /**
  * Class AnalyzePage
  * @package App\Action\Page
  */
-class AnalyzePage extends PageHeaderBase
+class AnalyzePage extends ActionAbstract
 {
     /**
      * @var array
@@ -34,7 +35,6 @@ class AnalyzePage extends PageHeaderBase
         $analyze = $service->analyze($params['l_id']);
         return [
             'title'          => 'sql分析详情',
-            'project_module' => $this->getHeaderMenu(),
             'analyze'        => $analyze
         ];
     }

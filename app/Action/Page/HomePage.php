@@ -15,7 +15,7 @@ use BaAGee\NkNkn\Base\ActionAbstract;
  * Class ProjectModuleListPage
  * @package App\Action\Page
  */
-class ProjectModuleListPage extends ActionAbstract
+class HomePage extends ActionAbstract
 {
     /**
      * @param array $params
@@ -25,8 +25,9 @@ class ProjectModuleListPage extends ActionAbstract
     protected function execute(array $params = [])
     {
         $list = (new DataService())->projectModelList();
+
         return [
-            'title'          => '项目-模块列表',
+            'title'          => 'sql性能分析工具',
             'project_module' => $list
         ];
     }

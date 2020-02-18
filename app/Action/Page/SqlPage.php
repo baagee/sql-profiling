@@ -9,12 +9,13 @@
 namespace App\Action\Page;
 
 use App\Service\DataService;
+use BaAGee\NkNkn\Base\ActionAbstract;
 
 /**
  * Class AnalyzePage
  * @package App\Action\Page
  */
-class SqlPage extends PageHeaderBase
+class SqlPage extends ActionAbstract
 {
     /**
      * @var array
@@ -34,7 +35,6 @@ class SqlPage extends PageHeaderBase
         $sql     = $service->getSql($params['s_id']);
         return [
             'title'          => '完整sql',
-            'project_module' => $this->getHeaderMenu(),
             'sql'            => $sql
         ];
     }

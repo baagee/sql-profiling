@@ -193,7 +193,7 @@ class DataService
         };
         $optimize       = new OptimizeSql();
         foreach ($sqlDetailList as &$item) {
-            $profile      = json_decode($item['profile'], true);
+            $profile     = json_decode($item['profile'], true);
             $pieData     = $timeLine = [];
             $beforeTotal = 0;
             $colors      = [];
@@ -237,7 +237,7 @@ class DataService
             }
             unset($dd);
             $item['profile'] = $profile;
-            $item['colors'] = json_encode($colors);
+            $item['colors']  = json_encode($colors);
 
             $explain = json_decode($item['explain'], true) ?? [];
             if (count($explain) > 0 && count($explain) === count($explain, COUNT_RECURSIVE)) {
@@ -254,7 +254,9 @@ class DataService
             $item['suggestions']   = $optimize->getSuggestions($item['sql'], $item['explain'], $item['profile'], $item['cost']);
             $item['score']         = MySqlExplainRemark::getScore(count($item['suggestions']), $item['explain']);
             if (strlen($item['sql']) > 8192) {
-                $item['sql'] = substr($item['sql'], 0, 8192) . '<a href="/sql/' . $item['s_id'] . '.html" target="_blank" title="点击查看完整sql">...</a>';
+                $url         = '/sql/' . $item['s_id'] . '.html';
+                $item['sql'] = substr($item['sql'], 0, 8192) .
+                    '<a href="javascript:;" onclick="showSql(\'' . $url . '\')" title="点击查看完整sql">...</a>';
             }
         }
         unset($item);

@@ -17,11 +17,17 @@ use App\Action\Api\RequestListApi;
 use App\Middleware\ReturnHtml;
 use App\Middleware\ReturnJson;
 use App\Middleware\PageCache;
+use App\Action\Page\HomePage;
 
 return [
-    '/'                    => [
+    '/projects.html'       => [
         'method'     => 'get',
         'callback'   => ProjectModuleListPage::class,
+        'middleware' => [ReturnHtml::class]
+    ],
+    '/'                    => [
+        'method'     => 'get',
+        'callback'   => HomePage::class,
         'middleware' => [ReturnHtml::class]
     ],
     '/api/project/delete'  => [

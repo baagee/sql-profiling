@@ -4,12 +4,12 @@
 <script src="/static/highlight/highlight.pack.js"></script>
 <style>
     .noselect {
-        -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Chrome/Safari/Opera */
-        -khtml-user-select: none; /* Konqueror */
-        -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-        user-select: none; /* Non-prefixed version, currentlynot supported by any browser */
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 
     .sql {
@@ -252,12 +252,29 @@
 {{end container}}
 
 {{fill tail}}
-<script type="text/javascript">
-    hljs.initHighlighting();
-</script>
-<script src="/static//echarts.min.js"></script>
+<script src="/static/echarts.min.js"></script>
 
 <script type="text/javascript">
+    layui.use('layer', function () {
+        var layer = layui.layer;
+    });
+
+    function showSql(url) {
+        layer.open({
+            type: 2,
+            area: ['70%', '70%'],
+            fixed: true, //固定
+            maxmin: false,
+            scrollbar: false,
+            anim: 5,
+            shadeClose: true,
+            skin: "layui-layer-molv",
+            title: "完整SQL",
+            content: url
+        });
+    }
+
+    hljs.initHighlighting();
     {{loop $analyze['sql_detail_list'] $i $sqlDetail}}
 
     layui.use(['rate'], function () {

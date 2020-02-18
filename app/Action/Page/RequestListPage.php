@@ -8,11 +8,14 @@
 
 namespace App\Action\Page;
 
+use App\Service\DataService;
+use BaAGee\NkNkn\Base\ActionAbstract;
+
 /**
  * Class RequestListPage
  * @package App\Action\Page
  */
-class RequestListPage extends PageHeaderBase
+class RequestListPage extends ActionAbstract
 {
     /**
      * @var array
@@ -28,8 +31,7 @@ class RequestListPage extends PageHeaderBase
      */
     protected function execute(array $params = [])
     {
-        $list = $this->getHeaderMenu();
-        // var_dump($list);
+        $list    = (new DataService())->projectModelList();
         $detail  = $module = [];
         $project = '';
         foreach ($list['header_menu'] as $project => $modules) {
@@ -43,13 +45,12 @@ class RequestListPage extends PageHeaderBase
                 break;
             }
         }
-        $data = [
+        return [
             'title'          => $project . '-' . $module['module'] . '模块请求列表',
             'x_id'           => $params['x_id'],
             'project_module' => $list,
             'cur_modules'    => $detail,
             'cur_project'    => $project
         ];
-        return $data;
     }
 }

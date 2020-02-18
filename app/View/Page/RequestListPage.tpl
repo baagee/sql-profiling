@@ -78,9 +78,7 @@
 </script>
 <script src="/static/jquery.min.js"></script>
 <script>
-    layui.use(['form'], function () {
-    });
-    layui.use('laydate', function () {
+    layui.use(['form', 'laydate'], function () {
         var laydate = layui.laydate;
         //日期时间范围y
         laydate.render({
