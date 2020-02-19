@@ -9,12 +9,15 @@
 use BaAGee\NkNkn\AppEnv;
 
 return [
-    'host'             => '127.0.0.1',
-    'port'             => 5200,
-    'user'             => 'ttt',
-    'password'         => '1q2w3tyer',
-    'database'         => 'sql_profiling',
-    'connectTimeout'   => 1,
-    'charset'          => 'utf8mb4',
-    'schemasCachePath' => AppEnv::get('RUNTIME_PATH') . DIRECTORY_SEPARATOR . 'schemas',
+    'host'           => '127.0.0.1',
+    'port'           => 5200,
+    'user'           => 'ttt',
+    'password'       => '1q2w3tyer',
+    'database'       => 'sql_profiling',
+    'connectTimeout' => 1,
+    'charset'        => 'utf8mb4',
+    'options'        => [
+        //pdo连接时额外选项
+        \PDO::ATTR_PERSISTENT => true,
+    ],
 ];

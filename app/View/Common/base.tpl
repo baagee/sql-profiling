@@ -41,6 +41,20 @@
             }
         }
     </style>
+    <script>
+        window.onload = function () {
+            if (window.top !== window) {
+                var thisSrc = document.location.href;
+                // console.log('sub:当前iframe.location.href=' + thisSrc)
+                var arrUrl = thisSrc.split("//");
+                var start = arrUrl[1].indexOf("/");
+                if (arrUrl[1].substring(start).indexOf('/sql/') === -1) {
+                    // console.log('sub:设置window.parent.location.hash=' + arrUrl[1].substring(start))
+                    window.parent.location.hash = arrUrl[1].substring(start);
+                }
+            }
+        }
+    </script>
     {{hole header}}
 </head>
 <body>

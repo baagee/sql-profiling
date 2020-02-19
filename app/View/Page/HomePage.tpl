@@ -14,15 +14,38 @@
             var iframe = document.getElementById("internal-frame");
             var href = iframe.contentWindow.location.href;
             var topHeight = 60;
-            if (href.indexOf("projects.html") != -1) {
+            if (href.indexOf("projects.html") !== -1) {
                 topHeight = 63;
             }
+            // console.log(topHeight)
             iframe.height = h - topHeight;
         }
 
-        window.onresize = function () {
-            getHeight();
+        window.onresize = getHeight;
 
+        window.onload = function () {
+            if (window.top === window) {
+                var hash = window.location.hash;
+                // console.log('当前hash=' + hash)
+                var path = '';
+                if (hash === "") {
+                    window.location.hash = "#/projects.html"
+                    path = '/projects.html';
+                    // console.log("hash 为空，设置成projects.html")
+                } else {
+                    path = hash.substr(1, hash.length - 1);
+                    var curPath = document.getElementById("internal-frame").src;
+                    // console.log('当前iframe.src=' + curPath)
+                    var arrUrl = curPath.split("//");
+                    var oldPath = arrUrl[1].substring(arrUrl[1].indexOf("/"));
+
+                    if (oldPath === path) {
+                        return false;
+                    }
+                }
+                // console.log('设置iframe.src=' + path)
+                document.getElementById("internal-frame").src = path
+            }
         }
     </script>
     <style>
@@ -60,7 +83,7 @@
 </div>
 
 
-<iframe src="/projects.html" frameborder="no" scrolling="auto" onresize="getHeight()"
+<iframe src="" frameborder="no" scrolling="auto" onresize="getHeight()"
         onload="getHeight()" id="internal-frame"
         style="width: 100%;padding-top: 60px"
         name="body-container"></iframe>

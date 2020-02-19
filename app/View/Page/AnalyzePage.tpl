@@ -15,6 +15,15 @@
     .sql {
         padding: 0 !important;
     }
+    .layui-timeline-title{
+        padding-left: 5px!important;
+    }
+    .layui-timeline-title:hover{
+        background-color: #e5f3ff!important;
+    }
+    .layui-timeline-content{
+        padding-left: 20px!important;
+    }
 </style>
 {{end header}}
 

@@ -173,7 +173,7 @@ class DataService
      * @param $time
      * @return string
      */
-    protected function getTimeColor($time)
+    protected static function getBadgeColor($time)
     {
         switch ($time) {
             case $time < 1:
@@ -197,6 +197,19 @@ class DataService
     }
 
     /**
+     * 随机颜色
+     * @return string
+     */
+    protected static function randomColor()
+    {
+        $c = '';
+        while (strlen($c) < 6) {
+            $c .= sprintf("%02X", mt_rand(0, 255));
+        }
+        return '#' . $c;
+    }
+
+    /**
      * 获取分析的数据
      * @param $lId
      * @return array
@@ -212,13 +225,6 @@ class DataService
 
         $sqlDetailModel = new SqlDetailModel();
         $sqlDetailList  = $sqlDetailModel->getByLId($lId);
-        $randColor      = function () {
-            $c = '';
-            while (strlen($c) < 6) {
-                $c .= sprintf("%02X", mt_rand(0, 255));
-            }
-            return '#' . $c;
-        };
         $optimize       = new OptimizeSql();
         foreach ($sqlDetailList as &$item) {
             $profile     = json_decode($item['profile'], true);
@@ -247,7 +253,7 @@ class DataService
 
                 $color = '';
                 while (true) {
-                    $color = $randColor();
+                    $color = self::randomColor();
                     if (!in_array($color, $colors)) {
                         break;
                     }
@@ -266,7 +272,7 @@ class DataService
             unset($dd);
             $item['profile']    = $profile;
             $item['colors']     = json_encode($colors);
-            $item['time_color'] = $this->getTimeColor($item['cost']);
+            $item['time_color'] = self::getBadgeColor($item['cost']);
 
             $explain = json_decode($item['explain'], true) ?? [];
             if (count($explain) > 0 && count($explain) === count($explain, COUNT_RECURSIVE)) {
