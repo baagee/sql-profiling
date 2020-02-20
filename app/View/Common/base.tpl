@@ -40,6 +40,20 @@
                 transform: scale(1)
             }
         }
+        #refreshIcon{
+            float: right;
+            transition:All 0.4s ease-in-out;
+            -webkit-transition:All 0.4s ease-in-out;
+            -moz-transition:All 0.4s ease-in-out;
+            -o-transition:All 0.4s ease-in-out;
+        }
+        #refreshIcon:hover{
+            transform:rotate(360deg);
+            -webkit-transform:rotate(360deg);
+            -moz-transform:rotate(360deg);
+            -o-transform:rotate(360deg);
+            -ms-transform:rotate(360deg);
+        }
     </style>
     <script>
         window.onload = function () {
@@ -50,7 +64,7 @@
                 var start = arrUrl[1].indexOf("/");
                 if (arrUrl[1].substring(start).indexOf('/sql/') === -1) {
                     // console.log('sub:设置window.parent.location.hash=' + arrUrl[1].substring(start))
-                    window.parent.location.hash = arrUrl[1].substring(start);
+                    window.parent.history.replaceState('', document.title, '/#' + arrUrl[1].substring(start));
                 }
             }
         }
@@ -69,6 +83,9 @@
                 <a href="{{$itemBc['href']}}">{{$itemBc['name']}}</a>
             {{/if}}
             {{/loop}}
+        </span>
+        <span id="refreshIcon">
+            <a href="" class="layui-icon layui-icon-refresh-3" style="color: #999999;" title="点击刷新页面"></a>
         </span>
     </div>
     {{hole container}}
