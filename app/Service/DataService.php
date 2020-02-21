@@ -339,4 +339,20 @@ class DataService
         $sqlDetailModel = new SqlDetailModel();
         return $sqlDetailModel->getBySId($sId)[0]['sql'] ?? '';
     }
+
+    /**
+     * 统计各个项目的请求数量
+     * @return array
+     * @throws \Exception
+     */
+    public function getModuleRequestCount()
+    {
+        $requestModel = new RequestsModel();
+        $res          = $requestModel->countGroupByXId();
+        if (!empty($res)) {
+            return array_column($res, 'c', 'x_id');
+        } else {
+            return [];
+        }
+    }
 }

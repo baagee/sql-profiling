@@ -125,4 +125,14 @@ class RequestsModel extends ModelAbstract
             'x_id' => ['=', $xId]
         ])->delete();
     }
+
+    /**
+     * 统计每个项目-模块的请求数
+     * @return array|\Generator
+     * @throws \Exception
+     */
+    public function countGroupByXId()
+    {
+        return $this->tableObj->fields(['x_id', 'count(1) as c'])->groupBy('x_id')->select();
+    }
 }

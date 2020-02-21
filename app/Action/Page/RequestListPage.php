@@ -48,7 +48,6 @@ class RequestListPage extends ActionAbstract
         return [
             'title'          => $project . '-' . $module['module'] . '模块请求列表',
             'x_id'           => $params['x_id'],
-            'project_module' => $list,
             'cur_modules'    => $detail,
             'cur_project'    => $project,
             'breadcrumb'     => [

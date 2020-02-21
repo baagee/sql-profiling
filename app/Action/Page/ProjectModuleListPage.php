@@ -24,10 +24,13 @@ class ProjectModuleListPage extends ActionAbstract
      */
     protected function execute(array $params = [])
     {
-        $list = (new DataService())->projectModelList();
+        $ds        = new DataService();
+        $list      = $ds->projectModelList();
+        $xId2Count = $ds->getModuleRequestCount();
         return [
             'title'          => '项目-模块列表',
-            'project_module' => $list,
+            'project_module' => $list['list']??[],
+            'xid2count'      => $xId2Count,
             'breadcrumb'     => [
                 [
                     'name' => '项目列表',
