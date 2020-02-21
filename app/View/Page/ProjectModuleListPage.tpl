@@ -7,6 +7,8 @@
         height: 60px;
         line-height: 60px;
         overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         font-size: larger;
     }
 

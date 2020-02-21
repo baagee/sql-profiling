@@ -15,14 +15,17 @@
     .sql {
         padding: 0 !important;
     }
-    .layui-timeline-title{
-        padding-left: 5px!important;
+
+    .layui-timeline-title {
+        padding-left: 5px !important;
     }
-    .layui-timeline-title:hover{
-        background-color: #e5f3ff!important;
+
+    .layui-timeline-title:hover {
+        background-color: #e5f3ff !important;
     }
-    .layui-timeline-content{
-        padding-left: 20px!important;
+
+    .layui-timeline-content {
+        padding-left: 20px !important;
     }
 </style>
 {{end header}}
@@ -83,7 +86,8 @@
                 <?php
                     $cost=number_format($sqlDetail['cost'],2,'.','');
                 ;?>
-                <span class="layui-badge" style="background-color: {{$sqlDetail['time_color']}}!important;">{{$cost}}ms</span>
+                <span class="layui-badge"
+                      style="background-color: {{$sqlDetail['time_color']}}!important;">{{$cost}}ms</span>
                 {{$sqlDetail['sql']}}
             </h2>
             <div class="layui-colla-content
@@ -137,15 +141,22 @@
                     <div class="layui-col-md8">
                         <div class="layui-card">
                             <div class="layui-card-header">饼状图分析</div>
-                            <div class="layui-card-body" id="main_{{$sqlDetail['query_id']}}"
-                                 style="width: 700px;height:400px;"></div>
+                            <div class="layui-card-body pie-analyze
+                            {{if $i==0}}
+                                pie-analyze-first
+                            {{/if}}" id="main_{{$sqlDetail['query_id']}}"
+                                 style="width: 100%;height:400px;"></div>
                         </div>
                     </div>
                     <div class="layui-col-md12">
                         <div class="layui-card">
                             <div class="layui-card-header">执行时间轴</div>
-                            <div class="layui-card-body" id="container_{{$sqlDetail['query_id']}}"
-                                 style="width:1083px;height:180px;margin-top: -45px;padding:0"></div>
+                            <div class="layui-card-body line-analyze
+                           {{if $i==0}}
+                                line-analyze-first
+                            {{/if}}
+" id="container_{{$sqlDetail['query_id']}}"
+                                 style="width:100%;height:180px;margin-top: -45px;padding:0"></div>
                         </div>
                     </div>
                     {{if !empty($sqlDetail['explain'])}}
@@ -277,6 +288,20 @@
     }
 
     hljs.initHighlighting();
+
+    var first = document.getElementsByClassName('pie-analyze-first')[0];
+    var newW = first.offsetWidth.toString();
+    var pieList = document.getElementsByClassName('pie-analyze');
+    for (var i = 0; i <= pieList.length - 1; i++) {
+        pieList[i].style.width = newW + 'px';
+    }
+
+    first = document.getElementsByClassName('line-analyze-first')[0];
+    newW = first.offsetWidth.toString();
+    var lineList = document.getElementsByClassName('line-analyze');
+    for (i = 0; i <= lineList.length - 1; i++) {
+        lineList[i].style.width = newW + 'px';
+    }
     {{loop $analyze['sql_detail_list'] $i $sqlDetail}}
 
     layui.use(['rate'], function () {
@@ -333,7 +358,6 @@
     var myChart_2__{{$sqlDetail['query_id']}} = echarts.init(dom);
     option = null;
 
-    var data = {{$sqlDetail['timeline_data']}};
     var startTime = 0;
 
     function renderItem(params, api) {
@@ -416,7 +440,7 @@
                 x: [1, 2],
                 y: 0
             },
-            data: data
+            data: {{$sqlDetail['timeline_data']}}
         }]
     };
     if (option && typeof option === "object") {
@@ -424,7 +448,6 @@
     }
 
     {{/loop}}
-
 </script>
 
 {{end tail}}

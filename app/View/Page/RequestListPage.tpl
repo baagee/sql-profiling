@@ -6,6 +6,8 @@
         margin-top: 4px;
         font-size: larger;
         overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .layui-btn-disabled {
