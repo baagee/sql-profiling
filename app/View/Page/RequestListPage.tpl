@@ -27,7 +27,7 @@
 
         <div class="layui-row" style="margin-bottom: 15px">
             {{loop $cur_modules $module}}
-                <div class="layui-col-xs2">
+                <div class="layui-col-sm2 layui-col-xs4" style="height: 50px;">
                     <div class="grid-demo grid-demo-bg1">
                         <a class="layui-btn layui-btn-normal module_name
                     {{if $module['x_id']==$x_id}}

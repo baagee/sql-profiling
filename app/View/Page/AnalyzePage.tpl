@@ -39,42 +39,44 @@
             <a href="{{$analyze['request_detail']['url']}}" target="_blank">{{$analyze['request_detail']['url']}}</a>
         </h2>
     </div>
-    <table class="layui-table">
-        <colgroup>
-            <col width="150">
-            <col width="150">
-            <col width="200">
-            <col width="180">
-            <col width="180">
-            <col width="100">
-        </colgroup>
-        <thead>
-        <tr>
-            <th>项目</th>
-            <th>模块</th>
-            <th>trace_id</th>
-            <th>请求时间</th>
-            <th>sql总耗时(ms)</th>
-            <th>sql数量</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <a style="color: #1E9FFF!important;"
-                   href="/request/{{$analyze['request_detail']['x_id']}}.html">{{$analyze['request_detail']['project']}}</a>
-            </td>
-            <td>
-                <a style="color: #1E9FFF!important;"
-                   href="/request/{{$analyze['request_detail']['x_id']}}.html">{{$analyze['request_detail']['module']}}</a>
-            </td>
-            <td>{{$analyze['request_detail']['trace_id']}}</td>
-            <td>{{$analyze['request_detail']['request_time']}}</td>
-            <td>{{$analyze['request_detail']['all_cost_time']}}</td>
-            <td>{{$analyze['request_detail']['sql_count']}}</td>
-        </tr>
-        </tbody>
-    </table>
+    <div style="overflow-x: auto; white-space: nowrap;">
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="150">
+                <col width="200">
+                <col width="180">
+                <col width="180">
+                <col width="100">
+            </colgroup>
+            <thead>
+            <tr>
+                <th>项目</th>
+                <th>模块</th>
+                <th>trace_id</th>
+                <th>请求时间</th>
+                <th>sql总耗时(ms)</th>
+                <th>sql数量</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <a style="color: #1E9FFF!important;"
+                       href="/request/{{$analyze['request_detail']['x_id']}}.html">{{$analyze['request_detail']['project']}}</a>
+                </td>
+                <td>
+                    <a style="color: #1E9FFF!important;"
+                       href="/request/{{$analyze['request_detail']['x_id']}}.html">{{$analyze['request_detail']['module']}}</a>
+                </td>
+                <td>{{$analyze['request_detail']['trace_id']}}</td>
+                <td>{{$analyze['request_detail']['request_time']}}</td>
+                <td>{{$analyze['request_detail']['all_cost_time']}}</td>
+                <td>{{$analyze['request_detail']['sql_count']}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div class="layui-collapse">
     {{loop $analyze['sql_detail_list'] $i $sqlDetail}}
@@ -156,7 +158,7 @@
                                 line-analyze-first
                             {{/if}}
 " id="container_{{$sqlDetail['query_id']}}"
-                                 style="width:100%;height:180px;margin-top: -45px;padding:0"></div>
+                                 style="width:100%;height:180px;margin-top: -45px;padding:10px"></div>
                         </div>
                     </div>
                     {{if !empty($sqlDetail['explain'])}}

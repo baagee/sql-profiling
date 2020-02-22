@@ -108,27 +108,28 @@
         <fieldset class="layui-elem-field layui-field-title">
             <legend>请求参数</legend>
         </fieldset>
-        <table class="layui-table" style="word-break: break-word">
-            <thead>
-            <tr>
-                <th>参数</th>
-                <th>说明</th>
-                <th>类型</th>
-                <th>是否必须</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{loop $params['detail'] $param}}
+        <div style="overflow-x: auto; white-space: nowrap;">
+            <table class="layui-table" style="word-break: break-word">
+                <thead>
                 <tr>
-                    <td>{{$param['field']}}</td>
-                    <td>{{$param['doc']}}</td>
-                    <td>{{$param['type']}}</td>
-                    <td>{{php echo $param['required']?"是":"否"}}</td>
+                    <th>参数</th>
+                    <th>说明</th>
+                    <th>类型</th>
+                    <th>是否必须</th>
                 </tr>
-            {{/loop}}
-            </tbody>
-        </table>
-
+                </thead>
+                <tbody>
+                {{loop $params['detail'] $param}}
+                    <tr>
+                        <td>{{$param['field']}}</td>
+                        <td>{{$param['doc']}}</td>
+                        <td>{{$param['type']}}</td>
+                        <td>{{php echo $param['required']?"是":"否"}}</td>
+                    </tr>
+                {{/loop}}
+                </tbody>
+            </table>
+        </div>
         <br>
         <fieldset class="layui-elem-field layui-field-title">
             <legend>示例参数</legend>
