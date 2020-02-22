@@ -17,6 +17,22 @@
         line-height: 43px;
         background-color: #5FB878 !important;
     }
+    .layui-form-switch{
+        height: 36px!important;
+        margin-top: 0!important;
+        border-radius: 0!important;
+        border:1px solid #e6e6e6!important;
+    }
+    .layui-form-switch em{
+        top:6px!important;
+    }
+    .layui-form-switch i{
+        top: 10px;
+    }
+    #clearRequest:hover{
+        background-color: #FF5722!important;
+        color: #fff!important;
+    }
 </style>
 {{end header}}
 {{fill container}}
@@ -49,25 +65,24 @@
         <div class="layui-inline" style="width: 190px">
             <input class="layui-input" name="trace_id" id="trace_id" autocomplete="off" placeholder="trace_id">
         </div>
-        <div class="layui-inline" style="width: 300px">
+        <div class="layui-inline" style="width: 322px">
             <input class="layui-input" name="url" id="url" autocomplete="off" placeholder="url">
         </div>
         <div class="layui-inline" style="width: 300px">
             <input class="layui-input" type="text" name="request_time" id="request_time" placeholder="请求时间范围" readonly>
             <input type="hidden" name="request_time_input" id="request_time_input" value="">
         </div>
-        <div class="layui-inline" style="width: 100px">
-            <form class="layui-form" style="margin-bottom: 6px;">
+        <div class="layui-inline" style="width: 87px">
+            <form class="layui-form">
                 <input type="checkbox" name="open" id="showHost" lay-skin="switch"
                        lay-text="显示host|隐藏host">
             </form>
         </div>
 
         <button class="layui-btn" data-type="reload">搜索</button>
-        <a style="float: right;
-    line-height: 38px;
-    cursor: pointer;
-    color: #f34242;" id="clearRequest">清空该模块所有请求</a>
+        <button class="layui-btn layui-btn-primary" style="color: #ff6665;
+    border: 1px solid #ff6665;
+    background-color: #f2f2f2;" id="clearRequest">清空所有请求</button>
     </div>
     <table class="layui-hide" lay-filter='request_list' id="request_list"></table>
 </div>
@@ -164,7 +179,7 @@
             active[type] ? active[type].call(this) : '';
         });
         $('#clearRequest').on('click', function () {
-            layer.confirm('确定要清空吗?', {icon: 3, title: '提示'}, function (index) {
+            layer.confirm('确定要清空此模块请求记录吗?', {icon: 3, title: '提示'}, function (index) {
                 $.post("/api/request/clear", {
                     x_id: {{$x_id}}
                 }, function (res) {
