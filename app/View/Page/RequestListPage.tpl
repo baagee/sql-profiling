@@ -17,21 +17,25 @@
         line-height: 43px;
         background-color: #5FB878 !important;
     }
-    .layui-form-switch{
-        height: 36px!important;
-        margin-top: 0!important;
-        border-radius: 0!important;
-        border:1px solid #e6e6e6!important;
+
+    .layui-form-switch {
+        height: 36px !important;
+        margin-top: 0 !important;
+        border-radius: 0 !important;
+        border: 1px solid #e6e6e6 !important;
     }
-    .layui-form-switch em{
-        top:6px!important;
+
+    .layui-form-switch em {
+        top: 6px !important;
     }
-    .layui-form-switch i{
+
+    .layui-form-switch i {
         top: 10px;
     }
-    #clearRequest:hover{
-        background-color: #FF5722!important;
-        color: #fff!important;
+
+    #clearRequest:hover {
+        background-color: #FF5722 !important;
+        color: #fff !important;
     }
 </style>
 {{end header}}
@@ -47,7 +51,7 @@
                     <div class="grid-demo grid-demo-bg1">
                         <a class="layui-btn layui-btn-normal module_name
                     {{if $module['x_id']==$x_id}}
-                    layui-btn-disabled layui-anim layui-anim-scale
+                    layui-btn-disabled layui-anim layui-anim-scale this-module
                     {{/if}}
                     " href="/request/{{$module['x_id']}}.html"
                            style="background-color: {{$module['color']}}"
@@ -147,7 +151,8 @@
         table.on('tool(request_list)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
-                location.href = '/analyze/' + data.l_id + '.html'
+                // location.href = '/analyze/' + data.l_id + '.html'
+                window.open('/#/analyze/' + data.l_id + '.html', '_blank').location;
             }
         });
 
@@ -179,14 +184,15 @@
             active[type] ? active[type].call(this) : '';
         });
         $('#clearRequest').on('click', function () {
-            layer.confirm('确定要清空此模块请求记录吗?', {icon: 3, title: '提示'}, function (index) {
+            var module = $('.this-module')[0].innerText;
+            layer.confirm('确定要清空【' + module + '】所有请求记录吗?', {icon: 3, title: '提示'}, function (index) {
                 $.post("/api/request/clear", {
                     x_id: {{$x_id}}
                 }, function (res) {
                     if (res.code !== 0) {
                         layer.msg(res.message, {icon: 5});
                     } else {
-                        layer.msg('清除完毕');
+                        layer.msg('清空完毕');
                         layer.close(index);
                         active['reload'].call(this);
                     }
