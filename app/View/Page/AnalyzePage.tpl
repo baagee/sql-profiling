@@ -46,7 +46,8 @@
                 <col width="150">
                 <col width="200">
                 <col width="180">
-                <col width="180">
+                <col width="140">
+                <col width="100">
                 <col width="100">
             </colgroup>
             <thead>
@@ -57,6 +58,7 @@
                 <th>请求时间</th>
                 <th>sql总耗时(ms)</th>
                 <th>sql数量</th>
+                <th>分析时间</th>
             </tr>
             </thead>
             <tbody>
@@ -73,6 +75,7 @@
                 <td>{{$analyze['request_detail']['request_time']}}</td>
                 <td>{{$analyze['request_detail']['all_cost_time']}}</td>
                 <td>{{$analyze['request_detail']['sql_count']}}</td>
+                <td>{{$analyze['request_detail']['analyze_time']}}</td>
             </tr>
             </tbody>
         </table>

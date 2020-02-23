@@ -223,6 +223,8 @@ class DataService
         $pm                 = $projectModuleModel->getByXId($request['x_id']);
         $requestDetail      = array_merge($pm, $request);
 
+        $requestDetail['analyze_time'] = date('Y-m-d H:i:s');
+
         $sqlDetailModel = new SqlDetailModel();
         $sqlDetailList  = $sqlDetailModel->getByLId($lId);
         $optimize       = new OptimizeSql();
