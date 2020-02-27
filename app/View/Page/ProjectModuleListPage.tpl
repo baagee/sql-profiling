@@ -80,7 +80,7 @@
     });
 
     function deleteThis(project) {
-        layer.confirm('确定要删除吗?', {icon: 3, title: '提示'}, function (index) {
+        layer.confirm('确定要删除项目【'+project+'】吗?', {icon: 3, title: '提示'}, function (index) {
             $.post("/api/project/delete", {
                 project: project
             }, function (res) {

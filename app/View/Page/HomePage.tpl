@@ -60,42 +60,53 @@
     </style>
 </head>
 <body>
-<div class="layui-header header" style="position: fixed;
+<div class="layui-row">
+    <div class="layui-col-sm12 layui-hide-xs">
+        <div class="layui-header header" style="position: fixed;
     top: 0;
     width: 100%;">
-    <ul class="layui-nav layui-bg-blue">
-        <li class="layui-nav-item"><a href="/projects.html"
-                                      style="font-size: 18px;font-weight: 400;padding-right: 0;"
-                                      target="body-container">SQL性能分析工具</a></li>
-        {{loop $project_module['header_menu'] $project $modules}}
-            <li class="layui-nav-item">
-                <a href="javascript:;">{{$project}}</a>
-                <dl class="layui-nav-child">
-                    {{loop $modules $module}}
-                        <dd><a href="/request/{{$module['x_id']}}.html"
-                               target="body-container">{{$module['module']}}</a></dd>
-                    {{/loop}}
-                </dl>
-            </li>
-        {{/loop}}
-        <li class="layui-nav-item" style="float: right;"><a href="/readme.html" target="body-container">使用文档</a></li>
-    </ul>
+            <ul class="layui-nav layui-bg-blue">
+                <li class="layui-nav-item"><a href="/projects.html"
+                                              style="font-size: 18px;font-weight: 400;padding-right: 0;"
+                                              target="body-container">SQL性能分析工具</a></li>
+                {{loop $project_module['header_menu'] $project $modules}}
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">{{$project}}</a>
+                        <dl class="layui-nav-child">
+                            {{loop $modules $module}}
+                                <dd><a href="/request/{{$module['x_id']}}.html"
+                                       target="body-container">{{$module['module']}}</a></dd>
+                            {{/loop}}
+                        </dl>
+                    </li>
+                {{/loop}}
+                <li class="layui-nav-item" style="float: right;"><a href="/readme.html" target="body-container">使用文档</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <iframe src="" frameborder="no" scrolling="auto" onresize="getHeight()"
+                onload="getHeight()" id="internal-frame"
+                style="width: 100%;padding-top: 60px"
+                name="body-container"></iframe>
+
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
+        <script>
+            // 回到顶部
+            layui.use(['element', 'util'], function () {
+                var util = layui.util;
+                util.fixbar();
+            });
+        </script>
+    </div>
+    <div class="layui-col-xs12 layui-hide-sm">
+        <div style="text-align: center;
+    margin-top: 67%;
+    color: #e24040;">
+            <h1>屏幕太小啦，展示不出来啦</h1>
+        </div>
+    </div>
 </div>
-
-
-<iframe src="" frameborder="no" scrolling="auto" onresize="getHeight()"
-        onload="getHeight()" id="internal-frame"
-        style="width: 100%;padding-top: 60px"
-        name="body-container"></iframe>
-
-<script src="/static/layui/layui.js" charset="utf-8"></script>
-<script>
-    // 回到顶部
-    layui.use(['element', 'util'], function () {
-        var util = layui.util;
-        util.fixbar();
-    });
-</script>
-
 </body>
 </html>

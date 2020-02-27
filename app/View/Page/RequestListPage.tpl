@@ -37,6 +37,9 @@
         background-color: #FF5722 !important;
         color: #fff !important;
     }
+    .layui-table-tool{
+        background-color: white!important;
+    }
 </style>
 {{end header}}
 {{fill container}}
@@ -65,11 +68,17 @@
 </div>
 
 <div class="layui-row layui-col-space15" style="margin: 0!important;">
+    <script type="text/html"  id="toobar">
+            <button class="layui-btn layui-btn-primary layui-btn-sm" style="color: #ff6665;
+    border: 1px solid #ff6665;
+    background-color: #fff;" id="clearRequest">清空所有请求
+            </button>
+    </script>
     <div class="searchTable">
         <div class="layui-inline" style="width: 190px">
             <input class="layui-input" name="trace_id" id="trace_id" autocomplete="off" placeholder="trace_id">
         </div>
-        <div class="layui-inline" style="width: 322px">
+        <div class="layui-inline" style="width: 430px">
             <input class="layui-input" name="url" id="url" autocomplete="off" placeholder="url">
         </div>
         <div class="layui-inline" style="width: 300px">
@@ -83,10 +92,9 @@
             </form>
         </div>
 
-        <button class="layui-btn" data-type="reload">搜索</button>
-        <button class="layui-btn layui-btn-primary" style="color: #ff6665;
-    border: 1px solid #ff6665;
-    background-color: #f2f2f2;" id="clearRequest">清空所有请求</button>
+        <button class="layui-btn" data-type="reload" style="width: 92px;">
+            <i class="layui-icon layui-icon-search"></i>
+            搜索</button>
     </div>
     <table class="layui-hide" lay-filter='request_list' id="request_list"></table>
 </div>
@@ -135,8 +143,12 @@
                 {field: 'all_cost_time', width: 150, title: 'sql总耗时(ms)', sort: true},
                 {field: 'sql_count', width: 100, title: 'sql数量', sort: true},
                 {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 70},
-            ]]
-            , page: true,
+            ]],
+            page: {
+                curr: 1
+            },
+            toolbar: "#toobar",
+            defaultToolbar: ['filter', 'exports'],
             parseData: function (res) { //res 即为原始返回的数据
                 return {
                     "code": res.code, //解析接口状态
@@ -170,6 +182,7 @@
                     },
                     limit: 20
                     , where: {
+                        x_id:{{$x_id}},
                         trace_id: traceId.val(),
                         url: url.val(),
                         request_time: requestTime.val(),
