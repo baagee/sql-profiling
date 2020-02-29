@@ -223,7 +223,11 @@ class DataService
         $pm                 = $projectModuleModel->getByXId($request['x_id']);
         $requestDetail      = array_merge($pm, $request);
 
-        $requestDetail['analyze_time'] = date('Y-m-d H:i:s');
+        $requestDetail['analyze_time']  = date('Y-m-d H:i:s');
+        $requestDetail['avg_cost_time'] = number_format(
+            $requestDetail['all_cost_time'] / $requestDetail['sql_count'],
+            4, '.', ''
+        );
 
         $sqlDetailModel = new SqlDetailModel();
         $sqlDetailList  = $sqlDetailModel->getByLId($lId);

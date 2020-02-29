@@ -80,6 +80,13 @@ class RequestsModel extends ModelAbstract
             'l_id', 'trace_id', 'url', 'request_time', 'all_cost_time', 'sql_count', 'create_time'
         ])->where($co)->orderBy(['create_time' => 'desc'])->limit($limit)->select();
         unset($co['id']);
+        if (!empty($list)) {
+            array_walk($list, function (&$v) {
+                $v['avg_cost_time'] = number_format(
+                    $v['all_cost_time'] / $v['sql_count'], 4, '.', ''
+                );
+            });
+        }
 
         $count = $this->tableObj->fields(['count(*) as c'])->where($co)->select()[0]['c'] ?? 0;
         return compact('list', 'count');

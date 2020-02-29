@@ -14,8 +14,14 @@
         color: white;
         font-size: x-large;
         height: 48px;
+        border: none;
         line-height: 43px;
         background-color: #5FB878 !important;
+    }
+
+    .layui-btn-disabled:hover {
+        border: none !important;
+        color: white;
     }
 
     .layui-form-switch {
@@ -37,8 +43,9 @@
         background-color: #FF5722 !important;
         color: #fff !important;
     }
-    .layui-table-tool{
-        background-color: white!important;
+
+    .layui-table-tool {
+        background-color: white !important;
     }
 </style>
 {{end header}}
@@ -68,11 +75,11 @@
 </div>
 
 <div class="layui-row layui-col-space15" style="margin: 0!important;">
-    <script type="text/html"  id="toobar">
-            <button class="layui-btn layui-btn-primary layui-btn-sm" style="color: #ff6665;
+    <script type="text/html" id="toobar">
+        <button class="layui-btn layui-btn-primary layui-btn-sm" style="color: #ff6665;
     border: 1px solid #ff6665;
     background-color: #fff;" id="clearRequest">清空所有请求
-            </button>
+        </button>
     </script>
     <div class="searchTable">
         <div class="layui-inline" style="width: 190px">
@@ -94,7 +101,8 @@
 
         <button class="layui-btn" data-type="reload" style="width: 92px;">
             <i class="layui-icon layui-icon-search"></i>
-            搜索</button>
+            搜索
+        </button>
     </div>
     <table class="layui-hide" lay-filter='request_list' id="request_list"></table>
 </div>
@@ -138,10 +146,11 @@
             , cols: [[
                 // {field: 'record_id', title: 'ID', sort: true}
                 {field: 'trace_id', width: 190, title: 'trace_id', fixed: 'left'},
-                {field: 'url', title: 'url', sort: true},
+                {field: 'url', title: 'url', sort: true, width: 418},
                 {field: 'request_time', title: '请求时间', width: 180, sort: true},
                 {field: 'all_cost_time', width: 150, title: 'sql总耗时(ms)', sort: true},
                 {field: 'sql_count', width: 100, title: 'sql数量', sort: true},
+                {field: 'avg_cost_time', width: 150, title: 'sql平均耗时(ms)', sort: true},
                 {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 70},
             ]],
             page: {
