@@ -8,9 +8,8 @@
 
 namespace App\Model;
 
-use App\Library\IdGenerator;
-use BaAGee\MySQL\DB;
 use BaAGee\NkNkn\Base\ModelAbstract;
+use BaAGee\NkNkn\IdGenerator;
 
 /**
  * Class Requests
@@ -35,7 +34,7 @@ class RequestsModel extends ModelAbstract
      */
     public function save($xId, $traceId, $url, int $requestTime, $allCostTime, $sqlCount)
     {
-        $lId = IdGenerator::getId();
+        $lId = IdGenerator::getOne(false);
         $this->tableObj->insert([
             'x_id'          => $xId,
             'l_id'          => $lId,

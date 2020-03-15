@@ -8,8 +8,8 @@
 
 namespace App\Model;
 
-use App\Library\IdGenerator;
 use BaAGee\NkNkn\Base\ModelAbstract;
+use BaAGee\NkNkn\IdGenerator;
 
 /**
  * Class ProjectModuleModel
@@ -50,7 +50,7 @@ class ProjectModuleModel extends ModelAbstract
      */
     public function save($project, $module)
     {
-        $xId = IdGenerator::getId();
+        $xId = IdGenerator::getOne(false);
         $this->tableObj->insert([
             'x_id'    => $xId,
             'project' => $project,

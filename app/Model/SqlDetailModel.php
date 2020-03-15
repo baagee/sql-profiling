@@ -8,8 +8,8 @@
 
 namespace App\Model;
 
-use App\Library\IdGenerator;
 use BaAGee\NkNkn\Base\ModelAbstract;
+use BaAGee\NkNkn\IdGenerator;
 
 /**
  * Class SqlDetailModel
@@ -33,12 +33,12 @@ class SqlDetailModel extends ModelAbstract
         $rows = [];
         foreach ($profiling as $item) {
             $rows[] = [
-                's_id'     => IdGenerator::getId(),
+                's_id'     => IdGenerator::getOne(false),
                 'l_id'     => $lId,
                 'query_id' => $item['Query_ID'],
                 'cost'     => $item['Duration'] * 1000,
                 'sql'      => $item['Query'],
-                'profile'   => json_encode($item['detail']),
+                'profile'  => json_encode($item['detail']),
                 'explain'  => json_encode($item['explain'])
             ];
         }
