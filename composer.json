@@ -1,5 +1,5 @@
 {
-  "name": "mysql profiling",
+  "name": "baagee/mysql_profiling",
   "description": "mysql sql语句性能分析平台",
   "authors": [
     {

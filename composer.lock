@@ -7,17 +7,56 @@
     "content-hash": "6a16a6221de3687acb0b13ed300e7252",
     "packages": [
         {
-            "name": "baagee/nknkn",
-            "version": "v0.1.25",
+            "name": "baagee/async-task",
+            "version": "v0.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/baagee/nknkn.git",
-                "reference": "395163f0db6ac4c7ca8bc051f4245924e0e9ee5e"
+                "url": "https://github.com/baagee/async-task.git",
+                "reference": "2e61c8404cc8f835418063fa85cd148bab4dbfd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/395163f0db6ac4c7ca8bc051f4245924e0e9ee5e",
-                "reference": "395163f0db6ac4c7ca8bc051f4245924e0e9ee5e",
+                "url": "https://api.github.com/repos/baagee/async-task/zipball/2e61c8404cc8f835418063fa85cd148bab4dbfd2",
+                "reference": "2e61c8404cc8f835418063fa85cd148bab4dbfd2",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\AsyncTask\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "php process task library",
+            "time": "2020-03-20T08:13:56+00:00"
+        },
+        {
+            "name": "baagee/nknkn",
+            "version": "v0.1.26",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/nknkn.git",
+                "reference": "493b161a354397afd824a13a4c81bece1b10bbde"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/493b161a354397afd824a13a4c81bece1b10bbde",
+                "reference": "493b161a354397afd824a13a4c81bece1b10bbde",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -27,6 +66,7 @@
                 ]
             },
             "require": {
+                "baagee/async-task": "0.0.*",
                 "baagee/php-config": "0.0.*",
                 "baagee/php-cookie": "0.0.*",
                 "baagee/php-curl-request": "0.0.*",
@@ -63,7 +103,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2020-03-19T10:42:07+00:00"
+            "time": "2020-03-20T08:28:59+00:00"
         },
         {
             "name": "baagee/php-config",
