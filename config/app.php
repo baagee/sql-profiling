@@ -14,5 +14,6 @@ return [
         'lock_file' => \BaAGee\NkNkn\AppEnv::get('RUNTIME_PATH') . DIRECTORY_SEPARATOR . 'sync_task_lock',
         // 同时最大任务进程数
         'max_task'  => 50,
+        'output_dir' => \BaAGee\NkNkn\AppEnv::get('RUNTIME_PATH') . DIRECTORY_SEPARATOR . 'async_task_output',
     ]
 ];
