@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "baagee/async-task",
-            "version": "v0.0.8",
+            "version": "v0.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/async-task.git",
-                "reference": "0a6576b3583aff3de25573537451fa4e233a2c92"
+                "reference": "5460cb0723105b015dc0b02572280ceef669cf69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/async-task/zipball/0a6576b3583aff3de25573537451fa4e233a2c92",
-                "reference": "0a6576b3583aff3de25573537451fa4e233a2c92",
+                "url": "https://api.github.com/repos/baagee/async-task/zipball/5460cb0723105b015dc0b02572280ceef669cf69",
+                "reference": "5460cb0723105b015dc0b02572280ceef669cf69",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -43,20 +43,20 @@
                 }
             ],
             "description": "php process task library",
-            "time": "2020-03-21T09:11:48+00:00"
+            "time": "2020-03-23T09:10:26+00:00"
         },
         {
             "name": "baagee/nknkn",
-            "version": "v0.1.29",
+            "version": "v0.1.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "e6fabd5c014bf2455c3e33b5845bf5961f72257d"
+                "reference": "705d64b52ab69b65b9860ecd1702c3f10a78c0dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/e6fabd5c014bf2455c3e33b5845bf5961f72257d",
-                "reference": "e6fabd5c014bf2455c3e33b5845bf5961f72257d",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/705d64b52ab69b65b9860ecd1702c3f10a78c0dc",
+                "reference": "705d64b52ab69b65b9860ecd1702c3f10a78c0dc",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -103,7 +103,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2020-03-21T09:34:45+00:00"
+            "time": "2020-03-25T04:00:56+00:00"
         },
         {
             "name": "baagee/php-config",
