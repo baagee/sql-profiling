@@ -81,6 +81,7 @@
                     </li>
                 {{/loop}}
                 <li class="layui-nav-item" style="float: right;"><a href="/readme.html" target="body-container">使用文档</a>
+                <li class="layui-nav-item" style='float: right'><a href="/online.html" target="body-container">在线工具</a>
                 </li>
             </ul>
         </div>

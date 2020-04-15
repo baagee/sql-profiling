@@ -8,11 +8,15 @@
 
 namespace App\Service;
 
+use App\Library\ErrorCode;
+use App\Model\OnlineSqlModel;
 use App\Model\ProjectModuleModel;
 use App\Model\RequestsModel;
 use App\Model\SqlDetailModel;
 use BaAGee\Log\Log;
 use BaAGee\MySQL\DB;
+use BaAGee\MySQL\DBConfig;
+use BaAGee\NkNkn\UserNotice;
 
 /**
  * Class Data
@@ -36,11 +40,11 @@ class DataService
         $projectModuleModel = new ProjectModuleModel();
         for ($i = 0; $i <= 5; $i++) {
             /*首先查找project-module是否存在*/
-            $projectModule  = $projectModuleModel->findByProjectModule($project, $module);
-            $sqlCount       = count($sqlProfiling);
-            $allCostTime    = array_sum(array_column($sqlProfiling, 'Duration')) * 1000;
-            $connection     = DB::getInstance();
-            $requestsModel  = new RequestsModel();
+            $projectModule = $projectModuleModel->findByProjectModule($project, $module);
+            $sqlCount = count($sqlProfiling);
+            $allCostTime = array_sum(array_column($sqlProfiling, 'Duration')) * 1000;
+            $connection = DB::getInstance();
+            $requestsModel = new RequestsModel();
             $sqlDetailModel = new SqlDetailModel();
             $connection->beginTransaction();
             try {
@@ -71,10 +75,10 @@ class DataService
     public function clearModuleRequest($xId)
     {
         $requestModel = new RequestsModel();
-        $lIds         = $requestModel->getLIdByXIds([$xId]);
+        $lIds = $requestModel->getLIdByXIds([$xId]);
         if (!empty($lIds)) {
             $sqlDetailModel = new SqlDetailModel();
-            $connection     = DB::getInstance();
+            $connection = DB::getInstance();
             $connection->beginTransaction();
             try {
                 $sqlDetailModel->deleteByLIds($lIds);
@@ -95,28 +99,28 @@ class DataService
      */
     public function projectModelList()
     {
-        $colors        = [
+        $colors = [
             "#9933CC", "#66CCCC", "#99CC33", "#FF9966", "#CC3399", "#00CC00", "#FF6666", '#FF9900', '#FF99CC', '#99CC99',
             '#3399CC', '#FF9999', '#FFCC33', '#993366', '#99CCFF', '#003399', '#FF33CC', '#99CCCC', '#FF6600', '#FF0033'
         ];
-        $list          = (new ProjectModuleModel())->list();
+        $list = (new ProjectModuleModel())->list();
         $projectModule = [];
-        $i             = 0;
-        $max           = count($colors);
+        $i = 0;
+        $max = count($colors);
         foreach ($list as $item) {
             if ($i == $max) {
                 $i = 0;
             }
             $projectModule[$item['project']][] = [
                 'module' => $item['module'],
-                'x_id'   => $item['x_id'],
-                'color'  => $colors[$i]
+                'x_id' => $item['x_id'],
+                'color' => $colors[$i]
             ];
             $i++;
         }
         $newList = [];
         foreach ($projectModule as $project => $modules) {
-            $modules   = array_chunk($modules, 4);
+            $modules = array_chunk($modules, 4);
             $newList[] = [
                 'project' => $project,
                 'modules' => $modules
@@ -141,7 +145,7 @@ class DataService
     public function searchRequest($xId, $page, $size, $url = '', $traceId = '', $showHost = 0, $startTime = '', $endTime = '')
     {
         $requestModel = new RequestsModel();
-        $ret          = $requestModel->search($xId, $page, $size, $url, $traceId, $startTime, $endTime);
+        $ret = $requestModel->search($xId, $page, $size, $url, $traceId, $startTime, $endTime);
         if ($showHost == 0) {
             $this->removeUrlHost($ret['list']);
         }
@@ -217,43 +221,52 @@ class DataService
      */
     public function analyze($lId)
     {
-        $requestModel       = new RequestsModel();
-        $request            = $requestModel->getByLId($lId);
+        $requestModel = new RequestsModel();
+        $request = $requestModel->getByLId($lId);
         $projectModuleModel = new ProjectModuleModel();
-        $pm                 = $projectModuleModel->getByXId($request['x_id']);
-        $requestDetail      = array_merge($pm, $request);
+        $pm = $projectModuleModel->getByXId($request['x_id']);
+        $requestDetail = array_merge($pm, $request);
 
-        $requestDetail['analyze_time']  = date('Y-m-d H:i:s');
+        $requestDetail['analyze_time'] = date('Y-m-d H:i:s');
         $requestDetail['avg_cost_time'] = number_format(
             $requestDetail['all_cost_time'] / $requestDetail['sql_count'],
             4, '.', ''
         );
 
         $sqlDetailModel = new SqlDetailModel();
-        $sqlDetailList  = $sqlDetailModel->getByLId($lId);
-        $optimize       = new OptimizeSql();
+        $sqlDetailList = $sqlDetailModel->getByLId($lId);
+        $sqlDetailList = $this->analyzeSql($sqlDetailList);
+        return [
+            'request_detail' => $requestDetail,
+            'sql_detail_list' => $sqlDetailList
+        ];
+    }
+
+    protected function analyzeSql($sqlDetailList)
+    {
+        $optimize = new OptimizeSql();
         foreach ($sqlDetailList as &$item) {
-            $profile     = json_decode($item['profile'], true);
-            $pieData     = $timeLine = [];
+            $profile = json_decode($item['profile'], true);
+            $pieData = $timeLine = [];
             $beforeTotal = 0;
-            $colors      = [];
-            $dup         = [];
+            $colors = [];
+            $dup = [];
             foreach ($profile as $index => &$dd) {
                 $dd['Duration'] = number_format($dd['Duration'] * 1000, 6, '.', '');
                 if (isset($dup[$dd['Status']])) {
-                    $v            = $dup[$dd['Status']] + 1;
+                    $v = $dup[$dd['Status']] + 1;
                     $dd['Status'] = $dd['Status'] . '-' . $v;
                 } else {
                     $v = 0;
                 }
                 $dup[$dd['Status']] = $v;
-                $pieData[]          = [
-                    'name'  => $dd['Status'],
+                $pieData[] = [
+                    'name' => $dd['Status'],
                     'value' => $dd['Duration'],
                 ];
 
                 $afterTotal = $beforeTotal;
-                $us         = $dd['Duration'] * 1000;
+                $us = $dd['Duration'] * 1000;
                 $afterTotal += $us;
                 $afterTotal = number_format($afterTotal, 2, '.', '');
 
@@ -268,16 +281,16 @@ class DataService
                 $colors[] = $color;
                 // 当前的颜色
                 $dd['color'] = $color;
-                $timeLine[]  = [
-                    'name'      => $dd['Status'],
+                $timeLine[] = [
+                    'name' => $dd['Status'],
                     'itemStyle' => ['normal' => ['color' => $color]],
-                    'value'     => [$index, $beforeTotal, $afterTotal, $us]
+                    'value' => [$index, $beforeTotal, $afterTotal, $us]
                 ];
                 $beforeTotal = $afterTotal;
             }
             unset($dd);
-            $item['profile']    = $profile;
-            $item['colors']     = json_encode($colors);
+            $item['profile'] = $profile;
+            $item['colors'] = json_encode($colors);
             $item['time_color'] = self::getBadgeColor($item['cost']);
 
             $explain = json_decode($item['explain'], true) ?? [];
@@ -288,23 +301,32 @@ class DataService
             } else {
                 $item['explain'] = $explain;
             }
-            $item['explication']   = MySqlExplainRemark::getExplication($item['explain']);
-            $item['pie_data']      = json_encode($pieData);
+            $item['explication'] = MySqlExplainRemark::getExplication($item['explain']);
+            $item['pie_data'] = json_encode($pieData);
             $item['timeline_data'] = json_encode($timeLine);
-            $item['legend']        = json_encode(array_column($pieData, 'name'));
-            $item['suggestions']   = $optimize->getSuggestions($item['sql'], $item['explain'], $item['profile'], $item['cost']);
-            $item['score']         = MySqlExplainRemark::getScore(count($item['suggestions']), $item['explain']);
+            $item['legend'] = json_encode(array_column($pieData, 'name'));
+            $item['suggestions'] = $optimize->getSuggestions($item['sql'], $item['explain'], $item['profile'], $item['cost']);
+            $item['score'] = MySqlExplainRemark::getScore(count($item['suggestions']), $item['explain']);
             if (strlen($item['sql']) > 8192) {
-                $url         = '/sql/' . $item['s_id'] . '.html';
+                $url = '/sql/' . $item['s_id'] . '.html';
                 $item['sql'] = substr($item['sql'], 0, 8192) .
                     '<a href="javascript:;" onclick="showSql(\'' . $url . '\')" title="点击查看完整sql">...</a>';
             }
         }
         unset($item);
-        return [
-            'request_detail'  => $requestDetail,
-            'sql_detail_list' => $sqlDetailList
-        ];
+        return $sqlDetailList;
+    }
+
+    /**
+     * 在线结果
+     * @param $sId
+     * @return mixed
+     * @throws \Exception
+     */
+    public function onlineResult($sId)
+    {
+        $sqlDetailList = (new OnlineSqlModel())->getBySId($sId);
+        return $this->analyzeSql($sqlDetailList)[0];
     }
 
     /**
@@ -316,14 +338,14 @@ class DataService
     public function deleteProject($project)
     {
         $projectModuleModel = new ProjectModuleModel();
-        $pms                = $projectModuleModel->getByProject($project);
-        $connection         = DB::getInstance();
+        $pms = $projectModuleModel->getByProject($project);
+        $connection = DB::getInstance();
         $connection->beginTransaction();
         try {
             foreach ($pms as $pm) {
                 $projectModuleModel->deleteByXId($pm['x_id']);
                 if ($this->clearModuleRequest($pm['x_id']) == false) {
-                    throw new \Exception("清空失败");
+                    throw new UserNotice("清空失败", ErrorCode::CLEAR_PROJECT_ERROR);
                 }
             }
             $connection->commit();
@@ -354,11 +376,80 @@ class DataService
     public function getModuleRequestCount()
     {
         $requestModel = new RequestsModel();
-        $res          = $requestModel->countGroupByXId();
+        $res = $requestModel->countGroupByXId();
         if (!empty($res)) {
             return array_column($res, 'c', 'x_id');
         } else {
             return [];
         }
+    }
+
+    /**
+     * 在线分析执行保存
+     * @param string $name
+     * @param array  $dbConfig
+     * @param string $sql
+     * @return array
+     * @throws \Exception
+     */
+    public function onlineAnalyze(string $name, array $dbConfig, string $sql)
+    {
+        $onlineSqlModel = OnlineSqlModel::switchTo(DBConfig::DEFAULT);
+        $hash = md5(sprintf('%s:%s:%s:%s', $dbConfig['host'], $dbConfig['port'], $dbConfig['database'], $sql));
+        $has = $onlineSqlModel->checkExists($hash);
+        if ($has) {
+            throw new UserNotice("不允许一分钟内提交相同的sql", ErrorCode::REPEAT_SQL_ERROR);
+        }
+
+        try {
+            DBConfig::addConfig($dbConfig, $name);
+            DBConfig::switchTo($name);
+            $db = DB::getInstance();
+            $res = $db->query('SELECT @@profiling AS p_v');
+            if ($res[0]['p_v'] == 1) {
+                $db->execute('SET profiling=0');
+            }
+            $db->execute('SET profiling=1');
+
+            $db->query($sql);
+
+            $profiles = $db->query('SHOW PROFILES');
+
+            if (!empty($profiles)) {
+                foreach ($profiles as $i => &$profile) {
+                    if (strpos(strtolower($profile['Query']), '@@profiling') !== false) {
+                        unset($profiles[$i]);
+                        continue;
+                    }
+                    $profileDetail = $db->query('SHOW PROFILE FOR QUERY ' . $profile['Query_ID']);
+                    $profile['detail'] = $profileDetail;
+                    $profile['explain'] = $db->query('EXPLAIN ' . $sql);
+                    $profile['Query'] = $sql;
+                }
+                unset($profile);
+            }
+        } catch (\Exception $e) {
+            throw new UserNotice("执行sql出错:" . $e->getMessage(), ErrorCode::SQL_RUN_ERROR);
+        }
+
+        $onlineSqlModel = OnlineSqlModel::switchTo(DBConfig::DEFAULT);
+        $id = $onlineSqlModel->save($hash, $profiles);
+
+        return [
+            's_id' => $id,
+            'time' => date('Y-m-d H:i:s'),
+            'sql' => $sql,
+        ];
+    }
+
+    /**
+     * 获取在线分析的历史记录sql
+     * @param int $count
+     * @return array|\Generator
+     * @throws \Exception
+     */
+    public function getOnlineHistory($count = 100)
+    {
+        return (new OnlineSqlModel())->getOnlineHistory($count);
     }
 }

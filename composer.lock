@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "baagee/async-task",
-            "version": "v0.0.11",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/async-task.git",
-                "reference": "5460cb0723105b015dc0b02572280ceef669cf69"
+                "reference": "0f2b935ed24d220036b312c3e38bf45abf3e7ada"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/async-task/zipball/5460cb0723105b015dc0b02572280ceef669cf69",
-                "reference": "5460cb0723105b015dc0b02572280ceef669cf69",
+                "url": "https://api.github.com/repos/baagee/async-task/zipball/0f2b935ed24d220036b312c3e38bf45abf3e7ada",
+                "reference": "0f2b935ed24d220036b312c3e38bf45abf3e7ada",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -43,20 +43,20 @@
                 }
             ],
             "description": "php process task library",
-            "time": "2020-03-23T09:10:26+00:00"
+            "time": "2020-03-26T13:37:09+00:00"
         },
         {
             "name": "baagee/nknkn",
-            "version": "v0.1.31",
+            "version": "0.1.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "705d64b52ab69b65b9860ecd1702c3f10a78c0dc"
+                "reference": "4cf328f5ff294e40d870c9f679f01190a7635051"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/705d64b52ab69b65b9860ecd1702c3f10a78c0dc",
-                "reference": "705d64b52ab69b65b9860ecd1702c3f10a78c0dc",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/4cf328f5ff294e40d870c9f679f01190a7635051",
+                "reference": "4cf328f5ff294e40d870c9f679f01190a7635051",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -66,7 +66,7 @@
                 ]
             },
             "require": {
-                "baagee/async-task": "0.0.*",
+                "baagee/async-task": "0.1.*",
                 "baagee/php-config": "0.0.*",
                 "baagee/php-cookie": "0.0.*",
                 "baagee/php-curl-request": "0.0.*",
@@ -81,6 +81,9 @@
                 "baagee/wtf-error": "0.0.*",
                 "php": ">=7.1"
             },
+            "bin": [
+                "bin/creater"
+            ],
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -103,7 +106,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2020-03-25T04:00:56+00:00"
+            "time": "2020-04-15T06:59:43+00:00"
         },
         {
             "name": "baagee/php-config",
@@ -343,16 +346,16 @@
         },
         {
             "name": "baagee/php-mysql",
-            "version": "v0.1.9",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-mysql.git",
-                "reference": "d0329f6540b3acf249c77a6ed3b27ad4ff759573"
+                "reference": "cf28451bf42f208545145b5827304d5fb394b197"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-mysql/zipball/d0329f6540b3acf249c77a6ed3b27ad4ff759573",
-                "reference": "d0329f6540b3acf249c77a6ed3b27ad4ff759573",
+                "url": "https://api.github.com/repos/baagee/php-mysql/zipball/cf28451bf42f208545145b5827304d5fb394b197",
+                "reference": "cf28451bf42f208545145b5827304d5fb394b197",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -386,7 +389,7 @@
                 "mysql",
                 "php"
             ],
-            "time": "2019-11-29T08:11:49+00:00"
+            "time": "2020-04-12T14:25:14+00:00"
         },
         {
             "name": "baagee/php-onion",

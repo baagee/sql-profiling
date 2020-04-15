@@ -71,5 +71,20 @@ return [
         'method'     => 'get',
         'callback'   => \App\Action\Page\SqlPage::class,
         'middleware' => [PageCache::class, ReturnHtml::class]
-    ]
+    ],
+    '/online.html'       => [
+        'method'     => 'get',
+        'callback'   => \App\Action\Page\OnlinePage::class,
+        'middleware' => [ReturnHtml::class]
+    ],
+    '/online/{s_id}.html'       => [
+        'method'     => 'get',
+        'callback'   => \App\Action\Page\OnlineResultPage::class,
+        'middleware' => [PageCache::class, ReturnHtml::class]
+    ],
+    '/api/online/analyze'  => [
+        'method'     => 'post',
+        'callback'   => \App\Action\Api\OnlineAnalyzeApi::class,
+        'middleware' => [ReturnJson::class]
+    ],
 ];
