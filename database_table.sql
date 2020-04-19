@@ -53,3 +53,22 @@ CREATE TABLE `project_module`
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci COMMENT ='项目-模块关系表';
+
+CREATE TABLE `online_sql`
+(
+    `id`          bigint(20) unsigned                    NOT NULL AUTO_INCREMENT,
+    `s_id`        bigint(20) unsigned                    NOT NULL DEFAULT '0' COMMENT '主键',
+    `query_id`    int(10) unsigned                       NOT NULL DEFAULT '0' COMMENT '本次请求ID',
+    `cost`        varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '总耗时',
+    `hash`        varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'hash 用来去重',
+    `sql`         longtext COLLATE utf8mb4_unicode_ci COMMENT 'sql',
+    `profile`     longtext COLLATE utf8mb4_unicode_ci COMMENT 'sql profiling 详情',
+    `explain`     longtext COLLATE utf8mb4_unicode_ci COMMENT 'sql执行计划',
+    `create_time` timestamp                              NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `sql_detail_s_id_uindex` (`s_id`),
+    KEY `online_sql_hash_index` (`hash`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 1
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci COMMENT ='在线sql运行详情表'
