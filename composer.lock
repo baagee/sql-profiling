@@ -47,16 +47,16 @@
         },
         {
             "name": "baagee/nknkn",
-            "version": "0.1.36",
+            "version": "v0.1.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "6c76c01bab0a024dc963b3ff3fb14a46c8da662c"
+                "reference": "bee9dd04580722b9977420ebec1f6fec4f053742"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/6c76c01bab0a024dc963b3ff3fb14a46c8da662c",
-                "reference": "6c76c01bab0a024dc963b3ff3fb14a46c8da662c",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/bee9dd04580722b9977420ebec1f6fec4f053742",
+                "reference": "bee9dd04580722b9977420ebec1f6fec4f053742",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -78,6 +78,7 @@
                 "baagee/php-router": "0.1.*",
                 "baagee/php-session": "0.0.*",
                 "baagee/php-template": "0.0.*",
+                "baagee/redis-tools": "0.0.*",
                 "baagee/wtf-error": "0.0.*",
                 "php": ">=7.1"
             },
@@ -106,7 +107,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2020-04-19T08:31:06+00:00"
+            "time": "2020-04-24T10:40:39+00:00"
         },
         {
             "name": "baagee/php-config",
@@ -300,16 +301,16 @@
         },
         {
             "name": "baagee/php-log",
-            "version": "v0.1.2",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-log.git",
-                "reference": "7e47c910b82176c82c168661c890976e9a98cd5b"
+                "reference": "6845bfd9a0d181051ecef7ef6f5374779ae49c83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-log/zipball/7e47c910b82176c82c168661c890976e9a98cd5b",
-                "reference": "7e47c910b82176c82c168661c890976e9a98cd5b",
+                "url": "https://api.github.com/repos/baagee/php-log/zipball/6845bfd9a0d181051ecef7ef6f5374779ae49c83",
+                "reference": "6845bfd9a0d181051ecef7ef6f5374779ae49c83",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -342,7 +343,7 @@
                 "log",
                 "php"
             ],
-            "time": "2020-03-14T06:59:37+00:00"
+            "time": "2020-04-23T07:49:12+00:00"
         },
         {
             "name": "baagee/php-mysql",
@@ -624,6 +625,53 @@
                 "view"
             ],
             "time": "2019-10-28T09:04:29+00:00"
+        },
+        {
+            "name": "baagee/redis-tools",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/redis-tools.git",
+                "reference": "3eaf7ab084f66bbace6087bc940958e08175418c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/redis-tools/zipball/3eaf7ab084f66bbace6087bc940958e08175418c",
+                "reference": "3eaf7ab084f66bbace6087bc940958e08175418c",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\RedisTools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "Redis distributed lock and current limiter",
+            "keywords": [
+                "distributed lock",
+                "limiter",
+                "redis"
+            ],
+            "time": "2020-04-19T14:43:42+00:00"
         },
         {
             "name": "baagee/wtf-error",

@@ -435,10 +435,13 @@ class DataService
         $onlineSqlModel = OnlineSqlModel::switchTo(DBConfig::DEFAULT);
         $id = $onlineSqlModel->save($hash, $profiles);
 
+        $cost = number_format($profiles[0]['Duration'] * 1000, 6, '.', '');
         return [
             's_id' => $id,
             'time' => date('Y-m-d H:i:s'),
             'sql' => $sql,
+            'cost' => $cost,
+            'time_color' => self::getBadgeColor($cost)
         ];
     }
 
@@ -450,6 +453,10 @@ class DataService
      */
     public function getOnlineHistory($count = 100)
     {
-        return (new OnlineSqlModel())->getOnlineHistory($count);
+        $list = (new OnlineSqlModel())->getOnlineHistory($count);
+        foreach ($list as &$item) {
+            $item['time_color'] = self::getBadgeColor($item['cost']);
+        }
+        return $list;
     }
 }

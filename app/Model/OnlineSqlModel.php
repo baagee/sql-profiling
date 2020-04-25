@@ -67,7 +67,7 @@ class OnlineSqlModel extends ModelAbstract
      */
     public function getOnlineHistory($limit = 100)
     {
-        return $this->tableObj->fields(['s_id', 'create_time', 'sql'])->orderBy(['id' => 'desc'])->limit($limit)->select();
+        return $this->tableObj->fields(['s_id', 'create_time', 'sql','cost'])->orderBy(['id' => 'desc'])->limit($limit)->select();
     }
 
     /**
