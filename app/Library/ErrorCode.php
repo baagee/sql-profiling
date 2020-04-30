@@ -7,9 +7,12 @@
  */
 
 namespace App\Library;
-final class  ErrorCode
+
+use BaAGee\NkNkn\Constant\CoreNoticeCode;
+
+final class  ErrorCode extends CoreNoticeCode
 {
-    const SQL_RUN_ERROR       = 1001;
-    const REPEAT_SQL_ERROR    = 1002;
-    const CLEAR_PROJECT_ERROR = 1003;
+    const SQL_RUN_ERROR       = 100100;
+    const REPEAT_SQL_ERROR    = 100200;
+    const CLEAR_PROJECT_ERROR = 100300;
 }
