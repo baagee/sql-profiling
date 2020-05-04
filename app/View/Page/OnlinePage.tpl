@@ -118,8 +118,7 @@
                                 <div class="layui-timeline-title" id="{{$h['s_id']}}"
                                      data-type="tabAdd">【{{$h['create_time']}}】
                                     <span class="layui-badge"
-                                          style="background-color: {{$h['time_color']}}!important;">{{$h['cost']}}ms</span>
-                                    {{$h['sql']}}</div>
+                                          style="background-color: {{$h['time_color']}}!important;">{{$h['cost']}}ms</span> {{$h['sql']}}</div>
                             </div>
                         </li>
                     {{/loop}}
@@ -250,7 +249,7 @@
                         '                        <div class="layui-timeline-content layui-text">\n' +
                         '                            <div class="layui-timeline-title" id="' + res.data.s_id
                         + '" data-type="tabAdd">【' + res.data.time + '】' +
-                        '<span class="layui-badge" style="background-color: ' + res.data.time_color + '!important;">' + res.data.cost + 'ms</span>' +
+                        '<span class="layui-badge" style="background-color: ' + res.data.time_color + '!important;">' + res.data.cost + 'ms</span> ' +
                         res.data.sql + '</div></div></li>')
                 }
             });

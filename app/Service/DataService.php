@@ -394,7 +394,7 @@ class DataService
      */
     public function onlineAnalyze(string $name, array $dbConfig, string $sql)
     {
-        $onlineSqlModel = OnlineSqlModel::switchTo(DBConfig::DEFAULT);
+        $onlineSqlModel = OnlineSqlModel::getInstance();
         $hash = md5(sprintf('%s:%s:%s:%s', $dbConfig['host'], $dbConfig['port'], $dbConfig['database'], $sql));
         $has = $onlineSqlModel->checkExists($hash);
         if ($has) {
@@ -432,8 +432,7 @@ class DataService
             throw new UserNotice("执行sql出错:" . $e->getMessage(), ErrorCode::SQL_RUN_ERROR);
         }
 
-        $onlineSqlModel = OnlineSqlModel::switchTo(DBConfig::DEFAULT);
-        $id = $onlineSqlModel->save($hash, $profiles);
+        $id = $onlineSqlModel->switchTo(OnlineSqlModel::getConfigName())->save($hash, $profiles);
 
         $cost = number_format($profiles[0]['Duration'] * 1000, 6, '.', '');
         return [

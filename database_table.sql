@@ -50,7 +50,7 @@ CREATE TABLE `project_module`
     UNIQUE KEY `project_module_x_id_uindex` (`x_id`),
     UNIQUE KEY `project_module_project_module_uindex` (`project`, `module`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 1
+  AUTO_INCREMENT = 16
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci COMMENT ='项目-模块关系表';
 
@@ -69,6 +69,6 @@ CREATE TABLE `online_sql`
     UNIQUE KEY `sql_detail_s_id_uindex` (`s_id`),
     KEY `online_sql_hash_index` (`hash`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 1
+  AUTO_INCREMENT = 8
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci COMMENT ='在线sql运行详情表';
