@@ -47,16 +47,16 @@
         },
         {
             "name": "baagee/nknkn",
-            "version": "v0.2.1",
+            "version": "v0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "ee202092b906ce9751ac8028b79508d7096ca588"
+                "reference": "bb4d7e885787a638a3234c9a8e42e62f7cf845b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/ee202092b906ce9751ac8028b79508d7096ca588",
-                "reference": "ee202092b906ce9751ac8028b79508d7096ca588",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/bb4d7e885787a638a3234c9a8e42e62f7cf845b3",
+                "reference": "bb4d7e885787a638a3234c9a8e42e62f7cf845b3",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -107,7 +107,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2020-05-04T07:03:35+00:00"
+            "time": "2020-05-04T15:54:32+00:00"
         },
         {
             "name": "baagee/php-config",
@@ -489,16 +489,16 @@
         },
         {
             "name": "baagee/php-router",
-            "version": "v0.1.9",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-router.git",
-                "reference": "d574e6607838d2fdbe4122b59dee2e7849b5bfc2"
+                "reference": "bb6a2039f92f1e7260d462d31631bb945909c635"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-router/zipball/d574e6607838d2fdbe4122b59dee2e7849b5bfc2",
-                "reference": "d574e6607838d2fdbe4122b59dee2e7849b5bfc2",
+                "url": "https://api.github.com/repos/baagee/php-router/zipball/bb6a2039f92f1e7260d462d31631bb945909c635",
+                "reference": "bb6a2039f92f1e7260d462d31631bb945909c635",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -531,7 +531,7 @@
                 "php",
                 "router"
             ],
-            "time": "2020-05-04T06:58:53+00:00"
+            "time": "2020-05-04T15:29:51+00:00"
         },
         {
             "name": "baagee/php-session",
