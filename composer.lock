@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "baagee/async-task",
-            "version": "v0.1.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/async-task.git",
-                "reference": "2f741176b06d591d1e36359f417723156d3b4fe7"
+                "reference": "5594ab1285e79e6232c7f3a91ef8c40b2cb068bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/async-task/zipball/2f741176b06d591d1e36359f417723156d3b4fe7",
-                "reference": "2f741176b06d591d1e36359f417723156d3b4fe7",
+                "url": "https://api.github.com/repos/baagee/async-task/zipball/5594ab1285e79e6232c7f3a91ef8c40b2cb068bd",
+                "reference": "5594ab1285e79e6232c7f3a91ef8c40b2cb068bd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -43,20 +43,20 @@
                 }
             ],
             "description": "php process task library",
-            "time": "2020-04-25T09:30:48+00:00"
+            "time": "2020-05-08T14:58:40+00:00"
         },
         {
             "name": "baagee/nknkn",
-            "version": "v0.2.4",
+            "version": "v0.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "9c3a44307256509e94ecd8da39b0fd31560518a2"
+                "reference": "824f8ad1ced82c3394c5351102ba7a1d8677e46d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/9c3a44307256509e94ecd8da39b0fd31560518a2",
-                "reference": "9c3a44307256509e94ecd8da39b0fd31560518a2",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/824f8ad1ced82c3394c5351102ba7a1d8677e46d",
+                "reference": "824f8ad1ced82c3394c5351102ba7a1d8677e46d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -80,7 +80,8 @@
                 "baagee/php-template": "0.*.*",
                 "baagee/redis-tools": "0.*.*",
                 "baagee/wtf-error": "0.*.*",
-                "php": ">=7.1"
+                "php": ">=7.1",
+                "psr/container": "^1.0"
             },
             "bin": [
                 "bin/creater"
@@ -107,20 +108,20 @@
                 "framework",
                 "php"
             ],
-            "time": "2020-05-28T13:09:23+00:00"
+            "time": "2020-06-16T14:37:55+00:00"
         },
         {
             "name": "baagee/php-config",
-            "version": "v0.0.4",
+            "version": "v0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-config.git",
-                "reference": "0ce58deddf5a4c41565678355e5f078f99b7a243"
+                "reference": "2fa738856f5fd25b8cc30c8aeb5a37b04c5b65c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-config/zipball/0ce58deddf5a4c41565678355e5f078f99b7a243",
-                "reference": "0ce58deddf5a4c41565678355e5f078f99b7a243",
+                "url": "https://api.github.com/repos/baagee/php-config/zipball/2fa738856f5fd25b8cc30c8aeb5a37b04c5b65c7",
+                "reference": "2fa738856f5fd25b8cc30c8aeb5a37b04c5b65c7",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -158,7 +159,7 @@
                 "config",
                 "php"
             ],
-            "time": "2020-02-08T12:03:56+00:00"
+            "time": "2020-06-15T09:40:38+00:00"
         },
         {
             "name": "baagee/php-cookie",
@@ -305,12 +306,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-log.git",
-                "reference": "6845bfd9a0d181051ecef7ef6f5374779ae49c83"
+                "reference": "1562ee19e8693af64fae25f7ba0bdc1886e431f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-log/zipball/6845bfd9a0d181051ecef7ef6f5374779ae49c83",
-                "reference": "6845bfd9a0d181051ecef7ef6f5374779ae49c83",
+                "url": "https://api.github.com/repos/baagee/php-log/zipball/1562ee19e8693af64fae25f7ba0bdc1886e431f4",
+                "reference": "1562ee19e8693af64fae25f7ba0bdc1886e431f4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -347,16 +348,16 @@
         },
         {
             "name": "baagee/php-mysql",
-            "version": "0.2.0",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-mysql.git",
-                "reference": "30006d0fc46c6cc2b3ea0b32438b99cd88f10ccf"
+                "reference": "b6e38b36dfe67c6d2b5a5a34a5b4b37f45fc883e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-mysql/zipball/30006d0fc46c6cc2b3ea0b32438b99cd88f10ccf",
-                "reference": "30006d0fc46c6cc2b3ea0b32438b99cd88f10ccf",
+                "url": "https://api.github.com/repos/baagee/php-mysql/zipball/b6e38b36dfe67c6d2b5a5a34a5b4b37f45fc883e",
+                "reference": "b6e38b36dfe67c6d2b5a5a34a5b4b37f45fc883e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -390,7 +391,7 @@
                 "mysql",
                 "php"
             ],
-            "time": "2020-04-12T14:25:14+00:00"
+            "time": "2020-05-30T07:05:28+00:00"
         },
         {
             "name": "baagee/php-onion",
@@ -715,6 +716,61 @@
                 "php"
             ],
             "time": "2020-04-25T09:29:24+00:00"
+        },
+        {
+            "name": "psr/container",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/container.git",
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common Container Interface (PHP FIG PSR-11)",
+            "homepage": "https://github.com/php-fig/container",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interface",
+                "container-interop",
+                "psr"
+            ],
+            "time": "2017-02-14T16:28:37+00:00"
         }
     ],
     "packages-dev": [],
