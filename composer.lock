@@ -47,16 +47,16 @@
         },
         {
             "name": "baagee/nknkn",
-            "version": "v0.2.7",
+            "version": "v0.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "3e66febc8d1d1d702126146ce9434939e3288564"
+                "reference": "5de1f9c956bb9dc7a661dd22ec5a20888be86bf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/3e66febc8d1d1d702126146ce9434939e3288564",
-                "reference": "3e66febc8d1d1d702126146ce9434939e3288564",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/5de1f9c956bb9dc7a661dd22ec5a20888be86bf0",
+                "reference": "5de1f9c956bb9dc7a661dd22ec5a20888be86bf0",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -108,7 +108,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2020-06-23T14:51:44+00:00"
+            "time": "2020-06-26T13:06:05+00:00"
         },
         {
             "name": "baagee/php-config",
@@ -348,16 +348,16 @@
         },
         {
             "name": "baagee/php-mysql",
-            "version": "v0.2.2",
+            "version": "v0.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-mysql.git",
-                "reference": "abbffcaa29a257436f0111daff3c84dac4e29632"
+                "reference": "9f87d8546b99c2e4fb50aab73cba98219998cf3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-mysql/zipball/abbffcaa29a257436f0111daff3c84dac4e29632",
-                "reference": "abbffcaa29a257436f0111daff3c84dac4e29632",
+                "url": "https://api.github.com/repos/baagee/php-mysql/zipball/9f87d8546b99c2e4fb50aab73cba98219998cf3c",
+                "reference": "9f87d8546b99c2e4fb50aab73cba98219998cf3c",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -391,7 +391,7 @@
                 "mysql",
                 "php"
             ],
-            "time": "2020-06-23T13:31:31+00:00"
+            "time": "2020-06-26T11:56:49+00:00"
         },
         {
             "name": "baagee/php-onion",
