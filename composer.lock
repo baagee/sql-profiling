@@ -47,16 +47,16 @@
         },
         {
             "name": "baagee/nknkn",
-            "version": "v0.2.9",
+            "version": "v0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "5de1f9c956bb9dc7a661dd22ec5a20888be86bf0"
+                "reference": "87898169f7ea607de7ebd88cb5c30e1d9647e4af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/5de1f9c956bb9dc7a661dd22ec5a20888be86bf0",
-                "reference": "5de1f9c956bb9dc7a661dd22ec5a20888be86bf0",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/87898169f7ea607de7ebd88cb5c30e1d9647e4af",
+                "reference": "87898169f7ea607de7ebd88cb5c30e1d9647e4af",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -78,7 +78,6 @@
                 "baagee/php-router": "0.*.*",
                 "baagee/php-session": "0.*.*",
                 "baagee/php-template": "0.*.*",
-                "baagee/redis-tools": "0.*.*",
                 "baagee/wtf-error": "0.*.*",
                 "php": ">=7.1",
                 "psr/container": "^1.0"
@@ -108,7 +107,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2020-06-26T13:06:05+00:00"
+            "time": "2020-07-09T14:22:14+00:00"
         },
         {
             "name": "baagee/php-config",
@@ -209,16 +208,16 @@
         },
         {
             "name": "baagee/php-curl-request",
-            "version": "v0.0.5",
+            "version": "v0.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-curl-request.git",
-                "reference": "9640146fdf3886a58a5c6c030c7e67bfa4769deb"
+                "reference": "d32845cdbaedb8584e9e6597d86c625adda2ec65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-curl-request/zipball/9640146fdf3886a58a5c6c030c7e67bfa4769deb",
-                "reference": "9640146fdf3886a58a5c6c030c7e67bfa4769deb",
+                "url": "https://api.github.com/repos/baagee/php-curl-request/zipball/d32845cdbaedb8584e9e6597d86c625adda2ec65",
+                "reference": "d32845cdbaedb8584e9e6597d86c625adda2ec65",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -252,7 +251,7 @@
                 "curl request",
                 "php"
             ],
-            "time": "2019-10-31T07:46:35+00:00"
+            "time": "2020-07-01T12:08:20+00:00"
         },
         {
             "name": "baagee/php-event",
@@ -348,16 +347,16 @@
         },
         {
             "name": "baagee/php-mysql",
-            "version": "v0.2.5",
+            "version": "v0.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-mysql.git",
-                "reference": "9f87d8546b99c2e4fb50aab73cba98219998cf3c"
+                "reference": "84087e58a1ecb2fa9292236b397d5966fbf4c1ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-mysql/zipball/9f87d8546b99c2e4fb50aab73cba98219998cf3c",
-                "reference": "9f87d8546b99c2e4fb50aab73cba98219998cf3c",
+                "url": "https://api.github.com/repos/baagee/php-mysql/zipball/84087e58a1ecb2fa9292236b397d5966fbf4c1ec",
+                "reference": "84087e58a1ecb2fa9292236b397d5966fbf4c1ec",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -391,7 +390,7 @@
                 "mysql",
                 "php"
             ],
-            "time": "2020-06-26T11:56:49+00:00"
+            "time": "2020-07-08T03:03:59+00:00"
         },
         {
             "name": "baagee/php-onion",
@@ -582,16 +581,16 @@
         },
         {
             "name": "baagee/php-template",
-            "version": "v0.0.3",
+            "version": "v0.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-template.git",
-                "reference": "9635838657e6e4479ffa00f43196e2030bacb2cb"
+                "reference": "892883c1f90e6c6452108e8296379dbd84ba0169"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-template/zipball/9635838657e6e4479ffa00f43196e2030bacb2cb",
-                "reference": "9635838657e6e4479ffa00f43196e2030bacb2cb",
+                "url": "https://api.github.com/repos/baagee/php-template/zipball/892883c1f90e6c6452108e8296379dbd84ba0169",
+                "reference": "892883c1f90e6c6452108e8296379dbd84ba0169",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -625,67 +624,20 @@
                 "template",
                 "view"
             ],
-            "time": "2020-04-25T09:32:03+00:00"
-        },
-        {
-            "name": "baagee/redis-tools",
-            "version": "0.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/baagee/redis-tools.git",
-                "reference": "3eaf7ab084f66bbace6087bc940958e08175418c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/baagee/redis-tools/zipball/3eaf7ab084f66bbace6087bc940958e08175418c",
-                "reference": "3eaf7ab084f66bbace6087bc940958e08175418c",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "BaAGee\\RedisTools\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "BaAGee",
-                    "email": "2274313786@qq.com"
-                }
-            ],
-            "description": "Redis distributed lock and current limiter",
-            "keywords": [
-                "distributed lock",
-                "limiter",
-                "redis"
-            ],
-            "time": "2020-04-19T14:43:42+00:00"
+            "time": "2020-07-05T16:01:01+00:00"
         },
         {
             "name": "baagee/wtf-error",
-            "version": "v0.0.5",
+            "version": "v0.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/wtf-error.git",
-                "reference": "4e3b1e5c16ca622c6c1f1b6fd88aab3caf47e808"
+                "reference": "6044fc1520091fcd274c05140e014bb2b4d8cade"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/wtf-error/zipball/4e3b1e5c16ca622c6c1f1b6fd88aab3caf47e808",
-                "reference": "4e3b1e5c16ca622c6c1f1b6fd88aab3caf47e808",
+                "url": "https://api.github.com/repos/baagee/wtf-error/zipball/6044fc1520091fcd274c05140e014bb2b4d8cade",
+                "reference": "6044fc1520091fcd274c05140e014bb2b4d8cade",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -715,7 +667,7 @@
                 "error",
                 "php"
             ],
-            "time": "2020-04-25T09:29:24+00:00"
+            "time": "2020-07-09T14:14:32+00:00"
         },
         {
             "name": "psr/container",

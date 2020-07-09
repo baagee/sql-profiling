@@ -26,6 +26,7 @@ class ReturnJson extends MiddlewareAbstract
      */
     protected function handler(\Closure $next, $data)
     {
+        header('Content-Type: application/json; charset=utf-8');
         try {
             $res = $next($data);
         } catch (UserNotice $e) {
@@ -38,7 +39,6 @@ class ReturnJson extends MiddlewareAbstract
             $errMsg  = '系统异常~';
             Log::warning(sprintf('系统异常：[%d] %s', $e->getCode(), $e->getMessage()));
         }
-        header('Content-Type: application/json; charset=utf-8');
         return json_encode([
             'code'    => $errCode ?? 0,
             'message' => $errMsg ?? '',

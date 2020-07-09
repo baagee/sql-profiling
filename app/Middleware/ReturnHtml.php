@@ -30,6 +30,7 @@ class ReturnHtml extends MiddlewareAbstract
      */
     protected function handler(\Closure $next, $data)
     {
+        header('Content-Type: text/html;charset=UTF-8');
         View::init([
             'sourceViewPath'  => AppEnv::get('APP_PATH') . DIRECTORY_SEPARATOR . 'View',
             'compileViewPath' => implode(DIRECTORY_SEPARATOR, [
@@ -60,7 +61,6 @@ class ReturnHtml extends MiddlewareAbstract
         // $return['errorData']    = $errorData ?? '';
         // $return['_controller']  = AppEnv::get('CONTROLLER');
         // $return['_action']      = AppEnv::get('ACTION');
-        header('Content-Type: text/html;charset=UTF-8');
         return View::render(sprintf('%s/%s.tpl', AppEnv::get('CONTROLLER'), AppEnv::get('ACTION')), $return);
     }
 }
