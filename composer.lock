@@ -47,16 +47,16 @@
         },
         {
             "name": "baagee/nknkn",
-            "version": "v0.3.4",
+            "version": "v0.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "87898169f7ea607de7ebd88cb5c30e1d9647e4af"
+                "reference": "c573bc1b394b0d2fa27f9f5138d49555524f10ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/87898169f7ea607de7ebd88cb5c30e1d9647e4af",
-                "reference": "87898169f7ea607de7ebd88cb5c30e1d9647e4af",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/c573bc1b394b0d2fa27f9f5138d49555524f10ec",
+                "reference": "c573bc1b394b0d2fa27f9f5138d49555524f10ec",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -107,7 +107,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2020-07-09T14:22:14+00:00"
+            "time": "2020-07-18T08:54:33+00:00"
         },
         {
             "name": "baagee/php-config",
@@ -628,16 +628,16 @@
         },
         {
             "name": "baagee/wtf-error",
-            "version": "v0.0.7",
+            "version": "v0.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/wtf-error.git",
-                "reference": "6044fc1520091fcd274c05140e014bb2b4d8cade"
+                "reference": "1c9a24593494e8d7d7f3649627ec5c69d8b8e1ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/wtf-error/zipball/6044fc1520091fcd274c05140e014bb2b4d8cade",
-                "reference": "6044fc1520091fcd274c05140e014bb2b4d8cade",
+                "url": "https://api.github.com/repos/baagee/wtf-error/zipball/1c9a24593494e8d7d7f3649627ec5c69d8b8e1ee",
+                "reference": "1c9a24593494e8d7d7f3649627ec5c69d8b8e1ee",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -667,7 +667,7 @@
                 "error",
                 "php"
             ],
-            "time": "2020-07-09T14:14:32+00:00"
+            "time": "2020-07-18T05:02:10+00:00"
         },
         {
             "name": "psr/container",
