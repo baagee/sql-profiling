@@ -11,9 +11,12 @@ return [
     'page_cache_time'      => 3600 * 24,//页面缓存时间 秒
     'async_task'            => [
         // 异步任务文件锁路径
-        'lock_file' => \BaAGee\NkNkn\AppEnv::get('RUNTIME_PATH') . DIRECTORY_SEPARATOR . 'sync_task_lock',
+        'lock_file'  => \BaAGee\NkNkn\AppEnv::get('RUNTIME_PATH') . DIRECTORY_SEPARATOR . 'async_task_lock',
         // 同时最大任务进程数
-        'max_task'  => 50,
+        'max_task'   => 50,
         'output_dir' => \BaAGee\NkNkn\AppEnv::get('RUNTIME_PATH') . DIRECTORY_SEPARATOR . 'async_task_output',
-    ]
+    ],
+    // 页面调试信息输出类
+    'debug_trace_output'=>\BaAGee\DebugTrace\OutputHtml::class,
+    // 'debug_trace_output'=>\BaAGee\DebugTrace\OutputConsole::class,
 ];

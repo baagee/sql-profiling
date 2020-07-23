@@ -47,16 +47,16 @@
         },
         {
             "name": "baagee/nknkn",
-            "version": "v0.3.5",
+            "version": "v0.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "c573bc1b394b0d2fa27f9f5138d49555524f10ec"
+                "reference": "012716ffab289e79a8ee72dd515580bd2a41ae48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/c573bc1b394b0d2fa27f9f5138d49555524f10ec",
-                "reference": "c573bc1b394b0d2fa27f9f5138d49555524f10ec",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/012716ffab289e79a8ee72dd515580bd2a41ae48",
+                "reference": "012716ffab289e79a8ee72dd515580bd2a41ae48",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -70,6 +70,7 @@
                 "baagee/php-config": "0.*.*",
                 "baagee/php-cookie": "0.*.*",
                 "baagee/php-curl-request": "0.*.*",
+                "baagee/php-debug-trace": "0.*.*",
                 "baagee/php-event": "0.*.*",
                 "baagee/php-log": "0.*.*",
                 "baagee/php-mysql": "0.*.*",
@@ -107,7 +108,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2020-07-18T08:54:33+00:00"
+            "time": "2020-07-23T14:51:46+00:00"
         },
         {
             "name": "baagee/php-config",
@@ -254,6 +255,55 @@
             "time": "2020-07-01T12:08:20+00:00"
         },
         {
+            "name": "baagee/php-debug-trace",
+            "version": "v0.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baagee/php-debugtrace.git",
+                "reference": "f0a1a2f5aad9f80280a3cb255b3f8d6cae1993d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baagee/php-debugtrace/zipball/f0a1a2f5aad9f80280a3cb255b3f8d6cae1993d1",
+                "reference": "f0a1a2f5aad9f80280a3cb255b3f8d6cae1993d1",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BaAGee\\DebugTrace\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BaAGee",
+                    "email": "2274313786@qq.com"
+                }
+            ],
+            "description": "PHP Debug Trace",
+            "keywords": [
+                "debug trace",
+                "php"
+            ],
+            "time": "2020-07-23T14:36:09+00:00"
+        },
+        {
             "name": "baagee/php-event",
             "version": "v0.0.1",
             "source": {
@@ -301,16 +351,16 @@
         },
         {
             "name": "baagee/php-log",
-            "version": "0.1.3",
+            "version": "v0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-log.git",
-                "reference": "1562ee19e8693af64fae25f7ba0bdc1886e431f4"
+                "reference": "53ca60b3b7af05af2e2f7495629ebc1982e5a35e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-log/zipball/1562ee19e8693af64fae25f7ba0bdc1886e431f4",
-                "reference": "1562ee19e8693af64fae25f7ba0bdc1886e431f4",
+                "url": "https://api.github.com/repos/baagee/php-log/zipball/53ca60b3b7af05af2e2f7495629ebc1982e5a35e",
+                "reference": "53ca60b3b7af05af2e2f7495629ebc1982e5a35e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -343,7 +393,7 @@
                 "log",
                 "php"
             ],
-            "time": "2020-04-23T07:49:12+00:00"
+            "time": "2020-07-22T15:03:13+00:00"
         },
         {
             "name": "baagee/php-mysql",
