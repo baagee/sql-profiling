@@ -47,16 +47,16 @@
         },
         {
             "name": "baagee/nknkn",
-            "version": "v0.3.6",
+            "version": "v0.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/nknkn.git",
-                "reference": "012716ffab289e79a8ee72dd515580bd2a41ae48"
+                "reference": "b4d34fdf9d78c693bcefdb04f6dd298008699908"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/nknkn/zipball/012716ffab289e79a8ee72dd515580bd2a41ae48",
-                "reference": "012716ffab289e79a8ee72dd515580bd2a41ae48",
+                "url": "https://api.github.com/repos/baagee/nknkn/zipball/b4d34fdf9d78c693bcefdb04f6dd298008699908",
+                "reference": "b4d34fdf9d78c693bcefdb04f6dd298008699908",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -108,7 +108,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2020-07-23T14:51:46+00:00"
+            "time": "2020-08-02T13:57:00+00:00"
         },
         {
             "name": "baagee/php-config",
@@ -351,16 +351,16 @@
         },
         {
             "name": "baagee/php-log",
-            "version": "v0.1.4",
+            "version": "v0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-log.git",
-                "reference": "53ca60b3b7af05af2e2f7495629ebc1982e5a35e"
+                "reference": "05073893faebbabfb47f4d3ddd6ba4680c125266"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-log/zipball/53ca60b3b7af05af2e2f7495629ebc1982e5a35e",
-                "reference": "53ca60b3b7af05af2e2f7495629ebc1982e5a35e",
+                "url": "https://api.github.com/repos/baagee/php-log/zipball/05073893faebbabfb47f4d3ddd6ba4680c125266",
+                "reference": "05073893faebbabfb47f4d3ddd6ba4680c125266",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -393,20 +393,20 @@
                 "log",
                 "php"
             ],
-            "time": "2020-07-22T15:03:13+00:00"
+            "time": "2020-08-02T13:19:45+00:00"
         },
         {
             "name": "baagee/php-mysql",
-            "version": "v0.2.7",
+            "version": "v0.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baagee/php-mysql.git",
-                "reference": "84087e58a1ecb2fa9292236b397d5966fbf4c1ec"
+                "reference": "a5c4bad9902d0ccb50480445923ae4ad3ed28fb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baagee/php-mysql/zipball/84087e58a1ecb2fa9292236b397d5966fbf4c1ec",
-                "reference": "84087e58a1ecb2fa9292236b397d5966fbf4c1ec",
+                "url": "https://api.github.com/repos/baagee/php-mysql/zipball/a5c4bad9902d0ccb50480445923ae4ad3ed28fb3",
+                "reference": "a5c4bad9902d0ccb50480445923ae4ad3ed28fb3",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -440,7 +440,7 @@
                 "mysql",
                 "php"
             ],
-            "time": "2020-07-08T03:03:59+00:00"
+            "time": "2020-08-02T13:27:09+00:00"
         },
         {
             "name": "baagee/php-onion",

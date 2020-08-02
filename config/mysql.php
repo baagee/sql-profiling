@@ -12,7 +12,7 @@ return [
     'user'           => 'ttt',
     'password'       => '1q2w3tyer',
     'database'       => 'sql_profiling',
-    'connectTimeout' => 1,
+    'connect_timeout' => 1,
     'charset'        => 'utf8mb4',
     'options'        => [
         //pdo连接时额外选项

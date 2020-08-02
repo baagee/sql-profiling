@@ -9,7 +9,7 @@ return [
     'product_error_hidden' => [E_WARNING, E_NOTICE, E_STRICT, E_DEPRECATED],# 非调试模式下隐藏哪种PHP错误类型
     'debug_error_hidden'   => [E_WARNING, E_NOTICE, E_STRICT, E_DEPRECATED],# 调试开发模式下隐藏哪种PHP错误类型
     'page_cache_time'      => 3600 * 24,//页面缓存时间 秒
-    'async_task'            => [
+    'async_task'           => [
         // 异步任务文件锁路径
         'lock_file'  => \BaAGee\NkNkn\AppEnv::get('RUNTIME_PATH') . DIRECTORY_SEPARATOR . 'async_task_lock',
         // 同时最大任务进程数
