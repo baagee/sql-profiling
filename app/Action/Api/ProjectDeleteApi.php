@@ -8,7 +8,8 @@
 
 namespace App\Action\Api;
 
-use App\Service\DataService;
+use App\Library\DeleteProjectTask;
+use BaAGee\AsyncTask\TaskScheduler;
 use BaAGee\NkNkn\Base\ActionAbstract;
 
 /**
@@ -31,7 +32,7 @@ class ProjectDeleteApi extends ActionAbstract
      */
     protected function execute(array $params = [])
     {
-        $service = new DataService();
-        return $service->deleteProject($params['project']);
+        $task = TaskScheduler::getInstance();
+        return $task->runTask(DeleteProjectTask::class, $params);
     }
 }

@@ -80,15 +80,15 @@
     });
 
     function deleteThis(project) {
-        layer.confirm('确定要删除项目【'+project+'】吗?', {icon: 3, title: '提示'}, function (index) {
+        layer.confirm('确定要删除项目【' + project + '】吗?', {icon: 3, title: '提示'}, function (index) {
             $.post("/api/project/delete", {
                 project: project
             }, function (res) {
                 if (res.code !== 0) {
                     layer.msg(res.message, {icon: 5});
                 } else {
-                    layer.msg('删除完毕');
-                    location.href = '/';
+                    layer.msg('删除任务已启动');
+                    // location.href = '/';
                 }
             });
             layer.close(index);
