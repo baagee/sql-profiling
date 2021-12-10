@@ -27,7 +27,7 @@ class OptimizeSql
         if ($this->isSelectSql($sql)) {
             //只有查询语句才给出建议
             if ($this->isSelectStar($sql)) {
-                $suggestions[] = "不建议使用【SELECT * 】，会降低查询效率";
+                $suggestions[] = "不建议使用【SELECT * 】，会降低查询效率，只查询必要字段即可";
             }
             $profilingList = array_column($profilingList, 'Duration', 'Status');
             $profilingList = array_change_key_case($profilingList, CASE_LOWER);

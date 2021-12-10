@@ -57,7 +57,7 @@ class MySqlExplainRemark
         //null > system > const > eq_ref > ref > fulltext > ref_or_null > index_merge > unique_subquery > index_subquery > range > index > ALL
         'type'          => [
             'all'             => 'Full Table Scan，即全表扫描，意味着mysql需要从头到尾去查找所需要的行。通常情况下这需要增加索引来进行优化了',
-            'index'           => 'Full Index Scan， 和ALL一样，不同就是mysql只需扫描索引树，这通常比ALL快一些。index与ALL区别为index类型只遍历索引树,开销依然非常大',
+            'index'           => 'Full Index Scan， 和ALL一样，不同就是mysql只需扫描索引树，这通常比ALL快一些。index与ALL区别为index类型只遍历非聚簇索引树,开销依然非常大',
             'range'           => '范围扫描，一个有限制的索引扫描。key 列显示使用了哪个索引。当使用=、 <>、>、>=、<、<=、IS NULL、<=>、BETWEEN 或者 IN 操作符,用常量比较关键字列时',
             'index_subquery'  => '这种连接类型类似 unique_subquery。它用子查询来代替in，不过它用于在子查询中没有唯一索引的情况下，例如以下形式：value in (select key_column from single_table where some_expr)',
             'unique_subquery' => '该类型替换了下面形式的IN子查询的ref：value IN (SELECT primary_key FROM single_table WHERE some_expr) unique_subquery是一个索引查找函数，可以完全替换子查询，效率更高',
@@ -78,7 +78,7 @@ class MySqlExplainRemark
         'filtered'      => '使用explain extended时会出现这个列，5.7之后的版本默认就有这个字段，不需要使用explain extended了。这个字段表示存储引擎返回的数据在server层过滤后，剩下多少满足查询的记录数量的比例，注意是百分比，不是具体记录数',
         'Extra'         => [
             'distinct'                     => '一旦mysql找到了与行相联合匹配的行，就不再搜索了',
-            'using index'                  => '这发生在对表的请求列都是同一索引的部分的时候，返回的列数据只使用了索引中的信息，而没有再去访问表中的行记录',
+            'using index'                  => '这发生在对表的请求列都是同一索引的部分的时候（覆盖索引），返回的列数据只使用了索引中的信息，而没有再去访问表中的行记录',
             'using where'                  => 'mysql服务器将在存储引擎检索行后再进行过滤。就是先读取整行数据，再按 where 条件进行检查，符合就留下，不符合就丢弃',
             'using temporary'              => 'mysql需要创建一张临时表来处理查询。出现这种情况一般是要进行优化的，首先是想到用索引来优化',
             'using filesort'               => 'mysql 会对结果使用一个外部索引排序，而不是按索引次序从表里读取行。此时mysql会根据联接类型浏览所有符合条件的记录，并保存排序关键字和行指针，然后排序关键字并按顺序检索行信息。这种情况下一般也是要考虑使用索引来优化的',
